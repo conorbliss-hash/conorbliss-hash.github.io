@@ -1,3 +1,23 @@
+import React from 'react'
+// @ts-ignore
+import LegacyHero from '@/components/legacy-website/Hero'
+import siteData from '@/lib/content/site.json'
+
+export default function HeroSection() {
+  // If legacy component expects data via props, provide siteData.hero
+  // Otherwise render basic fallback
+  try {
+    // @ts-ignore
+    return <LegacyHero data={siteData.hero} />
+  } catch (e) {
+    return (
+      <section className="py-12">
+        <h1>{siteData.hero?.headline || 'Welcome'}</h1>
+        <p>{siteData.hero?.subheadline || ''}</p>
+      </section>
+    )
+  }
+}
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 

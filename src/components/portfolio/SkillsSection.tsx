@@ -1,3 +1,20 @@
+import React from 'react'
+import siteData from '@/lib/content/site.json'
+
+export default function SkillsSection() {
+  // Fallback simple skills rendering
+  const skills = siteData.skills || []
+  return (
+    <section className="py-8">
+      <h2>Skills</h2>
+      <ul>
+        {skills.map((s: any, i: number) => (
+          <li key={i}>{s}</li>
+        ))}
+      </ul>
+    </section>
+  )
+}
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";

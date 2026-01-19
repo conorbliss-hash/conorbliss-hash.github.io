@@ -1,3 +1,11 @@
+import React from 'react'
+import LegacyNav from '@/components/legacy-website/Nav'
+
+export default function Navbar() {
+  // use the legacy nav component as-is
+  // @ts-ignore - importing JS/JSX legacy file
+  return <LegacyNav />
+}
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";

@@ -1,3 +1,21 @@
+import React from 'react'
+// @ts-ignore
+import LegacyAbout from '@/components/legacy-website/About'
+import siteData from '@/lib/content/site.json'
+
+export default function AboutSection() {
+  try {
+    // @ts-ignore
+    return <LegacyAbout data={siteData.about} />
+  } catch (e) {
+    return (
+      <section className="py-8">
+        <h2>About</h2>
+        <p>{siteData?.about?.summary || 'About content'}</p>
+      </section>
+    )
+  }
+}
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";

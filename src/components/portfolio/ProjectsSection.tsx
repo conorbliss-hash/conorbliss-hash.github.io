@@ -1,3 +1,22 @@
+import React from 'react'
+// @ts-ignore
+import LegacyMarquee from '@/components/legacy-website/MarqueeProject'
+import projects from '@/lib/content/projects.json'
+
+export default function ProjectsSection() {
+  try {
+    // Render marquee if exists
+    // @ts-ignore
+    return <LegacyMarquee data={projects.marquee} />
+  } catch (e) {
+    return (
+      <section className="py-8">
+        <h2>Projects</h2>
+        <pre>{JSON.stringify(projects, null, 2)}</pre>
+      </section>
+    )
+  }
+}
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";

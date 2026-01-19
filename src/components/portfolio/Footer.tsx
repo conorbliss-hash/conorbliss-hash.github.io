@@ -1,3 +1,19 @@
+import React from 'react'
+// @ts-ignore
+import LegacyFooter from '@/components/legacy-website/Footer'
+
+export default function Footer() {
+  try {
+    // @ts-ignore
+    return <LegacyFooter />
+  } catch (e) {
+    return (
+      <footer className="py-8">
+        <p>© {new Date().getFullYear()}</p>
+      </footer>
+    )
+  }
+}
 const Footer = () => {
   return (
     <footer className="py-12 border-t border-border">

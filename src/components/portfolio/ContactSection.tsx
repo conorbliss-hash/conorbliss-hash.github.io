@@ -1,3 +1,15 @@
+import React from 'react'
+import siteData from '@/lib/content/site.json'
+
+export default function ContactSection() {
+  const contact = siteData.contact || {}
+  return (
+    <section className="py-8">
+      <h2>Contact</h2>
+      <p>{contact.email || 'email@example.com'}</p>
+    </section>
+  )
+}
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
