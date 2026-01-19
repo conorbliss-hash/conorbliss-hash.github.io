@@ -2,8 +2,9 @@ import Navbar from "@/components/portfolio/Navbar";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
-import SkillsSection from "@/components/portfolio/SkillsSection";
-import ContactSection from "@/components/portfolio/ContactSection";
+import DesignBetsSection from "@/components/portfolio/DesignBetsSection";
+import AntiPortfolioSection from "@/components/portfolio/AntiPortfolioSection";
+import WritingSection from "@/components/portfolio/WritingSection";
 import Footer from "@/components/portfolio/Footer";
 
 const Index = () => {
@@ -14,8 +15,9 @@ const Index = () => {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
-        <SkillsSection />
-        <ContactSection />
+        <DesignBetsSection />
+        <AntiPortfolioSection />
+        <WritingSection />
       </main>
       <Footer />
     </div>

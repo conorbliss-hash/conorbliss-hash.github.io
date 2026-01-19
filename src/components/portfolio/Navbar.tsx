@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "How I Build" },
+  { href: "#projects", label: "Work" },
+  { href: "#principles", label: "Principles" },
+  { href: "#writing", label: "Writing" },
 ];
 
 const Navbar = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
           <a href="#" className="font-display text-xl font-semibold">
-            <span className="text-gradient">Portfolio</span>
+            <span className="text-gradient">Conor Bliss</span>
           </a>
 
           {/* Desktop Nav */}
@@ -47,12 +47,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
-            >
-              Hire Me
-            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,13 +81,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-5 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium text-center hover:opacity-90 transition-opacity"
-            >
-              Hire Me
-            </a>
           </div>
         </motion.div>
       )}
