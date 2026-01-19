@@ -1,0 +1,23 @@
+.about-section {
+  padding: calc(var(--spacing-unit) * 8) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+.about-location {
+  font-size: 0.9375rem;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.about-text {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}

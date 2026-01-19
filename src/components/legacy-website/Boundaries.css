@@ -1,0 +1,36 @@
+.boundaries {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.boundaries-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.boundaries-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.boundary-item {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.boundary-item::before {
+  content: '×';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+  font-weight: 600;
+}

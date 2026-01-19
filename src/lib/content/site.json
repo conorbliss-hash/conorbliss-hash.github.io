@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "headline": "I design AI systems so organizations can trust decisions before they scale them.",
+    "subheadline": "I focus on preventing judgment failures by designing clear boundaries, validation, and audit.",
+    "narrativeSpine": "Fixing decision risk: define boundaries, validation gates, and audit trails to prevent judgment failures at scale.",
+    "operationalTrust": "Built for production constraints: validation, logging, rollback, and controlled access.",
+    "proof": "Reduced manual reporting effort by 80% across 3 teams.",
+    "cta": {
+      "primary": {
+        "text": "Projects",
+        "link": "#projects"
+      },
+      "secondary": {
+        "text": "Writing",
+        "link": "https://medium.com/@conor.bliss.henaghan"
+      }
+    }
+  },
+  "judgmentCalls": {
+    "title": "Decisions I'm accountable for",
+    "items": [
+      "When AI must be constrained, not improved",
+      "When data is unsafe to reuse (even if it's technically clean)",
+      "Where human judgment must be explicit and recorded",
+      "How to surface failures early, not at scale"
+    ]
+  },
+  "howIBuild": [
+    "Validation gates → Structured outputs → Logging/traceability → Rollback-ready deployments"
+  ],
+  "assertionsTitle": "Design bets I'm willing to be wrong about",
+  "assertions": [
+    {
+      "id": "deterministic-first",
+      "claim": "Deterministic before probabilistic",
+      "explainer": "Trust cannot be inferred. AI introduces variance into systems. Before adding that variance, I exhaust deterministic options: rules, lookups, structured logic. AI solves the residual ambiguity, not the whole problem.",
+      "mechanism": "Schema validation + explicit rules"
+    },
+    {
+      "id": "governance-before-scale",
+      "claim": "Governance before scale",
+      "explainer": "Speed amplifies ambiguity. Scaling ungoverned AI creates compounding risk. I design validation layers, ownership boundaries, and audit trails before expanding scope.",
+      "mechanism": "Validation layers + audit trail"
+    },
+    {
+      "id": "failure-modes",
+      "claim": "Design for failure modes, not happy paths",
+      "explainer": "Happy paths are free. I focus on what happens when inputs are malformed, when models hallucinate, when upstream data is late. Systems that handle failure gracefully earn trust.",
+      "mechanism": "Rollback + anomaly detection"
+    },
+    {
+      "id": "human-checkpoints",
+      "claim": "Human checkpoints by default",
+      "explainer": "Judgment cannot be automated away. I build systems where humans review before consequential actions, not after failures. 'The AI said so' is never an acceptable answer.",
+      "mechanism": "Approval gates + review checkpoints"
+    },
+    {
+      "id": "validation-auditability",
+      "claim": "Validation and auditability as requirements",
+      "explainer": "Memory and intent decay. If a system cannot explain its outputs or prove its inputs were valid, it should not run in production. I treat validation and audit trails as first-class requirements.",
+      "mechanism": "Input validation + audit logs"
+    }
+  ],
+  "boundaries": {
+    "title": "What I deliberately do not build",
+    "items": [
+      "Fully autonomous AI in business-critical workflows",
+      "AI systems without named data owners",
+      "Dashboards without decision accountability",
+      "Automation that cannot be rolled back cleanly"
+    ]
+  },
+  "links": {
+    "github": "https://github.com/conorbliss",
+    "linkedin": "https://linkedin.com/in/conor-bliss-henaghan",
+    "medium": "https://medium.com/@conor.bliss.henaghan"
+  },
+  "about": {
+    "location": "Sydney, Australia",
+    "experience": "3+ years building AI-enabled systems for organizations that prioritize reliability over speed",
+    "focus": "Focus areas: data authority, decision support, agent-assisted workflows"
+  }
+}

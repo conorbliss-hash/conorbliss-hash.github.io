@@ -1,0 +1,146 @@
+{
+  "marquee": {
+    "id": "health-coach",
+    "title": "Health Coach",
+    "label": "Open Source",
+    "anchorText": "Featured",
+    "tagline": "Google Fit → Google Sheets",
+    "domainTags": ["Data Governance", "Validation", "Audit"],
+    "organizationalBridge": "Demonstrates governance principles I apply at organizational scale: schema validation, deterministic transforms, and audit-ready outputs.",
+    "problem": "A fully open-source personal system that transforms raw activity data into structured, actionable guidance.",
+    "approach": "Built as a fully transparent, end-to-end system with clear boundaries between data ingestion, logic, and output.",
+    "tags": ["Open Source", "Data Pipeline", "Health Tech"],
+    "github": "https://github.com/conorbliss/health-coach"
+  },
+  "professionalFraming": "Professional Systems",
+  "professional": [
+    {
+      "id": "workflow-automation",
+      "title": "AI Workflow Automation",
+      "scope": "Recurring monthly reporting, multi-team",
+      "domainTags": ["AI Governance", "Operating Model", "Validation"],
+      "riskPrevented": "Inconsistent outputs and audit failure risk from ungoverned AI in reporting workflows",
+      "mechanismMicro": "Schema validation",
+      "mechanism": "Schema validation + human-in-loop approval gate",
+      "problem": "Messy operational inputs created recurring manual reporting work",
+      "approach": "Structured deterministic pipelines with AI used only where ambiguity remained",
+      "outcome": "Consistent outputs with reduced manual effort",
+      "delta": "Typical delta: 60–80% cycle time reduction, fewer QA loops"
+    },
+    {
+      "id": "decision-support",
+      "title": "AI Decision Support Systems",
+      "scope": "Decision support for ambiguous business questions",
+      "domainTags": ["Decision Architecture", "Enablement", "Governance"],
+      "riskPrevented": "Trust breakdown from opaque AI recommendations without reviewable reasoning",
+      "mechanismMicro": "Audit logging",
+      "mechanism": "Structured reasoning trace + audit logging",
+      "problem": "Ambiguous business questions lacked repeatable decision logic",
+      "approach": "Translated open-ended inputs into structured, reviewable outputs",
+      "outcome": "Improved clarity and speed of decision-making",
+      "delta": "Typical delta: faster decisions + fewer rework loops"
+    },
+    {
+      "id": "governed-data",
+      "title": "Governed Data Systems",
+      "scope": "Client-data environment, validation and audit",
+      "domainTags": ["Data Authority", "Audit", "Risk Prevention"],
+      "riskPrevented": "Downstream AI failures and compliance risk from unvalidated data foundations",
+      "mechanismMicro": "Rejection gate",
+      "mechanism": "Rejection gate + ownership registry + rollback",
+      "problem": "Unvalidated data created downstream risk for AI use",
+      "approach": "Designed validation, ownership, and audit-ready ingestion layers",
+      "outcome": "Safer foundations for automation and analysis",
+      "delta": "Typical delta: fewer ingestion failures + audit-ready traceability"
+    }
+  ],
+  "projectDetails": {
+    "health-coach": {
+      "context": "Personal health coaching system that transforms Google Fit metrics into structured guidance. Built as a fully transparent system to provide usable weekly feedback loops based on activity data.",
+      "systemDesign": "Google Fit export/API → data transformation layer → validated Sheets schema → guidance generation boundary → structured outputs in Google Sheets with clear audit trail.",
+      "keyDecisions": [
+        "Clear schema definition for all data types and transformations",
+        "Deterministic transforms for all calculations to ensure reproducibility",
+        "Bounded generation layer with explicit input/output contracts",
+        "All outputs stored in Sheets for transparent review and iteration"
+      ],
+      "governanceRisk": [
+        "Privacy-first design: personal data only, no external sharing",
+        "Validation of input ranges to catch anomalies early",
+        "Reproducible transformations for consistent week-over-week comparison",
+        "Open-source codebase enables full transparency and auditability"
+      ],
+      "outcome": [
+        "Weekly feedback loop operational and usable",
+        "Transparent system where all logic is reviewable",
+        "Reproducible transformations enable reliable tracking"
+      ],
+      "links": {
+        "github": "https://github.com/conorbliss/health-coach"
+      }
+    },
+    "workflow-automation": {
+      "context": "Recurring reporting burden emerged from messy operational inputs that required manual synthesis. System designed to automate deterministic portions while containing AI usage to ambiguous summarization tasks only.",
+      "systemDesign": "Intake layer → normalization and validation → deterministic pipeline for structured transforms → AI boundary for ambiguous summarization → output generation (documents/slides/reports) → human review checkpoint before distribution.",
+      "keyDecisions": [
+        "Deterministic-first approach: AI only where ambiguity genuinely exists",
+        "Schema constraints enforce structured inputs and prevent drift",
+        "Human review gate before any outputs leave the system",
+        "Versioned audit trail of inputs and outputs for accountability"
+      ],
+      "governanceRisk": [
+        "Auditability: all inputs and outputs logged with timestamps",
+        "Versioned transformations enable rollback and investigation",
+        "No client data shown. Details abstracted.",
+        "Details abstracted to protect employer context"
+      ],
+      "outcome": [
+        "Reduced manual effort in recurring reporting workflows",
+        "More consistent output quality across report cycles",
+        "Clear boundaries between deterministic and AI-assisted steps"
+      ]
+    },
+    "decision-support": {
+      "context": "Ambiguous business questions lacked repeatable decision logic, leading to inconsistent narratives. System translates open-ended inputs into structured, reviewable recommendations with explicit reasoning chains.",
+      "systemDesign": "Structured intake form → rubric/framework application → constrained generation with explicit criteria → reviewable recommendation output → decision narrative with reasoning → human checkpoint for final approval.",
+      "keyDecisions": [
+        "Explicit gates and kill-criteria defined upfront for each decision type",
+        "Transparency in reasoning: show how inputs map to recommendations",
+        "Separation of facts (data) vs suggestions (AI-assisted interpretation)",
+        "Structured templates enforce consistency across decision types"
+      ],
+      "governanceRisk": [
+        "Traceability of all inputs to outputs via decision logs",
+        "Human checkpoints at recommendation stage before any action",
+        "No client data shown. Details abstracted.",
+        "Details abstracted to protect employer context"
+      ],
+      "outcome": [
+        "Faster clarity on ambiguous questions",
+        "Improved consistency of decision narratives",
+        "Reviewable reasoning chains enable better stakeholder communication"
+      ]
+    },
+    "governed-data": {
+      "context": "Unvalidated data creates downstream risk for AI and automation systems. Designed validation, ownership mapping, and audit-ready ingestion layers to establish safer foundations for analytics and automation workflows.",
+      "systemDesign": "Ingestion layer → validation rules (schema, range, consistency checks) → ownership/lineage mapping → audit log generation → curated data layer → controlled access for downstream consumers.",
+      "keyDecisions": [
+        "Reject or flag bad data early at ingestion boundaries",
+        "Explicit ownership assignment for every data entity",
+        "Minimal access principle: consumers only see what they need",
+        "Reversible transformations to enable root cause investigation"
+      ],
+      "governanceRisk": [
+        "Audit trails capture all data movements and transformations",
+        "Access control boundaries enforce least-privilege principles",
+        "No client data shown. Details abstracted.",
+        "Anonymized by design: no client-specific schemas shown"
+      ],
+      "outcome": [
+        "Safer foundations for downstream automation and AI systems",
+        "Reduced risk from unvalidated or unowned data",
+        "Clear audit trail enables compliance and investigation workflows"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.proof-signals {
+  background-color: transparent;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: calc(var(--spacing-unit) * 10) 0;
+}
+
+.signals-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 8);
+  max-width: 1000px;
+}
+
+.signal-item {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  padding-left: calc(var(--spacing-unit) * 3);
+  position: relative;
+  line-height: 1.5;
+}
+
+.signal-item::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+  font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .signals-list {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 4);
+  }
+}

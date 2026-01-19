@@ -1,0 +1,15 @@
+.judgment-calls {
+  padding: 0.5rem 0;
+}
+
+.judgment-calls-statement {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+.judgment-calls-label {
+  color: var(--text-primary);
+  font-weight: 500;
+}
