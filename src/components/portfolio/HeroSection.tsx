@@ -21,7 +21,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <p className="text-muted-foreground text-lg mb-4 tracking-widest uppercase font-body">
-            Creative Developer
+            AI Systems Designer
           </p>
         </motion.div>
 
@@ -29,22 +29,31 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6"
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 max-w-5xl mx-auto"
         >
-          Building Digital
-          <br />
-          <span className="text-gradient">Experiences</span>
+          I design AI systems so organizations can{" "}
+          <span className="text-gradient">trust decisions</span> before they scale them.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 font-body"
+          className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto mb-8 font-body"
         >
-          I craft elegant interfaces and robust applications that blend 
-          beautiful design with exceptional user experiences.
+          Built for production constraints: validation, logging, rollback, and controlled access.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          className="mb-12"
+        >
+          <p className="text-primary font-medium text-lg">
+            Reduced manual reporting effort by 80% across 3 teams.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -59,10 +68,10 @@ const HeroSection = () => {
             View My Work
           </a>
           <a
-            href="#contact"
+            href="#writing"
             className="inline-flex items-center gap-2 px-8 py-4 border border-border rounded-lg font-medium hover:bg-secondary transition-colors"
           >
-            Get In Touch
+            Read My Writing
           </a>
         </motion.div>
       </div>
