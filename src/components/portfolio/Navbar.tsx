@@ -51,6 +51,12 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <a
+              href="mailto:conor.bliss.henaghan@gmail.com"
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+            >
+              Contact
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,6 +91,13 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <a
+              href="mailto:conor.bliss.henaghan@gmail.com"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Contact
+            </a>
           </div>
         </motion.div>
       )}
