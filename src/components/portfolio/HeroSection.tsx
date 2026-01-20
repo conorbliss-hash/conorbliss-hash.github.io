@@ -65,7 +65,7 @@ const HeroSection = () => {
           className="mb-12"
         >
           <p className="text-primary font-medium text-base sm:text-lg">
-            11 hours saved in 2 weeks. Now the default workflow for the business unit.
+            Workflows trusted enough to institutionalize.
           </p>
         </motion.div>
 
