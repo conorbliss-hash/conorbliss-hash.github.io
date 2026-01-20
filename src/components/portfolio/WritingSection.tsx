@@ -7,22 +7,22 @@ const articles = [
   {
     title: "How I code with agents, without being 'technical'",
     subtitle: "A 5 step process for consistent results",
-    link: "https://medium.com/@conor.bliss.henaghan"
+    link: "https://medium.com/@conor.bliss.henaghan/how-i-code-with-agents-without-being-technical-d411e2cceb4d"
   },
   {
     title: "An Operating System for Data Authority",
     subtitle: "Designing an AI-Enabled Data Ingestion Pipeline",
-    link: "https://medium.com/@conor.bliss.henaghan"
+    link: "https://medium.com/@conor.bliss.henaghan/an-operating-system-for-data-authority-cabf63b797d7"
   },
   {
     title: "Making Data Authoritative: The Step Most AI Programs Skip",
     subtitle: "As companies push AI from experiments into real workflows",
-    link: "https://medium.com/@conor.bliss.henaghan"
+    link: "https://medium.com/@conor.bliss.henaghan/making-data-authoritative-the-step-most-ai-programs-skip-61c728612421"
   },
   {
     title: "It's not another dashboard. It's a coach in your inbox.",
     subtitle: "From Data Overload to Clarity. One Email. One Decision for the Week.",
-    link: "https://medium.com/@conor.bliss.henaghan"
+    link: "https://medium.com/@conor.bliss.henaghan/its-not-another-dashboard-it-s-a-coach-in-your-inbox-c95e3f9e6f44"
   },
 ];
 
