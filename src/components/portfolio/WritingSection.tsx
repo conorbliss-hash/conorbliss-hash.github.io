@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useCallback } from "react";
+import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
-import AutoScroll from "embla-carousel-auto-scroll";
 
 import codingWithAgentsImg from "@/assets/articles/coding-with-agents.png";
 import operatingSystemDataImg from "@/assets/articles/operating-system-data.png";
@@ -37,32 +35,38 @@ const articles = [
   },
 ];
 
+const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
+  <a
+    href={article.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group flex-shrink-0 w-[300px] sm:w-[350px] rounded-lg border border-border bg-background hover:border-primary/50 transition-colors overflow-hidden"
+  >
+    <div className="aspect-[16/10] overflow-hidden">
+      <img 
+        src={article.image} 
+        alt={article.title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+    <div className="p-4 sm:p-5">
+      <div className="flex items-start justify-between gap-2">
+        <h3 className="font-display text-sm sm:text-base font-semibold group-hover:text-primary transition-colors leading-snug line-clamp-2">
+          {article.title}
+        </h3>
+        <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" />
+      </div>
+      <p className="text-muted-foreground text-xs sm:text-sm mt-2 line-clamp-2">{article.subtitle}</p>
+    </div>
+  </a>
+);
+
 const WritingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: true,
-      align: "start",
-      dragFree: true,
-    },
-    [AutoScroll({ speed: 0.5 })]
-  );
-
-  const onPointerDown = useCallback(() => {
-    if (emblaApi) {
-      const autoScroll = emblaApi.plugins().autoScroll;
-      if (autoScroll) autoScroll.stop();
-    }
-  }, [emblaApi]);
-
-  const onPointerUp = useCallback(() => {
-    if (emblaApi) {
-      const autoScroll = emblaApi.plugins().autoScroll;
-      if (autoScroll) autoScroll.play();
-    }
-  }, [emblaApi]);
+  // Duplicate articles for seamless loop
+  const duplicatedArticles = [...articles, ...articles];
 
   return (
     <section id="writing" className="py-16 md:py-32 bg-card/50" ref={ref}>
@@ -87,36 +91,15 @@ const WritingSection = () => {
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         className="overflow-hidden"
-        ref={emblaRef}
-        onPointerDown={onPointerDown}
-        onPointerUp={onPointerUp}
       >
-        <div className="flex gap-6 pl-[max(1rem,calc((100vw-72rem)/2+1rem))]">
-          {articles.map((article) => (
-            <a
-              key={article.title}
-              href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex-shrink-0 w-[300px] sm:w-[350px] rounded-lg border border-border bg-background hover:border-primary/50 transition-colors overflow-hidden"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <img 
-                  src={article.image} 
-                  alt={article.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 sm:p-5">
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-display text-sm sm:text-base font-semibold group-hover:text-primary transition-colors leading-snug line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" />
-                </div>
-                <p className="text-muted-foreground text-xs sm:text-sm mt-2 line-clamp-2">{article.subtitle}</p>
-              </div>
-            </a>
+        <div 
+          className="flex gap-6 animate-scroll hover:pause-animation"
+          style={{
+            width: "max-content",
+          }}
+        >
+          {duplicatedArticles.map((article, index) => (
+            <ArticleCard key={`${article.title}-${index}`} article={article} />
           ))}
         </div>
       </motion.div>
