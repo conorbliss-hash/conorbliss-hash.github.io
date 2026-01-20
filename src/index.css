@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    --background: 220 30% 5%;
-    --foreground: 200 20% 95%;
+    --background: 220 25% 6%;
+    --foreground: 210 15% 93%;
 
-    --card: 215 35% 8%;
-    --card-foreground: 200 20% 95%;
+    --card: 218 28% 9%;
+    --card-foreground: 210 15% 93%;
 
-    --popover: 215 35% 8%;
-    --popover-foreground: 200 20% 95%;
+    --popover: 218 28% 9%;
+    --popover-foreground: 210 15% 93%;
 
-    --primary: 192 85% 55%;
-    --primary-foreground: 220 30% 5%;
+    --primary: 200 45% 48%;
+    --primary-foreground: 220 25% 6%;
 
-    --secondary: 215 30% 12%;
-    --secondary-foreground: 200 20% 95%;
+    --secondary: 218 25% 13%;
+    --secondary-foreground: 210 15% 93%;
 
-    --muted: 215 25% 15%;
-    --muted-foreground: 200 15% 55%;
+    --muted: 218 20% 16%;
+    --muted-foreground: 215 15% 55%;
 
-    --accent: 192 85% 55%;
-    --accent-foreground: 220 30% 5%;
+    --accent: 200 45% 48%;
+    --accent-foreground: 220 25% 6%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 95%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 215 25% 18%;
-    --input: 215 25% 18%;
-    --ring: 192 85% 55%;
+    --border: 218 20% 18%;
+    --input: 218 20% 18%;
+    --ring: 200 45% 48%;
 
     --radius: 0.5rem;
 
-    /* Custom portfolio tokens - Futuristic Blue */
-    --gradient-hero: linear-gradient(135deg, hsl(220 30% 5%) 0%, hsl(215 40% 10%) 50%, hsl(220 30% 5%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(192 85% 55%) 0%, hsl(200 90% 60%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(215 35% 10%) 0%, hsl(215 35% 6%) 100%);
-    --shadow-glow: 0 0 60px hsl(192 85% 55% / 0.2);
-    --shadow-card: 0 10px 40px -10px hsl(192 85% 55% / 0.1);
+    /* Custom portfolio tokens - Enterprise Steel Blue */
+    --gradient-hero: linear-gradient(135deg, hsl(220 25% 6%) 0%, hsl(218 30% 10%) 50%, hsl(220 25% 6%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(200 45% 48%) 0%, hsl(205 50% 52%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(218 28% 11%) 0%, hsl(218 28% 7%) 100%);
+    --shadow-glow: 0 0 50px hsl(200 45% 48% / 0.08);
+    --shadow-card: 0 8px 32px -8px hsl(220 50% 5% / 0.4);
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 215 35% 8%;
-    --sidebar-foreground: 200 20% 95%;
-    --sidebar-primary: 192 85% 55%;
-    --sidebar-primary-foreground: 220 30% 5%;
-    --sidebar-accent: 215 25% 15%;
-    --sidebar-accent-foreground: 200 20% 95%;
-    --sidebar-border: 215 25% 18%;
-    --sidebar-ring: 192 85% 55%;
+    --sidebar-background: 218 28% 9%;
+    --sidebar-foreground: 210 15% 93%;
+    --sidebar-primary: 200 45% 48%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 218 20% 16%;
+    --sidebar-accent-foreground: 210 15% 93%;
+    --sidebar-border: 218 20% 18%;
+    --sidebar-ring: 200 45% 48%;
   }
 }
 

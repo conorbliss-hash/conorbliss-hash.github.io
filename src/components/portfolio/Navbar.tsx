@@ -32,7 +32,11 @@ const Navbar = () => {
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
-          <a href="#" className="font-display text-xl font-semibold">
+          <a 
+            href="#hero" 
+            className="font-display text-xl font-semibold"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <span className="text-gradient">Conor Bliss</span>
           </a>
 
