@@ -32,8 +32,8 @@ const professionalProjects = [
   },
   {
     id: "governed-data",
-    title: "Data Ingestion Gate for Remuneration Datasets",
-    subtitle: "Client-data environment, validation and audit",
+    title: "Pre-Ingestion Validation Gate",
+    subtitle: "Regulated data environments, validation and audit",
     tags: ["Data Authority", "Audit", "Risk Prevention"],
     outcome: "Safer foundations for automation and analysis",
     mechanism: "Rejection gate + ownership registry + rollback",
@@ -41,11 +41,11 @@ const professionalProjects = [
   },
   {
     id: "anomaly-detection",
-    title: "Anomaly Detection for Executive Compensation",
+    title: "Outlier Detection for Sensitive Datasets",
     subtitle: "High-stakes data, ML-driven flagging",
     tags: ["ML Ops", "Risk Detection", "Data Governance"],
-    outcome: "Early visibility into compensation outliers before downstream reporting",
-    mechanism: "IsolationForest model + threshold flagging + BigQuery writeback",
+    outcome: "Early visibility into data anomalies before downstream reporting",
+    mechanism: "Unsupervised model + threshold flagging + writeback to source",
     delta: "Typical delta: proactive outlier identification vs reactive investigation"
   },
 ];
@@ -115,8 +115,8 @@ const projectDetails: Record<string, ProjectDetail> = {
     ]
   },
   "anomaly-detection": {
-    context: "Executive compensation data requires proactive quality checks before downstream reporting. Manual review cannot scale. Designed an ML-driven anomaly detection system to flag outliers early, reducing reactive investigation cycles.",
-    systemDesign: "Feature engineering layer (ratios, normalizations) → IsolationForest model training → anomaly scoring → threshold-based flagging → BigQuery writeback with scores and flags → human review queue for flagged records.",
+    context: "High-stakes datasets require proactive quality checks before downstream reporting. Manual review cannot scale. Designed an ML-driven anomaly detection system to flag outliers early, reducing reactive investigation cycles.",
+    systemDesign: "Feature engineering layer (ratios, normalizations) → unsupervised model training → anomaly scoring → threshold-based flagging → writeback to source system → human review queue for flagged records.",
     keyDecisions: [
       "Unsupervised approach: no labeled training data required",
       "Feature engineering focused on domain-relevant ratios and comparisons",
@@ -130,7 +130,7 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Threshold adjustments versioned and documented"
     ],
     outcome: [
-      "Early visibility into compensation outliers",
+      "Early visibility into data anomalies",
       "Reduced reactive investigation cycles",
       "Audit-ready flagging with explainable scores"
     ]
