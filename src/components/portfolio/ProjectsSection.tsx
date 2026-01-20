@@ -39,6 +39,15 @@ const professionalProjects = [
     mechanism: "Rejection gate + ownership registry + rollback",
     delta: "Typical delta: fewer ingestion failures + audit-ready traceability"
   },
+  {
+    id: "anomaly-detection",
+    title: "Anomaly Detection for Executive Compensation",
+    subtitle: "High-stakes data, ML-driven flagging",
+    tags: ["ML Ops", "Risk Detection", "Data Governance"],
+    outcome: "Early visibility into compensation outliers before downstream reporting",
+    mechanism: "IsolationForest model + threshold flagging + BigQuery writeback",
+    delta: "Typical delta: proactive outlier identification vs reactive investigation"
+  },
 ];
 
 const projectDetails: Record<string, ProjectDetail> = {
@@ -103,6 +112,27 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Safer foundations for downstream automation and AI systems",
       "Reduced risk from unvalidated or unowned data",
       "Clear audit trail enables compliance and investigation workflows"
+    ]
+  },
+  "anomaly-detection": {
+    context: "Executive compensation data requires proactive quality checks before downstream reporting. Manual review cannot scale. Designed an ML-driven anomaly detection system to flag outliers early, reducing reactive investigation cycles.",
+    systemDesign: "Feature engineering layer (ratios, normalizations) → IsolationForest model training → anomaly scoring → threshold-based flagging → BigQuery writeback with scores and flags → human review queue for flagged records.",
+    keyDecisions: [
+      "Unsupervised approach: no labeled training data required",
+      "Feature engineering focused on domain-relevant ratios and comparisons",
+      "Contamination parameter tuned to expected outlier rate",
+      "Scores persisted for audit trail and threshold adjustment"
+    ],
+    governanceRisk: [
+      "All flagged records logged with scores for review",
+      "Model outputs are advisory, not autonomous—human review required",
+      "No client data shown. Details abstracted.",
+      "Threshold adjustments versioned and documented"
+    ],
+    outcome: [
+      "Early visibility into compensation outliers",
+      "Reduced reactive investigation cycles",
+      "Audit-ready flagging with explainable scores"
     ]
   }
 };
