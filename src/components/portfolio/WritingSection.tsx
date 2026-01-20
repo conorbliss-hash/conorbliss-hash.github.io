@@ -1,34 +1,68 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { ArrowUpRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
+
+import codingWithAgentsImg from "@/assets/articles/coding-with-agents.png";
+import operatingSystemDataImg from "@/assets/articles/operating-system-data.png";
+import dataAuthoritativeImg from "@/assets/articles/data-authoritative.png";
+import coachInboxImg from "@/assets/articles/coach-inbox.png";
 
 const articles = [
   {
     title: "How I code with agents, without being 'technical'",
     subtitle: "A 5 step process for consistent results",
-    link: "https://medium.com/@conor.bliss.henaghan/how-i-code-with-agents-without-being-technical-d411e2cceb4d"
+    link: "https://medium.com/@conor.bliss.henaghan/how-i-code-with-agents-without-being-technical-d411e2cceb4d",
+    image: codingWithAgentsImg
   },
   {
     title: "An Operating System for Data Authority",
     subtitle: "Designing an AI-Enabled Data Ingestion Pipeline",
-    link: "https://medium.com/@conor.bliss.henaghan/an-operating-system-for-data-authority-cabf63b797d7"
+    link: "https://medium.com/@conor.bliss.henaghan/an-operating-system-for-data-authority-cabf63b797d7",
+    image: operatingSystemDataImg
   },
   {
     title: "Making Data Authoritative: The Step Most AI Programs Skip",
     subtitle: "As companies push AI from experiments into real workflows",
-    link: "https://medium.com/@conor.bliss.henaghan/making-data-authoritative-the-step-most-ai-programs-skip-61c728612421"
+    link: "https://medium.com/@conor.bliss.henaghan/making-data-authoritative-the-step-most-ai-programs-skip-61c728612421",
+    image: dataAuthoritativeImg
   },
   {
     title: "It's not another dashboard. It's a coach in your inbox.",
     subtitle: "From Data Overload to Clarity. One Email. One Decision for the Week.",
-    link: "https://medium.com/@conor.bliss.henaghan/its-not-another-dashboard-it-s-a-coach-in-your-inbox-c95e3f9e6f44"
+    link: "https://medium.com/@conor.bliss.henaghan/its-not-another-dashboard-it-s-a-coach-in-your-inbox-c95e3f9e6f44",
+    image: coachInboxImg
   },
 ];
 
 const WritingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true,
+      align: "start",
+      dragFree: true,
+    },
+    [AutoScroll({ speed: 0.5 })]
+  );
+
+  const onPointerDown = useCallback(() => {
+    if (emblaApi) {
+      const autoScroll = emblaApi.plugins().autoScroll;
+      if (autoScroll) autoScroll.stop();
+    }
+  }, [emblaApi]);
+
+  const onPointerUp = useCallback(() => {
+    if (emblaApi) {
+      const autoScroll = emblaApi.plugins().autoScroll;
+      if (autoScroll) autoScroll.play();
+    }
+  }, [emblaApi]);
 
   return (
     <section id="writing" className="py-16 md:py-32 bg-card/50" ref={ref}>
@@ -37,7 +71,7 @@ const WritingSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
             Ideas
@@ -46,32 +80,46 @@ const WritingSection = () => {
             <span className="text-gradient">Writing</span>
           </h2>
         </motion.div>
+      </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-4">
-            {articles.map((article, index) => (
-              <motion.a
-                key={article.title}
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
-                className="group flex items-start justify-between p-4 sm:p-6 rounded-lg border border-border bg-background hover:border-primary/50 transition-colors"
-              >
-                <div className="flex-1 min-w-0 pr-3">
-                  <h3 className="font-display text-base sm:text-lg font-semibold mb-1 group-hover:text-primary transition-colors leading-snug">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+        ref={emblaRef}
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+      >
+        <div className="flex gap-6 pl-[max(1rem,calc((100vw-72rem)/2+1rem))]">
+          {articles.map((article) => (
+            <a
+              key={article.title}
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex-shrink-0 w-[300px] sm:w-[350px] rounded-lg border border-border bg-background hover:border-primary/50 transition-colors overflow-hidden"
+            >
+              <div className="aspect-[16/10] overflow-hidden">
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4 sm:p-5">
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="font-display text-sm sm:text-base font-semibold group-hover:text-primary transition-colors leading-snug line-clamp-2">
                     {article.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm">{article.subtitle}</p>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" />
                 </div>
-                <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
-              </motion.a>
-            ))}
-          </div>
+                <p className="text-muted-foreground text-xs sm:text-sm mt-2 line-clamp-2">{article.subtitle}</p>
+              </div>
+            </a>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
