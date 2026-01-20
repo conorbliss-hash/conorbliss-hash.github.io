@@ -65,13 +65,15 @@ const HeroSection = () => {
             href="#projects"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
-            View My Work
+            Projects
           </a>
           <a
-            href="#writing"
+            href="https://medium.com/@conor.bliss.henaghan"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 border border-border rounded-lg font-medium hover:bg-secondary transition-colors"
           >
-            Read My Writing
+            Writing
           </a>
         </motion.div>
       </div>

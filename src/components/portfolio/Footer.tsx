@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex gap-6">
             <a 
-              href="#" 
+              href="https://github.com/conorbliss" 
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -17,7 +17,7 @@ const Footer = () => {
               <span className="text-sm">GitHub</span>
             </a>
             <a 
-              href="#" 
+              href="https://linkedin.com/in/conor-bliss-henaghan" 
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -26,7 +26,7 @@ const Footer = () => {
               <span className="text-sm">LinkedIn</span>
             </a>
             <a 
-              href="#" 
+              href="https://medium.com/@conor.bliss.henaghan" 
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"

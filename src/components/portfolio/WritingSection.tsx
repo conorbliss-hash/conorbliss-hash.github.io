@@ -7,22 +7,22 @@ const articles = [
   {
     title: "How I code with agents, without being 'technical'",
     subtitle: "A 5 step process for consistent results",
-    link: "#"
+    link: "https://medium.com/@conor.bliss.henaghan"
   },
   {
     title: "An Operating System for Data Authority",
     subtitle: "Designing an AI-Enabled Data Ingestion Pipeline",
-    link: "#"
+    link: "https://medium.com/@conor.bliss.henaghan"
   },
   {
     title: "Making Data Authoritative: The Step Most AI Programs Skip",
     subtitle: "As companies push AI from experiments into real workflows",
-    link: "#"
+    link: "https://medium.com/@conor.bliss.henaghan"
   },
   {
     title: "It's not another dashboard. It's a coach in your inbox.",
     subtitle: "From Data Overload to Clarity. One Email. One Decision for the Week.",
-    link: "#"
+    link: "https://medium.com/@conor.bliss.henaghan"
   },
 ];
 
@@ -53,6 +53,8 @@ const WritingSection = () => {
               <motion.a
                 key={article.title}
                 href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}

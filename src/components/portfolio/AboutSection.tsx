@@ -11,10 +11,10 @@ const methodologySteps = [
 ];
 
 const decisions = [
-  "When AI must be constrained, not improved.",
-  "When data is unsafe to reuse (even if it's technically clean).",
-  "Where human judgment must be explicit and recorded.",
-  "How to surface failures early, not at scale."
+  "When AI must be constrained, not improved",
+  "When data is unsafe to reuse (even if it's technically clean)",
+  "Where human judgment must be explicit and recorded",
+  "How to surface failures early, not at scale"
 ];
 
 const AboutSection = () => {
