@@ -22,13 +22,13 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-16 md:py-32" ref={ref}>
+    <section id="about" className="py-10 md:py-16" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
             Methodology
