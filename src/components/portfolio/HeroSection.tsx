@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
   return (
@@ -16,9 +17,22 @@ const HeroSection = () => {
 
       <div className="section-container text-center">
         <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-8"
+        >
+          <img 
+            src={profileImage} 
+            alt="Conor Henaghan" 
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto object-cover border-4 border-primary/20 shadow-lg"
+          />
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
         >
           <p className="text-muted-foreground text-lg mb-4 tracking-widest uppercase font-body">
             AI Systems Designer
