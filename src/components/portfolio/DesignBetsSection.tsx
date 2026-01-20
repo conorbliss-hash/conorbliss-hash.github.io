@@ -11,23 +11,28 @@ import {
 const designBets = [
   {
     title: "Deterministic before probabilistic",
-    content: "When possible, I design systems that produce consistent, reproducible outputs before introducing probabilistic AI elements. This makes debugging easier and builds trust with stakeholders."
+    content: "Trust cannot be inferred. AI introduces variance into systems. Before adding that variance, I exhaust deterministic options: rules, lookups, structured logic. AI solves the residual ambiguity, not the whole problem.",
+    mechanism: "Schema validation + explicit rules"
   },
   {
     title: "Governance before scale",
-    content: "It's tempting to scale quickly, but I prioritize establishing clear governance frameworks first. Controls that are retrofitted are weaker than controls designed in from the start."
+    content: "Speed amplifies ambiguity. Scaling ungoverned AI creates compounding risk. I design validation layers, ownership boundaries, and audit trails before expanding scope.",
+    mechanism: "Validation layers + audit trail"
   },
   {
     title: "Design for failure modes, not happy paths",
-    content: "I spend more time thinking about how systems fail than how they succeed. Edge cases, bad data, and unexpected inputs reveal the true robustness of a design."
+    content: "Happy paths are free. I focus on what happens when inputs are malformed, when models hallucinate, when upstream data is late. Systems that handle failure gracefully earn trust.",
+    mechanism: "Rollback + anomaly detection"
   },
   {
     title: "Human checkpoints by default",
-    content: "Rather than building fully autonomous systems that require opt-in human oversight, I design for human involvement by default with clear criteria for when automation can proceed."
+    content: "Judgment cannot be automated away. I build systems where humans review before consequential actions, not after failures. 'The AI said so' is never an acceptable answer.",
+    mechanism: "Approval gates + review checkpoints"
   },
   {
     title: "Validation and auditability as requirements",
-    content: "These aren't nice-to-haves. Every system I build has validation at ingestion, transformation logging, and audit trails that can answer 'what happened and why' months later."
+    content: "Memory and intent decay. If a system cannot explain its outputs or prove its inputs were valid, it should not run in production. I treat validation and audit trails as first-class requirements.",
+    mechanism: "Input validation + audit logs"
   },
 ];
 
@@ -68,8 +73,9 @@ const DesignBetsSection = () => {
                 <AccordionTrigger className="text-left font-display text-lg font-medium hover:no-underline py-5">
                   {bet.title}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground font-body pb-5">
-                  {bet.content}
+                <AccordionContent className="text-muted-foreground font-body pb-5 space-y-3">
+                  <p>{bet.content}</p>
+                  <p className="text-xs text-primary/80 font-medium">{bet.mechanism}</p>
                 </AccordionContent>
               </AccordionItem>
             ))}

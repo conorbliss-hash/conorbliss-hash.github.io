@@ -9,18 +9,24 @@ const professionalProjects = [
     subtitle: "Recurring monthly reporting, multi-team",
     tags: ["AI Governance", "Operating Model", "Validation"],
     outcome: "Consistent outputs with reduced manual effort",
+    mechanism: "Schema validation + human-in-loop approval gate",
+    delta: "Typical delta: 60–80% cycle time reduction, fewer QA loops"
   },
   {
     title: "Quality Controls for AI-Assisted Deliverables",
     subtitle: "Decision support for ambiguous business questions",
     tags: ["Decision Architecture", "Enablement", "Governance"],
     outcome: "Improved clarity and speed of decision-making",
+    mechanism: "Structured reasoning trace + audit logging",
+    delta: "Typical delta: faster decisions + fewer rework loops"
   },
   {
     title: "Data Ingestion Gate for Remuneration Datasets",
     subtitle: "Client-data environment, validation and audit",
     tags: ["Data Authority", "Audit", "Risk Prevention"],
     outcome: "Safer foundations for automation and analysis",
+    mechanism: "Rejection gate + ownership registry + rollback",
+    delta: "Typical delta: fewer ingestion failures + audit-ready traceability"
   },
 ];
 
@@ -34,7 +40,7 @@ const openSourceProject = {
     "Demonstrates governance principles I apply at organizational scale: schema validation, deterministic transforms, and audit-ready outputs."
   ],
   techTags: ["Open Source", "Data Pipeline", "Health Tech"],
-  link: "#"
+  link: "https://github.com/conorbliss/health-coach"
 };
 
 const ProjectCard = ({ project, index }: { project: typeof professionalProjects[0]; index: number }) => {
@@ -70,7 +76,8 @@ const ProjectCard = ({ project, index }: { project: typeof professionalProjects[
         ))}
       </div>
 
-      <p className="text-muted-foreground text-sm font-body">{project.outcome}</p>
+      <p className="text-muted-foreground text-sm font-body mb-2">{project.outcome}</p>
+      <p className="text-xs text-primary/70 font-medium">{project.mechanism}</p>
     </motion.div>
   );
 };
