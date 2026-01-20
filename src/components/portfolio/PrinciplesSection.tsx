@@ -38,10 +38,22 @@ const designBets = [
 ];
 
 const antiPatterns = [
-  "Fully autonomous AI in business-critical workflows",
-  "AI systems without named data owners",
-  "Dashboards without decision accountability",
-  "Automation that cannot be rolled back cleanly",
+  {
+    title: "Fully autonomous AI in business-critical workflows",
+    content: "AI should augment judgment, not replace it. When the stakes are high, humans need to stay in the loop—accountability cannot be delegated to an algorithm."
+  },
+  {
+    title: "AI systems without named data owners",
+    content: "Data without ownership creates orphaned decisions. Every input needs someone responsible for its quality, freshness, and appropriate use."
+  },
+  {
+    title: "Dashboards without decision accountability",
+    content: "Visibility without ownership breeds passivity. If no one is accountable for acting on what the dashboard shows, it becomes expensive decoration."
+  },
+  {
+    title: "Automation that cannot be rolled back cleanly",
+    content: "Speed without reversibility is recklessness. Any system that can't be unwound quickly will eventually create irreversible damage."
+  },
 ];
 
 const PrinciplesSection = () => {
@@ -100,20 +112,25 @@ const PrinciplesSection = () => {
           <h3 className="font-display text-xl sm:text-2xl font-semibold text-center mb-8">
             What I deliberately <span className="text-gradient">do not</span> build
           </h3>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <Accordion type="single" collapsible className="space-y-3">
             {antiPatterns.map((pattern, index) => (
-              <motion.div
-                key={pattern}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                className="flex items-start gap-3 p-4 rounded-lg border border-border/50 bg-background"
+              <AccordionItem 
+                key={pattern.title} 
+                value={`anti-${index}`}
+                className="border border-border rounded-lg px-4 sm:px-6 bg-background data-[state=open]:border-destructive/50 transition-colors"
               >
-                <XCircle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-foreground font-body">{pattern}</p>
-              </motion.div>
+                <AccordionTrigger className="text-left font-display text-base sm:text-lg font-medium hover:no-underline py-4 sm:py-5">
+                  <span className="flex items-center gap-3">
+                    <XCircle className="w-4 h-4 text-destructive flex-shrink-0" />
+                    {pattern.title}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground font-body pb-5">
+                  <p>{pattern.content}</p>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </motion.div>
       </div>
     </section>
