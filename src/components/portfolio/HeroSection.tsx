@@ -42,7 +42,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 max-w-4xl mx-auto leading-tight"
+          className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 max-w-6xl mx-auto leading-tight"
         >
           I design AI systems so organizations can{" "}
           <span className="text-gradient">trust decisions</span> before they scale them.
@@ -52,7 +52,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-4 font-body px-2"
+          className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-4 font-body px-2"
         >
           Built for production constraints: validation, logging, rollback, and controlled access.
         </motion.p>
