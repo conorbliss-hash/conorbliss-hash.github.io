@@ -17,36 +17,36 @@ const professionalProjects = [
     title: "Governed Reporting Automation",
     subtitle: "Recurring monthly reporting, multi-team",
     tags: ["AI Governance", "Operating Model", "Validation"],
-    outcome: "Consistent outputs with reduced manual effort",
+    outcome: "Leadership gets consistent outputs without scaling headcount",
     mechanism: "Schema validation + human-in-loop approval gate",
-    delta: "Typical delta: 60–80% cycle time reduction, fewer QA loops"
+    delta: "Reduced cycle time 60–80%, fewer escalations"
   },
   {
     id: "decision-support",
     title: "Quality Controls for AI-Assisted Deliverables",
     subtitle: "Decision support for ambiguous business questions",
     tags: ["Decision Architecture", "Enablement", "Governance"],
-    outcome: "Improved clarity and speed of decision-making",
+    outcome: "Executives can trust AI-assisted recommendations",
     mechanism: "Structured reasoning trace + audit logging",
-    delta: "Typical delta: faster decisions + fewer rework loops"
+    delta: "Faster decisions, defensible rationale on file"
   },
   {
     id: "governed-data",
     title: "Pre-Ingestion Validation Gate",
     subtitle: "Regulated data environments, validation and audit",
     tags: ["Data Authority", "Audit", "Risk Prevention"],
-    outcome: "Safer foundations for automation and analysis",
+    outcome: "Bad data stopped before it creates downstream risk",
     mechanism: "Rejection gate + ownership registry + rollback",
-    delta: "Typical delta: fewer ingestion failures + audit-ready traceability"
+    delta: "Fewer ingestion failures, audit-ready from day one"
   },
   {
     id: "anomaly-detection",
     title: "Outlier Detection for Sensitive Datasets",
     subtitle: "High-stakes data, ML-driven flagging",
     tags: ["ML Ops", "Risk Detection", "Data Governance"],
-    outcome: "Early visibility into data anomalies before downstream reporting",
+    outcome: "Leadership sees anomalies before they reach reports",
     mechanism: "Unsupervised model + threshold flagging + writeback to source",
-    delta: "Typical delta: proactive outlier identification vs reactive investigation"
+    delta: "Proactive identification vs reactive investigation"
   },
 ];
 

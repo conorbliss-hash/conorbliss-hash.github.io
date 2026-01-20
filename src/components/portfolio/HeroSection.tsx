@@ -34,7 +34,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
         >
           <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
-            AI Systems Designer
+            Applied AI & Governance Lead
           </p>
         </motion.div>
 
@@ -64,7 +64,7 @@ const HeroSection = () => {
           className="mb-8"
         >
           <p className="text-primary font-medium text-sm sm:text-base">
-            Workflows trusted enough to institutionalize.
+            Systems adopted as organizational defaults.
           </p>
         </motion.div>
 
@@ -79,6 +79,14 @@ const HeroSection = () => {
             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity text-sm"
           >
             Projects
+          </a>
+          <a
+            href="https://www.linkedin.com/in/conor-bliss/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors text-sm"
+          >
+            LinkedIn
           </a>
           <a
             href="https://medium.com/@conor.bliss.henaghan"
