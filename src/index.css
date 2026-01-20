@@ -2,58 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 0 0% 95%;
+    --background: 220 30% 5%;
+    --foreground: 200 20% 95%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 0 0% 95%;
+    --card: 215 35% 8%;
+    --card-foreground: 200 20% 95%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 215 35% 8%;
+    --popover-foreground: 200 20% 95%;
 
-    --primary: 38 92% 50%;
-    --primary-foreground: 220 20% 7%;
+    --primary: 192 85% 55%;
+    --primary-foreground: 220 30% 5%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 215 30% 12%;
+    --secondary-foreground: 200 20% 95%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 215 25% 15%;
+    --muted-foreground: 200 15% 55%;
 
-    --accent: 38 92% 50%;
-    --accent-foreground: 220 20% 7%;
+    --accent: 192 85% 55%;
+    --accent-foreground: 220 30% 5%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 38 92% 50%;
+    --border: 215 25% 18%;
+    --input: 215 25% 18%;
+    --ring: 192 85% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Custom portfolio tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(220 20% 7%) 0%, hsl(220 25% 12%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(28 90% 55%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(220 18% 12%) 0%, hsl(220 18% 8%) 100%);
-    --shadow-glow: 0 0 40px hsl(38 92% 50% / 0.15);
-    --shadow-card: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
+    /* Custom portfolio tokens - Futuristic Blue */
+    --gradient-hero: linear-gradient(135deg, hsl(220 30% 5%) 0%, hsl(215 40% 10%) 50%, hsl(220 30% 5%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(192 85% 55%) 0%, hsl(200 90% 60%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(215 35% 10%) 0%, hsl(215 35% 6%) 100%);
+    --shadow-glow: 0 0 60px hsl(192 85% 55% / 0.2);
+    --shadow-card: 0 10px 40px -10px hsl(192 85% 55% / 0.1);
 
-    --font-display: 'Playfair Display', serif;
+    --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 38 92% 50%;
+    --sidebar-background: 215 35% 8%;
+    --sidebar-foreground: 200 20% 95%;
+    --sidebar-primary: 192 85% 55%;
+    --sidebar-primary-foreground: 220 30% 5%;
+    --sidebar-accent: 215 25% 15%;
+    --sidebar-accent-foreground: 200 20% 95%;
+    --sidebar-border: 215 25% 18%;
+    --sidebar-ring: 192 85% 55%;
   }
 }
 
