@@ -64,8 +64,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
           className="mb-12"
         >
-          <p className="text-primary font-medium text-lg">
-            Reduced manual reporting effort by 80% across 3 teams.
+          <p className="text-primary font-medium text-base sm:text-lg">
+            11 hours saved in 2 weeks. Now the default workflow for the business unit.
           </p>
         </motion.div>
 
