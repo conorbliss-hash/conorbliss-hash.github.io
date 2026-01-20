@@ -2,11 +2,11 @@ import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-16 border-t border-border">
+    <footer className="py-10 md:py-16 border-t border-border">
       <div className="section-container">
         <div className="flex flex-col items-center gap-8">
           {/* Social Links */}
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <a 
               href="https://github.com/conorbliss-hash" 
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"

@@ -31,7 +31,7 @@ const WritingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="writing" className="py-32 bg-card/50" ref={ref}>
+    <section id="writing" className="py-16 md:py-32 bg-card/50" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -58,10 +58,10 @@ const WritingSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
-                className="group flex items-start justify-between p-6 rounded-lg border border-border bg-background hover:border-primary/50 transition-colors"
+                className="group flex items-start justify-between p-4 sm:p-6 rounded-lg border border-border bg-background hover:border-primary/50 transition-colors"
               >
-                <div>
-                  <h3 className="font-display text-lg font-semibold mb-1 group-hover:text-primary transition-colors">
+                <div className="flex-1 min-w-0 pr-3">
+                  <h3 className="font-display text-base sm:text-lg font-semibold mb-1 group-hover:text-primary transition-colors leading-snug">
                     {article.title}
                   </h3>
                   <p className="text-muted-foreground text-sm">{article.subtitle}</p>

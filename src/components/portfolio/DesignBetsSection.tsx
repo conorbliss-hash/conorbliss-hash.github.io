@@ -41,7 +41,7 @@ const DesignBetsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="principles" className="py-32 bg-card/50" ref={ref}>
+    <section id="principles" className="py-16 md:py-32 bg-card/50" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -52,7 +52,7 @@ const DesignBetsSection = () => {
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
             Philosophy
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 px-2">
             Design bets I'm willing to be <span className="text-gradient">wrong about</span>
           </h2>
         </motion.div>
@@ -68,9 +68,9 @@ const DesignBetsSection = () => {
               <AccordionItem 
                 key={bet.title} 
                 value={`item-${index}`}
-                className="border border-border rounded-lg px-6 bg-background data-[state=open]:border-primary/50 transition-colors"
+                className="border border-border rounded-lg px-4 sm:px-6 bg-background data-[state=open]:border-primary/50 transition-colors"
               >
-                <AccordionTrigger className="text-left font-display text-lg font-medium hover:no-underline py-5">
+                <AccordionTrigger className="text-left font-display text-base sm:text-lg font-medium hover:no-underline py-4 sm:py-5">
                   {bet.title}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground font-body pb-5 space-y-3">
