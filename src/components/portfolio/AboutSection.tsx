@@ -22,7 +22,7 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-32" ref={ref}>
+    <section id="about" className="py-16 md:py-32" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -43,15 +43,15 @@ const AboutSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-20"
+          className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-20"
         >
           {methodologySteps.map((step, index) => (
-            <div key={step} className="flex items-center gap-4">
-              <div className="px-6 py-3 bg-card border border-border rounded-lg font-medium text-foreground">
+            <div key={step} className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto justify-center">
+              <div className="px-4 sm:px-6 py-2 sm:py-3 bg-card border border-border rounded-lg font-medium text-foreground text-sm sm:text-base text-center">
                 {step}
               </div>
               {index < methodologySteps.length - 1 && (
-                <ArrowRight className="w-5 h-5 text-primary hidden sm:block" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary hidden sm:block" />
               )}
             </div>
           ))}
@@ -64,7 +64,7 @@ const AboutSection = () => {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="max-w-3xl mx-auto"
         >
-          <h3 className="font-display text-2xl md:text-3xl font-semibold mb-8 text-center">
+          <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center">
             Decisions I'm accountable for
           </h3>
           <div className="space-y-4">

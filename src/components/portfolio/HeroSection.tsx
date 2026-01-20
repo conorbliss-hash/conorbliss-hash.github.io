@@ -4,7 +4,7 @@ import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-0 md:pb-0">
       {/* Background gradient */}
       <div 
         className="absolute inset-0 -z-10"
@@ -43,7 +43,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 max-w-5xl mx-auto"
+          className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 max-w-5xl mx-auto leading-tight"
         >
           I design AI systems so organizations can{" "}
           <span className="text-gradient">trust decisions</span> before they scale them.
@@ -53,7 +53,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto mb-8 font-body"
+          className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 font-body px-2"
         >
           Built for production constraints: validation, logging, rollback, and controlled access.
         </motion.p>
@@ -73,11 +73,11 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="flex gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
             Projects
           </a>
@@ -85,7 +85,7 @@ const HeroSection = () => {
             href="https://medium.com/@conor.bliss.henaghan"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 border border-border rounded-lg font-medium hover:bg-secondary transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border border-border rounded-lg font-medium hover:bg-secondary transition-colors"
           >
             Writing
           </a>

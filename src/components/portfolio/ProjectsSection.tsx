@@ -250,7 +250,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-32" ref={ref}>
+    <section id="projects" className="py-16 md:py-32" ref={ref}>
       <div className="section-container">
         {/* Professional Systems */}
         <motion.div
@@ -267,7 +267,7 @@ const ProjectsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-24">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-16 md:mb-24">
           {professionalProjects.map((project, index) => (
             <ProjectCard 
               key={project.id} 
@@ -299,7 +299,7 @@ const ProjectsSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={openSourceInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="max-w-4xl mx-auto p-8 rounded-2xl border border-border bg-card"
+            className="max-w-4xl mx-auto p-5 sm:p-8 rounded-2xl border border-border bg-card"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
             <div className="flex items-start justify-between mb-4">
