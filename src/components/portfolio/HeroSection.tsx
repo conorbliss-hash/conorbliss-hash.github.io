@@ -34,7 +34,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
         >
           <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
-            Applied AI Systems Architect & Builder
+            AI Enablement Lead
           </p>
         </motion.div>
 
