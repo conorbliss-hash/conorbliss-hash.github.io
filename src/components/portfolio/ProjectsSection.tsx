@@ -191,9 +191,9 @@ const ProjectCard = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
       className="group relative p-6 rounded-2xl border border-border bg-card hover:border-primary/50 transition-colors"
     >
       <div className="flex items-start justify-between mb-4">
@@ -232,7 +232,7 @@ const ProjectCard = ({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="overflow-hidden"
           >
             <div className="pt-6 mt-6 border-t border-border space-y-5">
@@ -307,9 +307,9 @@ const ProjectsSection = () => {
       <div className="section-container">
         {/* Professional Systems */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
@@ -335,9 +335,9 @@ const ProjectsSection = () => {
         {/* Open Source Featured */}
         <div ref={openSourceRef}>
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={openSourceInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={openSourceInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-center mb-12"
           >
             <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase mb-2">
@@ -349,9 +349,9 @@ const ProjectsSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={openSourceInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={openSourceInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
             className="max-w-4xl mx-auto p-5 sm:p-8 rounded-2xl border border-border bg-card"
             style={{ boxShadow: "var(--shadow-card)" }}
           >

@@ -64,9 +64,9 @@ const PrinciplesSection = () => {
     <section id="principles" className="py-20 md:py-32 bg-card/50" ref={ref}>
       <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
@@ -78,9 +78,9 @@ const PrinciplesSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="max-w-3xl mx-auto mb-16"
         >
           <Accordion type="single" collapsible className="space-y-3">
@@ -104,9 +104,9 @@ const PrinciplesSection = () => {
 
         {/* What I Don't Build - merged from Anti-Portfolio */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           className="max-w-3xl mx-auto"
         >
           <h3 className="font-display text-xl sm:text-2xl font-semibold text-center mb-8">

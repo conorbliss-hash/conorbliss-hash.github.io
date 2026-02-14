@@ -25,9 +25,9 @@ const AboutSection = () => {
     <section id="about" className="py-20 md:py-32" ref={ref}>
       <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="text-center mb-8"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
@@ -40,9 +40,9 @@ const AboutSection = () => {
 
         {/* Methodology Pipeline */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-20"
         >
           {methodologySteps.map((step, index) => (
@@ -59,9 +59,9 @@ const AboutSection = () => {
 
         {/* Decisions I'm accountable for */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           className="max-w-3xl mx-auto"
         >
           <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center">
@@ -71,9 +71,9 @@ const AboutSection = () => {
             {decisions.map((decision, index) => (
               <motion.div
                 key={decision}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.25 + index * 0.05, ease: "easeOut" }}
                 className="flex items-start gap-4 p-4 bg-card/50 rounded-lg border border-border/50"
               >
                 <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />

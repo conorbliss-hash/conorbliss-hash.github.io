@@ -72,9 +72,9 @@ const WritingSection = () => {
     <section id="writing" className="py-16 md:py-32 bg-card/50" ref={ref}>
       <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
@@ -89,7 +89,7 @@ const WritingSection = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
         className="overflow-hidden"
       >
         <div 
