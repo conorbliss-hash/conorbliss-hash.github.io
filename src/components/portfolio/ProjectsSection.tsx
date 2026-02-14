@@ -355,29 +355,25 @@ const ProjectsSection = () => {
             className="max-w-4xl mx-auto p-5 sm:p-8 rounded-2xl border border-border bg-card"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start justify-between mb-6">
               <div>
                 <h4 className="font-display text-2xl font-semibold mb-1">{openSourceProject.title}</h4>
                 <p className="text-muted-foreground">{openSourceProject.subtitle}</p>
               </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {openSourceProject.tags.map((tag) => (
-                <span 
-                  key={tag}
-                  className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
+              <a 
+                href={openSourceProject.link}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity shrink-0"
+              >
+                <Github className="w-4 h-4" />
+                View on GitHub
+              </a>
             </div>
 
             <p className="text-foreground font-body mb-6">{openSourceProject.description}</p>
 
             {/* Architecture Pipeline */}
             <div className="mb-6 p-4 rounded-xl bg-secondary/50 border border-border">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">System Pipeline</p>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Data Pipeline</p>
               <div className="flex flex-wrap items-center gap-1 sm:gap-0 justify-center">
                 {pipelineSteps.map((step, i) => {
                   const Icon = step.icon;
@@ -396,47 +392,37 @@ const ProjectsSection = () => {
               </div>
             </div>
 
-            {/* Governance Badges */}
-            <div className="mb-6">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Governance Controls</p>
-              <div className="flex flex-wrap gap-2">
-                {governanceBadges.map((badge) => {
-                  const Icon = badge.icon;
-                  return (
-                    <span key={badge.label} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-primary/10 text-primary rounded-full border border-primary/20">
-                      <Icon className="w-3 h-3" />
-                      {badge.label}
-                    </span>
-                  );
-                })}
+            {/* Metrics + Governance in a single row */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Maturity Metrics */}
+              <div className="p-4 rounded-xl bg-secondary/50 border border-border">
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Project Maturity</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {maturityMetrics.map((metric) => (
+                    <div key={metric.label} className="text-center">
+                      <p className="text-xl font-display font-semibold text-primary">{metric.value}</p>
+                      <p className="text-xs text-muted-foreground">{metric.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Governance Badges */}
+              <div className="p-4 rounded-xl bg-secondary/50 border border-border">
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Governance Controls</p>
+                <div className="flex flex-wrap gap-2">
+                  {governanceBadges.map((badge) => {
+                    const Icon = badge.icon;
+                    return (
+                      <span key={badge.label} className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/20">
+                        <Icon className="w-3 h-3" />
+                        {badge.label}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-
-            {/* Maturity Metrics */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 p-4 rounded-xl bg-secondary/50 border border-border">
-              {maturityMetrics.map((metric) => (
-                <div key={metric.label} className="text-center">
-                  <p className="text-xl font-display font-semibold text-primary">{metric.value}</p>
-                  <p className="text-xs text-muted-foreground">{metric.label}</p>
-                </div>
-              ))}
-            </div>
-            
-            <ul className="space-y-2 mb-6">
-              {openSourceProject.details.map((detail, i) => (
-                <li key={i} className="text-muted-foreground text-sm font-body pl-4 border-l-2 border-primary/30">
-                  {detail}
-                </li>
-              ))}
-            </ul>
-
-            <a 
-              href={openSourceProject.link}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
-            >
-              <Github className="w-4 h-4" />
-              View Project
-            </a>
           </motion.div>
         </div>
       </div>
