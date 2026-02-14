@@ -369,52 +369,49 @@ const ProjectsSection = () => {
               </a>
             </div>
 
-            <p className="text-foreground font-body mb-6">{openSourceProject.description}</p>
+            <p className="text-foreground font-body mb-2">{openSourceProject.description}</p>
+            <p className="text-sm text-primary/70 italic mb-6">Same governance patterns I apply at organizational scale — fully transparent.</p>
 
-            {/* Architecture Pipeline */}
-            <div className="mb-6 p-4 rounded-xl bg-secondary/50 border border-border">
+            {/* Architecture Pipeline — lightweight */}
+            <div className="mb-6">
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Data Pipeline</p>
-              <div className="flex flex-wrap items-center gap-1 sm:gap-0 justify-center">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 justify-center text-sm">
                 {pipelineSteps.map((step, i) => {
                   const Icon = step.icon;
                   return (
-                    <div key={step.label} className="flex items-center">
-                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-card border border-border text-xs font-medium text-foreground whitespace-nowrap">
-                        <Icon className="w-3.5 h-3.5 text-primary" />
-                        {step.label}
-                      </div>
+                    <span key={step.label} className="inline-flex items-center gap-1.5 text-foreground/80">
+                      <Icon className="w-3.5 h-3.5 text-primary" />
+                      <span className="font-medium">{step.label}</span>
                       {i < pipelineSteps.length - 1 && (
-                        <ArrowRight className="w-3.5 h-3.5 text-muted-foreground mx-1 shrink-0 hidden sm:block" />
+                        <ArrowRight className="w-3 h-3 text-muted-foreground ml-1" />
                       )}
-                    </div>
+                    </span>
                   );
                 })}
               </div>
             </div>
 
-            {/* Metrics + Governance in a single row */}
+            {/* Metrics + Governance — compact */}
             <div className="grid sm:grid-cols-2 gap-4">
-              {/* Maturity Metrics */}
               <div className="p-4 rounded-xl bg-secondary/50 border border-border">
                 <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Project Maturity</p>
                 <div className="grid grid-cols-2 gap-3">
                   {maturityMetrics.map((metric) => (
                     <div key={metric.label} className="text-center">
-                      <p className="text-xl font-display font-semibold text-primary">{metric.value}</p>
+                      <p className="text-lg font-display font-semibold text-primary">{metric.value}</p>
                       <p className="text-xs text-muted-foreground">{metric.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Governance Badges */}
               <div className="p-4 rounded-xl bg-secondary/50 border border-border">
                 <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Governance Controls</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {governanceBadges.map((badge) => {
                     const Icon = badge.icon;
                     return (
-                      <span key={badge.label} className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/20">
+                      <span key={badge.label} className="inline-flex items-center gap-1 px-2 py-0.5 text-xs text-primary/80 rounded-full bg-primary/5">
                         <Icon className="w-3 h-3" />
                         {badge.label}
                       </span>
