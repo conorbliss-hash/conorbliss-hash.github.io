@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Plus, Minus, Github } from "lucide-react";
+import { ExternalLink, Plus, Minus, Github, ArrowRight, Shield, FileText, Clock, Database, CheckCircle, Activity } from "lucide-react";
 
 interface ProjectDetail {
   context: string;
@@ -149,6 +149,29 @@ const openSourceProject = {
   techTags: ["Open Source", "Data Pipeline", "Health Tech"],
   link: "https://github.com/conorbliss/health-coach"
 };
+
+const pipelineSteps = [
+  { label: "Google Fit API", icon: Activity },
+  { label: "Sync Engine", icon: Clock },
+  { label: "Validation Gate", icon: Shield },
+  { label: "Google Sheets", icon: Database },
+  { label: "Weekly Reports", icon: FileText },
+];
+
+const governanceBadges = [
+  { label: "Schema Validation", icon: CheckCircle },
+  { label: "Audit Logging", icon: FileText },
+  { label: "Decision Log", icon: Shield },
+  { label: "Cron Automation", icon: Clock },
+  { label: "Data Ownership", icon: Database },
+];
+
+const maturityMetrics = [
+  { value: "14+", label: "Docs" },
+  { value: "5", label: "Pipeline Stages" },
+  { value: "Daily", label: "Automated Sync" },
+  { value: "100%", label: "Open Source" },
+];
 
 const ProjectCard = ({ 
   project, 
@@ -350,7 +373,54 @@ const ProjectsSection = () => {
               ))}
             </div>
 
-            <p className="text-foreground font-body mb-4">{openSourceProject.description}</p>
+            <p className="text-foreground font-body mb-6">{openSourceProject.description}</p>
+
+            {/* Architecture Pipeline */}
+            <div className="mb-6 p-4 rounded-xl bg-secondary/50 border border-border">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">System Pipeline</p>
+              <div className="flex flex-wrap items-center gap-1 sm:gap-0 justify-center">
+                {pipelineSteps.map((step, i) => {
+                  const Icon = step.icon;
+                  return (
+                    <div key={step.label} className="flex items-center">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-card border border-border text-xs font-medium text-foreground whitespace-nowrap">
+                        <Icon className="w-3.5 h-3.5 text-primary" />
+                        {step.label}
+                      </div>
+                      {i < pipelineSteps.length - 1 && (
+                        <ArrowRight className="w-3.5 h-3.5 text-muted-foreground mx-1 shrink-0 hidden sm:block" />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Governance Badges */}
+            <div className="mb-6">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Governance Controls</p>
+              <div className="flex flex-wrap gap-2">
+                {governanceBadges.map((badge) => {
+                  const Icon = badge.icon;
+                  return (
+                    <span key={badge.label} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-primary/10 text-primary rounded-full border border-primary/20">
+                      <Icon className="w-3 h-3" />
+                      {badge.label}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Maturity Metrics */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 p-4 rounded-xl bg-secondary/50 border border-border">
+              {maturityMetrics.map((metric) => (
+                <div key={metric.label} className="text-center">
+                  <p className="text-xl font-display font-semibold text-primary">{metric.value}</p>
+                  <p className="text-xs text-muted-foreground">{metric.label}</p>
+                </div>
+              ))}
+            </div>
             
             <ul className="space-y-2 mb-6">
               {openSourceProject.details.map((detail, i) => (
@@ -359,17 +429,6 @@ const ProjectsSection = () => {
                 </li>
               ))}
             </ul>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {openSourceProject.techTags.map((tag) => (
-                <span 
-                  key={tag}
-                  className="px-3 py-1 text-xs bg-secondary text-muted-foreground rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
 
             <a 
               href={openSourceProject.link}
