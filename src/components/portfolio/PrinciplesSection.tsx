@@ -61,7 +61,7 @@ const PrinciplesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="principles" className="py-16 md:py-24 bg-card/50" ref={ref}>
+    <section id="principles" className="py-20 md:py-32 bg-card/50" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

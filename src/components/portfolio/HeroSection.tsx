@@ -76,7 +76,7 @@ const HeroSection = () => {
         >
           <a
             href="#projects"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity text-sm"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent text-accent-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm"
           >
             Projects
           </a>
@@ -84,7 +84,7 @@ const HeroSection = () => {
             href="https://www.linkedin.com/in/conor-bliss/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors text-sm"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border rounded-lg font-medium hover:bg-secondary transition-colors text-sm"
           >
             LinkedIn
           </a>
@@ -92,7 +92,7 @@ const HeroSection = () => {
             href="https://medium.com/@conor.bliss.henaghan"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors text-sm"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border rounded-lg font-medium hover:bg-secondary transition-colors text-sm"
           >
             Writing
           </a>

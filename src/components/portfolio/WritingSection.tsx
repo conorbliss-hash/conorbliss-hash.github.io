@@ -40,7 +40,7 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
     href={article.link}
     target="_blank"
     rel="noopener noreferrer"
-    className="group flex-shrink-0 w-[300px] sm:w-[350px] rounded-lg border border-border bg-background hover:border-primary/50 transition-colors overflow-hidden"
+    className="group flex-shrink-0 w-[300px] sm:w-[350px] rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
   >
     <div className="aspect-[16/10] overflow-hidden">
       <img 
