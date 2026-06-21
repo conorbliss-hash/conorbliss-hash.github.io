@@ -7,6 +7,9 @@ import codingWithAgentsImg from "@/assets/articles/coding-with-agents.png";
 import operatingSystemDataImg from "@/assets/articles/operating-system-data.png";
 import dataAuthoritativeImg from "@/assets/articles/data-authoritative.png";
 import coachInboxImg from "@/assets/articles/coach-inbox.png";
+import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.png";
+import euAiActImg from "@/assets/articles/eu-ai-act.png";
+import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.png";
 
 const articles = [
   {
@@ -32,6 +35,24 @@ const articles = [
     subtitle: "From Data Overload to Clarity. One Email. One Decision for the Week.",
     link: "https://medium.com/@conor.bliss.henaghan/its-not-another-dashboard-it-s-a-coach-in-your-inbox-c95e3f9e6f44",
     image: coachInboxImg
+  },
+  {
+    title: "Inside an AI-First CRM Migration",
+    subtitle: "How to move a CRM from legacy to AI-first without breaking the business",
+    link: "https://medium.com/@conor.bliss.henaghan/inside-an-ai-first-crm-migration-8995ef0b9a7c",
+    image: aiCrmMigrationImg
+  },
+  {
+    title: "What Is the EU AI Act and Why Should You Care?",
+    subtitle: "A practical breakdown of Europe's landmark AI regulation",
+    link: "https://medium.com/@conor.bliss.henaghan/what-is-the-eu-ai-act-and-why-should-you-care-bef195ad2071",
+    image: euAiActImg
+  },
+  {
+    title: "The Real Bottleneck in Most AI Initiatives Isn't AI. It's Infrastructure",
+    subtitle: "Why data pipelines and systems matter more than the model you choose",
+    link: "https://medium.com/@conor.bliss.henaghan/the-real-bottleneck-in-most-ai-initiatives-isnt-ai-it-s-infrastructure-507c41d98a21",
+    image: aiInfrastructureImg
   },
 ];
 
