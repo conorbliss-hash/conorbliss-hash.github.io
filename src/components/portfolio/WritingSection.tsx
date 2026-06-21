@@ -13,6 +13,12 @@ import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.png";
 
 const articles = [
   {
+    title: "ISO 42001 in Practice: A Practitioner's Guide to AI Governance Certification",
+    subtitle: "What the standard actually requires — and how to build a framework that passes",
+    link: "https://medium.com/@conor.bliss.henaghan",
+    image: euAiActImg
+  },
+  {
     title: "How I code with agents, without being 'technical'",
     subtitle: "A 5 step process for consistent results",
     link: "https://medium.com/@conor.bliss.henaghan/how-i-code-with-agents-without-being-technical-d411e2cceb4d",

@@ -44,8 +44,8 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 max-w-6xl mx-auto leading-tight"
         >
-          I design AI systems so organizations can{" "}
-          <span className="text-gradient">trust decisions</span> before they scale them.
+          I build AI systems that ship —{" "}
+          <span className="text-gradient">and the governance</span> that keeps them live.
         </motion.h1>
 
         <motion.p
@@ -63,9 +63,16 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           className="mb-8"
         >
-          <p className="text-primary font-medium text-sm sm:text-base">
-            Systems adopted as organizational defaults.
-          </p>
+          <div className="flex flex-wrap gap-2 justify-center px-4">
+            {["ISO 42001 Certified", "External Pentest Passed", "C1 Swedish", "SSE MSc Corporate Finance", "Stockholm-based"].map((chip) => (
+              <span
+                key={chip}
+                className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div

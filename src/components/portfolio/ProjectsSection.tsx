@@ -13,126 +13,126 @@ interface ProjectDetail {
 
 const professionalProjects = [
   {
-    id: "workflow-automation",
-    title: "Governed Reporting Automation",
-    subtitle: "Recurring monthly reporting, multi-team",
-    tags: ["AI Governance", "Operating Model", "Validation"],
-    outcome: "Leadership gets consistent outputs without scaling headcount",
-    mechanism: "Schema validation + human-in-loop approval gate",
-    delta: "Reduced cycle time 60–80%, fewer escalations"
+    id: "bi-platform",
+    title: "Business Intelligence Platform",
+    subtitle: "Unified executive reporting across CRM, finance, and operations",
+    tags: ["Data Architecture", "Analytics", "Automation"],
+    outcome: "Real-time executive dashboard replacing manual cross-system reporting",
+    mechanism: "HubSpot + Salesforce + NetSuite → Cloud Functions → Firestore → custom front-end",
+    delta: "Three disconnected systems unified into a single source of truth"
   },
   {
-    id: "decision-support",
-    title: "Quality Controls for AI-Assisted Deliverables",
-    subtitle: "Decision support for ambiguous business questions",
-    tags: ["Decision Architecture", "Enablement", "Governance"],
-    outcome: "Executives can trust AI-assisted recommendations",
-    mechanism: "Structured reasoning trace + audit logging",
-    delta: "Faster decisions, defensible rationale on file"
+    id: "iso-42001",
+    title: "ISO 42001 Validated Governance Framework",
+    subtitle: "First AI management system certification across the portfolio",
+    tags: ["AI Governance", "Compliance", "Risk"],
+    outcome: "Passed external ISO 42001 audit (Schellman) — production AI systems certified compliant",
+    mechanism: "Risk registry  |  model documentation  |  human oversight controls  |  audit trail",
+    delta: "Framework governs all production AI systems, serves as compliance baseline"
   },
   {
-    id: "governed-data",
-    title: "Pre-Ingestion Validation Gate",
-    subtitle: "Regulated data environments, validation and audit",
-    tags: ["Data Authority", "Audit", "Risk Prevention"],
-    outcome: "Bad data stopped before it creates downstream risk",
-    mechanism: "Rejection gate + ownership registry + rollback",
-    delta: "Fewer ingestion failures, audit-ready from day one"
+    id: "data-platform",
+    title: "Centralized Data Platform",
+    subtitle: "GDPR-compliant data foundation, validated by external penetration test",
+    tags: ["Data Infrastructure", "Security", "GDPR"],
+    outcome: "Passed external penetration test with zero critical findings",
+    mechanism: "Ingestion pipeline  |  schema validation  |  access controls  |  audit logging",
+    delta: "Foundation for all downstream AI and reporting systems"
   },
   {
-    id: "anomaly-detection",
-    title: "Outlier Detection for Sensitive Datasets",
-    subtitle: "High-stakes data, ML-driven flagging",
-    tags: ["ML Ops", "Risk Detection", "Data Governance"],
-    outcome: "Leadership sees anomalies before they reach reports",
-    mechanism: "Unsupervised model + threshold flagging + writeback to source",
-    delta: "Proactive identification vs reactive investigation"
+    id: "slide-generator",
+    title: "Slide Generator",
+    subtitle: "Automated presentation generation from structured data inputs",
+    tags: ["Automation", "LLM Integration", "Google Workspace"],
+    outcome: "Presentation-ready outputs generated in minutes, replacing hours of manual work",
+    mechanism: "Google Apps Script  +  Gemini API  +  structured template engine",
+    delta: "Used across multiple reporting cycles with human review checkpoint before distribution"
   },
 ];
 
 const projectDetails: Record<string, ProjectDetail> = {
-  "workflow-automation": {
-    context: "Recurring reporting burden emerged from messy operational inputs that required manual synthesis. System designed to automate deterministic portions while containing AI usage to ambiguous summarization tasks only.",
-    systemDesign: "Intake layer → normalization and validation → deterministic pipeline for structured transforms → AI boundary for ambiguous summarization → output generation (documents/slides/reports) → human review checkpoint before distribution.",
+  "bi-platform": {
+    context: "Three disconnected systems (CRM, ERP, finance) produced conflicting numbers and required manual reconciliation before each leadership meeting. Built a unified ingestion pipeline with automated transformation and a live dashboard.",
+    systemDesign: "HubSpot + Salesforce + NetSuite → Cloud Functions → automated transformation → Firestore → custom front-end dashboard",
     keyDecisions: [
-      "Deterministic-first approach: AI only where ambiguity genuinely exists",
-      "Schema constraints enforce structured inputs and prevent drift",
-      "Human review gate before any outputs leave the system",
-      "Versioned audit trail of inputs and outputs for accountability"
+      "Single ingestion pipeline across three source systems to eliminate manual reconciliation",
+      "Automated transformation layer ensures consistent data definitions across CRM, ERP, and finance",
+      "Real-time updates replace batch reporting — no analyst time spent on data prep",
+      "Custom front-end built for executive consumption, not technical users"
     ],
     governanceRisk: [
-      "Auditability: all inputs and outputs logged with timestamps",
-      "Versioned transformations enable rollback and investigation",
-      "No client data shown. Details abstracted.",
+      "Ownership mapping across all three source systems",
+      "Transformation logic versioned and auditable",
+      "Access controls scoped by role — executives see aggregates, not raw records",
       "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Reduced manual effort in recurring reporting workflows",
-      "More consistent output quality across report cycles",
-      "Clear boundaries between deterministic and AI-assisted steps"
+      "Leadership has a single source of truth, updated in real time",
+      "No analyst time spent on data prep before leadership meetings",
+      "Conflicting numbers across systems eliminated"
     ]
   },
-  "decision-support": {
-    context: "Ambiguous business questions lacked repeatable decision logic, leading to inconsistent narratives. System translates open-ended inputs into structured, reviewable recommendations with explicit reasoning chains.",
-    systemDesign: "Structured intake form → rubric/framework application → constrained generation with explicit criteria → reviewable recommendation output → decision narrative with reasoning → human checkpoint for final approval.",
+  "iso-42001": {
+    context: "Designed and implemented an AI governance framework from scratch, covering risk classification, model documentation, human oversight requirements, and incident response procedures.",
+    systemDesign: "Risk registry → model documentation → human oversight controls → incident response procedures → audit trail → external audit (Schellman)",
     keyDecisions: [
-      "Explicit gates and kill-criteria defined upfront for each decision type",
-      "Transparency in reasoning: show how inputs map to recommendations",
-      "Separation of facts (data) vs suggestions (AI-assisted interpretation)",
-      "Structured templates enforce consistency across decision types"
+      "Risk-based classification of all production AI systems before framework design",
+      "Human oversight requirements defined per risk tier — not a blanket policy",
+      "Audit trail architecture designed to satisfy external auditor requirements from day one",
+      "Framework scoped to cover all production AI systems, not just high-risk ones"
     ],
     governanceRisk: [
-      "Traceability of all inputs to outputs via decision logs",
-      "Human checkpoints at recommendation stage before any action",
-      "No client data shown. Details abstracted.",
+      "Commissioned and passed Schellman external audit with no major findings",
+      "Framework now governs all production AI systems",
+      "Serves as the compliance baseline for all new AI deployments",
       "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Faster clarity on ambiguous questions",
-      "Improved consistency of decision narratives",
-      "Reviewable reasoning chains enable better stakeholder communication"
+      "Passed external ISO 42001 audit (Schellman) — production AI systems certified compliant",
+      "AI governance framework now serves as organizational default for new deployments",
+      "Compliance baseline established for ongoing AI risk management"
     ]
   },
-  "governed-data": {
-    context: "Unvalidated data creates downstream risk for AI and automation systems. Designed validation, ownership mapping, and audit-ready ingestion layers to establish safer foundations for analytics and automation workflows.",
-    systemDesign: "Ingestion layer → validation rules (schema, range, consistency checks) → ownership/lineage mapping → audit log generation → curated data layer → controlled access for downstream consumers.",
+  "data-platform": {
+    context: "Built the core data infrastructure underpinning analytics and AI workflows: structured ingestion with validation gates, ownership mapping, least-privilege access controls, and full audit logging.",
+    systemDesign: "Ingestion layer → schema validation → ownership/lineage mapping → access controls (least-privilege) → audit logging → curated data layer → downstream AI and reporting systems",
     keyDecisions: [
-      "Reject or flag bad data early at ingestion boundaries",
-      "Explicit ownership assignment for every data entity",
-      "Minimal access principle: consumers only see what they need",
-      "Reversible transformations to enable root cause investigation"
+      "Reject or flag bad data at ingestion — not downstream where the cost is higher",
+      "Explicit ownership assignment for every data entity before it enters the platform",
+      "Least-privilege access: consumers only see what they need",
+      "Full audit logging from day one — not retrofitted after the pentest"
     ],
     governanceRisk: [
-      "Audit trails capture all data movements and transformations",
-      "Access control boundaries enforce least-privilege principles",
-      "No client data shown. Details abstracted.",
-      "Anonymized by design: no client-specific schemas shown"
+      "Commissioned and passed external penetration test with zero critical findings",
+      "All findings addressed before production rollout",
+      "GDPR-compliant by design: data categories mapped, access controls enforced",
+      "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Safer foundations for downstream automation and AI systems",
-      "Reduced risk from unvalidated or unowned data",
-      "Clear audit trail enables compliance and investigation workflows"
+      "Passed external penetration test with zero critical findings",
+      "GDPR-compliant data foundation for all downstream AI and reporting systems",
+      "Security posture validated independently before production rollout"
     ]
   },
-  "anomaly-detection": {
-    context: "High-stakes datasets require proactive quality checks before downstream reporting. Manual review cannot scale. Designed an ML-driven anomaly detection system to flag outliers early, reducing reactive investigation cycles.",
-    systemDesign: "Feature engineering layer (ratios, normalizations) → unsupervised model training → anomaly scoring → threshold-based flagging → writeback to source system → human review queue for flagged records.",
+  "slide-generator": {
+    context: "Repetitive slide production was consuming significant analyst time across recurring reporting cycles. Built an automated generator that takes structured data inputs, applies business logic and formatting rules, and produces presentation-ready slides.",
+    systemDesign: "Structured data inputs → Google Apps Script → business logic and formatting rules → Gemini API (narrative layer) → presentation-ready slides → human review checkpoint → distribution",
     keyDecisions: [
-      "Unsupervised approach: no labeled training data required",
-      "Feature engineering focused on domain-relevant ratios and comparisons",
-      "Contamination parameter tuned to expected outlier rate",
-      "Scores persisted for audit trail and threshold adjustment"
+      "Deterministic formatting layer separated from AI-assisted narrative layer",
+      "Structured template engine enforces consistency across report types",
+      "Human review checkpoint before distribution — AI is not the final decision-maker",
+      "Google Workspace stack chosen for zero adoption friction"
     ],
     governanceRisk: [
-      "All flagged records logged with scores for review",
-      "Model outputs are advisory, not autonomous—human review required",
-      "No client data shown. Details abstracted.",
-      "Threshold adjustments versioned and documented"
+      "Human review gate before any outputs are distributed",
+      "AI-assisted narrative layer is advisory — formatting logic is deterministic",
+      "Versioned templates ensure consistency across reporting cycles",
+      "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Early visibility into data anomalies",
-      "Reduced reactive investigation cycles",
-      "Audit-ready flagging with explainable scores"
+      "Presentation-ready outputs generated in minutes, replacing hours of manual work",
+      "Used across multiple recurring reporting cycles",
+      "Deterministic and AI-assisted layers kept separate for auditability"
     ]
   }
 };
