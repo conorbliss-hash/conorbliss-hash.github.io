@@ -2,7 +2,7 @@ import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-10 md:py-16 border-t border-border">
+    <footer className="py-8 md:py-12 border-t border-border">
       <div className="section-container">
         <div className="flex flex-col items-center gap-8">
           {/* Social Links */}
@@ -40,7 +40,7 @@ const Footer = () => {
 
           {/* Disclaimer */}
           <p className="text-muted-foreground text-sm text-center max-w-lg">
-            Work examples are redacted and/or recreated with synthetic data to protect client confidentiality.
+            Work examples are redacted, generalized, and/or recreated with synthetic data to protect employer and client confidentiality.
           </p>
 
           {/* Copyright */}

@@ -69,7 +69,7 @@ const WritingSection = () => {
   const duplicatedArticles = [...articles, ...articles];
 
   return (
-    <section id="writing" className="py-16 md:py-32 bg-card/50" ref={ref}>
+    <section id="writing" className="py-14 md:py-24 bg-card/50" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0 }}

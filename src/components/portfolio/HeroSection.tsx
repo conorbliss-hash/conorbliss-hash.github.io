@@ -3,7 +3,7 @@ import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pt-28 pb-12 md:pt-32 md:pb-16">
+    <section className="relative flex items-center justify-center overflow-hidden pt-28 pb-10 md:pt-32 md:pb-12">
       {/* Background gradient */}
       <div 
         className="absolute inset-0 -z-10"
@@ -34,7 +34,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
         >
           <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
-            AI Lead — Governance, Data Platforms, Automation
+            AI Lead — Strategy, Governance, Data Platforms
           </p>
         </motion.div>
 
@@ -44,7 +44,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 max-w-6xl mx-auto leading-tight"
         >
-          I build AI systems that ship —{" "}
+          I turn AI strategy into systems that ship —{" "}
           <span className="text-gradient">and the governance</span> that keeps them live.
         </motion.h1>
 
@@ -54,7 +54,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
           className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-4 font-body px-2"
         >
-          Built for production constraints: validation, logging, rollback, and controlled access.
+          From use-case portfolios and ROI models to production systems with validation, logging, rollback, and controlled access.
         </motion.p>
 
         <motion.div
@@ -64,7 +64,7 @@ const HeroSection = () => {
           className="mb-8"
         >
           <div className="flex flex-wrap gap-2 justify-center px-4">
-            {["ISO 42001 Certified", "External Pentest Passed", "C1 Swedish", "SSE MSc Corporate Finance", "Stockholm-based"].map((chip) => (
+            {["AI Strategy", "ISO 42001 Certified", "External Pentest Passed", "C1 Swedish", "Stockholm-based"].map((chip) => (
               <span
                 key={chip}
                 className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"

@@ -13,6 +13,16 @@ interface ProjectDetail {
 
 const professionalProjects = [
   {
+    id: "ai-strategy-roadmap",
+    title: "AI Strategy & Use Case Portfolio",
+    subtitle: "From executive ambition to ranked PoC roadmap and operating model",
+    tags: ["AI Strategy", "Operating Model", "ROI"],
+    outcome: "Interviewed leaders across 10+ business departments, translated 20+ opportunities into PRDs and business cases, and selected two quick-win PoCs.",
+    metric: "Seven-figure annual efficiency opportunity identified across top use cases; two pilots green-lit",
+    mechanism: "Department interviews → impact/effort scoring → PRDs → business cases → pilot roadmap",
+    delta: "Turned scattered AI demand into an executable portfolio and governance-backed roadmap"
+  },
+  {
     id: "bi-platform",
     title: "Business Intelligence Platform",
     subtitle: "Unified executive reporting across CRM, finance, and operations",
@@ -55,6 +65,27 @@ const professionalProjects = [
 ];
 
 const projectDetails: Record<string, ProjectDetail> = {
+  "ai-strategy-roadmap": {
+    context: "A multi-department organization had strong AI demand but fragmented experimentation, uneven data readiness, and no shared prioritization model. Led the strategy work to turn scattered ideas into an executive-ready portfolio of AI initiatives with quantified business cases and a staged implementation roadmap.",
+    systemDesign: "Department interviews → KPI baselines → impact/effort scoring → PRDs + business cases → pilot selection → governance model → delivery roadmap",
+    keyDecisions: [
+      "Interviewed leaders across 10+ business departments to map current workflows, pain points, and adoption readiness",
+      "Structured 20+ AI opportunities into product requirement documents and business cases",
+      "Ranked use cases by annual savings, feasibility, and build-vs-buy suitability rather than novelty",
+      "Selected two quick-win pilots where value, data access, and stakeholder ownership were strongest"
+    ],
+    governanceRisk: [
+      "Identified shadow AI usage already occurring across departments and proposed centralized governance controls",
+      "Separated near-term pilots from initiatives blocked by foundational data centralization work",
+      "Defined human review, data ownership, and KPI measurement requirements before build",
+      "Details redacted and generalized to protect employer context"
+    ],
+    outcome: [
+      "Executive steering group received a clear go/no-go decision package for the next AI investment stage",
+      "Seven-figure annual efficiency opportunity surfaced across the highest-impact use cases",
+      "Two pilots moved forward with scoped PRDs, target KPIs, owners, and delivery timeline"
+    ]
+  },
   "bi-platform": {
     context: "Three disconnected systems (CRM, ERP, finance) produced conflicting numbers and required manual reconciliation before each leadership meeting. Built a unified ingestion pipeline with automated transformation and a live dashboard.",
     systemDesign: "HubSpot + Salesforce + NetSuite → Cloud Functions → automated transformation → Firestore → custom front-end dashboard",
@@ -219,9 +250,9 @@ const ProjectCard = ({
                 <p className="text-sm text-muted-foreground leading-relaxed">{details.context}</p>
               </div>
 
-              {/* System Design */}
+              {/* Approach */}
               <div>
-                <h4 className="text-sm font-semibold text-foreground mb-2">System Design</h4>
+                <h4 className="text-sm font-semibold text-foreground mb-2">Approach</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed font-mono text-xs">{details.systemDesign}</p>
               </div>
 
@@ -280,7 +311,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-32" ref={ref}>
+    <section id="projects" className="py-14 md:py-24" ref={ref}>
       <div className="section-container">
         {/* Professional Systems */}
         <motion.div
@@ -293,10 +324,10 @@ const ProjectsSection = () => {
             Portfolio
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
-            Professional <span className="text-gradient">Systems</span>
+            Systems & <span className="text-gradient">Strategy</span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body">
-            Production AI with validation, auditability, human oversight, and clear ownership.
+            AI work from executive roadmap to production delivery: business cases, data foundations, governance, and automation.
           </p>
         </motion.div>
 
