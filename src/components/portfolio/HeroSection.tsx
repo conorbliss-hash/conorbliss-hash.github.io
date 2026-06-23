@@ -85,7 +85,7 @@ const HeroSection = () => {
             href="#projects"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent text-accent-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm"
           >
-            Projects
+            View Work
           </a>
           <a
             href="https://www.linkedin.com/in/conor-bliss/"

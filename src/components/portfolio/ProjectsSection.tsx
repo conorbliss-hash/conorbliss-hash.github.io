@@ -199,7 +199,7 @@ const ProjectCard = ({
       </div>
 
       <p className="text-muted-foreground text-sm font-body mb-2">{project.outcome}</p>
-    <p className="text-sm text-foreground font-medium mb-2">{project.metric}</p>
+      <p className="text-sm text-foreground font-medium mb-2">{project.metric}</p>
       <p className="text-xs text-primary/70 font-medium">{project.mechanism}</p>
 
       {/* Expandable Content */}
@@ -295,6 +295,9 @@ const ProjectsSection = () => {
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
             Professional <span className="text-gradient">Systems</span>
           </h2>
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body">
+            Production AI with validation, auditability, human oversight, and clear ownership.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-16 md:mb-24">
