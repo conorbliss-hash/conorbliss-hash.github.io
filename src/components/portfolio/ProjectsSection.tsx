@@ -44,23 +44,13 @@ const professionalProjects = [
   },
   {
     id: "data-platform",
-    title: "Centralized Data Platform",
+    title: "Centralized Data Infrastructure",
     subtitle: "GDPR-compliant data foundation, validated by external penetration test",
     tags: ["Data Infrastructure", "Security", "GDPR"],
     outcome: "Passed external penetration test with zero critical findings",
     metric: "0 critical pentest findings; GDPR-ready controls validated before rollout",
     mechanism: "Ingestion pipeline  |  schema validation  |  access controls  |  audit logging",
     delta: "Foundation for all downstream AI and reporting systems"
-  },
-  {
-    id: "slide-generator",
-    title: "Slide Generator",
-    subtitle: "Automated presentation generation from structured data inputs",
-    tags: ["Automation", "LLM Integration", "Google Workspace"],
-    outcome: "Presentation-ready outputs generated in minutes, replacing hours of manual work",
-    metric: "Recurring reporting slides generated in minutes instead of hours",
-    mechanism: "Google Apps Script  +  Gemini API  +  structured template engine",
-    delta: "Used across multiple reporting cycles with human review checkpoint before distribution"
   },
 ];
 
@@ -148,27 +138,6 @@ const projectDetails: Record<string, ProjectDetail> = {
       "GDPR-compliant data foundation for all downstream AI and reporting systems",
       "Security posture validated independently before production rollout"
     ]
-  },
-  "slide-generator": {
-    context: "Repetitive slide production was consuming significant analyst time across recurring reporting cycles. Built an automated generator that takes structured data inputs, applies business logic and formatting rules, and produces presentation-ready slides.",
-    systemDesign: "Structured data inputs → Google Apps Script → business logic and formatting rules → Gemini API (narrative layer) → presentation-ready slides → human review checkpoint → distribution",
-    keyDecisions: [
-      "Deterministic formatting layer separated from AI-assisted narrative layer",
-      "Structured template engine enforces consistency across report types",
-      "Human review checkpoint before distribution, with AI never acting as the final decision-maker",
-      "Google Workspace stack chosen for zero adoption friction"
-    ],
-    governanceRisk: [
-      "Human review gate before any outputs are distributed",
-      "AI-assisted narrative layer is advisory, while formatting logic is deterministic",
-      "Versioned templates ensure consistency across reporting cycles",
-      "Details abstracted to protect employer context"
-    ],
-    outcome: [
-      "Presentation-ready outputs generated in minutes, replacing hours of manual work",
-      "Used across multiple recurring reporting cycles",
-      "Deterministic and AI-assisted layers kept separate for auditability"
-    ]
   }
 };
 
@@ -177,7 +146,7 @@ const openSourceProject = {
   subtitle: "Google Fit → Google Sheets",
   description: "A compact demo of schema validation, audit logging, and automated reporting patterns applied to personal health data.",
   badges: ["Open source", "Daily automated sync", "Validation gates", "Audit-ready outputs"],
-  link: "https://github.com/conorbliss/health-coach"
+  link: "https://github.com/conorbliss-hash/health-coach"
 };
 
 const ProjectCard = ({ 
