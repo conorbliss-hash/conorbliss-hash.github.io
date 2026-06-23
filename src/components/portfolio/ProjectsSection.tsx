@@ -37,7 +37,7 @@ const professionalProjects = [
     title: "ISO 42001 Validated Governance Framework",
     subtitle: "First AI management system certification across the portfolio",
     tags: ["AI Governance", "Compliance", "Risk"],
-    outcome: "Passed external ISO 42001 audit (Schellman) — production AI systems certified compliant",
+    outcome: "Passed external ISO 42001 audit (Schellman), certifying production AI systems as compliant",
     metric: "External Schellman audit passed; production AI governance baseline established",
     mechanism: "Risk registry  |  model documentation  |  human oversight controls  |  audit trail",
     delta: "Framework governs all production AI systems, serves as compliance baseline"
@@ -92,13 +92,13 @@ const projectDetails: Record<string, ProjectDetail> = {
     keyDecisions: [
       "Single ingestion pipeline across three source systems to eliminate manual reconciliation",
       "Automated transformation layer ensures consistent data definitions across CRM, ERP, and finance",
-      "Real-time updates replace batch reporting — no analyst time spent on data prep",
+      "Real-time updates replace batch reporting, with no analyst time spent on data prep",
       "Custom front-end built for executive consumption, not technical users"
     ],
     governanceRisk: [
       "Ownership mapping across all three source systems",
       "Transformation logic versioned and auditable",
-      "Access controls scoped by role — executives see aggregates, not raw records",
+      "Access controls scoped by role, so executives see aggregates, not raw records",
       "Details abstracted to protect employer context"
     ],
     outcome: [
@@ -112,7 +112,7 @@ const projectDetails: Record<string, ProjectDetail> = {
     systemDesign: "Risk registry → model documentation → human oversight controls → incident response procedures → audit trail → external audit (Schellman)",
     keyDecisions: [
       "Risk-based classification of all production AI systems before framework design",
-      "Human oversight requirements defined per risk tier — not a blanket policy",
+      "Human oversight requirements defined per risk tier, not as a blanket policy",
       "Audit trail architecture designed to satisfy external auditor requirements from day one",
       "Framework scoped to cover all production AI systems, not just high-risk ones"
     ],
@@ -123,7 +123,7 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Passed external ISO 42001 audit (Schellman) — production AI systems certified compliant",
+      "Passed external ISO 42001 audit (Schellman), certifying production AI systems as compliant",
       "AI governance framework now serves as organizational default for new deployments",
       "Compliance baseline established for ongoing AI risk management"
     ]
@@ -132,10 +132,10 @@ const projectDetails: Record<string, ProjectDetail> = {
     context: "Built the core data infrastructure underpinning analytics and AI workflows: structured ingestion with validation gates, ownership mapping, least-privilege access controls, and full audit logging.",
     systemDesign: "Ingestion layer → schema validation → ownership/lineage mapping → access controls (least-privilege) → audit logging → curated data layer → downstream AI and reporting systems",
     keyDecisions: [
-      "Reject or flag bad data at ingestion — not downstream where the cost is higher",
+      "Reject or flag bad data at ingestion, not downstream where the cost is higher",
       "Explicit ownership assignment for every data entity before it enters the platform",
       "Least-privilege access: consumers only see what they need",
-      "Full audit logging from day one — not retrofitted after the pentest"
+      "Full audit logging from day one, not retrofitted after the pentest"
     ],
     governanceRisk: [
       "Commissioned and passed external penetration test with zero critical findings",
@@ -155,12 +155,12 @@ const projectDetails: Record<string, ProjectDetail> = {
     keyDecisions: [
       "Deterministic formatting layer separated from AI-assisted narrative layer",
       "Structured template engine enforces consistency across report types",
-      "Human review checkpoint before distribution — AI is not the final decision-maker",
+      "Human review checkpoint before distribution, with AI never acting as the final decision-maker",
       "Google Workspace stack chosen for zero adoption friction"
     ],
     governanceRisk: [
       "Human review gate before any outputs are distributed",
-      "AI-assisted narrative layer is advisory — formatting logic is deterministic",
+      "AI-assisted narrative layer is advisory, while formatting logic is deterministic",
       "Versioned templates ensure consistency across reporting cycles",
       "Details abstracted to protect employer context"
     ],
