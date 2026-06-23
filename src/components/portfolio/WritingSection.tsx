@@ -3,10 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import codingWithAgentsImg from "@/assets/articles/coding-with-agents.png";
 import operatingSystemDataImg from "@/assets/articles/operating-system-data.png";
-import dataAuthoritativeImg from "@/assets/articles/data-authoritative.png";
-import coachInboxImg from "@/assets/articles/coach-inbox.png";
 import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.png";
 import euAiActImg from "@/assets/articles/eu-ai-act.png";
 import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.png";
@@ -19,40 +16,16 @@ const articles = [
     image: euAiActImg
   },
   {
-    title: "How I code with agents, without being 'technical'",
-    subtitle: "A 5 step process for consistent results",
-    link: "https://medium.com/@conor.bliss.henaghan/how-i-code-with-agents-without-being-technical-d411e2cceb4d",
-    image: codingWithAgentsImg
-  },
-  {
     title: "An Operating System for Data Authority",
     subtitle: "Designing an AI-Enabled Data Ingestion Pipeline",
     link: "https://medium.com/@conor.bliss.henaghan/an-operating-system-for-data-authority-cabf63b797d7",
     image: operatingSystemDataImg
   },
   {
-    title: "Making Data Authoritative: The Step Most AI Programs Skip",
-    subtitle: "As companies push AI from experiments into real workflows",
-    link: "https://medium.com/@conor.bliss.henaghan/making-data-authoritative-the-step-most-ai-programs-skip-61c728612421",
-    image: dataAuthoritativeImg
-  },
-  {
-    title: "It's not another dashboard. It's a coach in your inbox.",
-    subtitle: "From Data Overload to Clarity. One Email. One Decision for the Week.",
-    link: "https://medium.com/@conor.bliss.henaghan/its-not-another-dashboard-it-s-a-coach-in-your-inbox-c95e3f9e6f44",
-    image: coachInboxImg
-  },
-  {
     title: "Inside an AI-First CRM Migration",
     subtitle: "How to move a CRM from legacy to AI-first without breaking the business",
     link: "https://medium.com/@conor.bliss.henaghan/inside-an-ai-first-crm-migration-8995ef0b9a7c",
     image: aiCrmMigrationImg
-  },
-  {
-    title: "What Is the EU AI Act and Why Should You Care?",
-    subtitle: "A practical breakdown of Europe's landmark AI regulation",
-    link: "https://medium.com/@conor.bliss.henaghan/what-is-the-eu-ai-act-and-why-should-you-care-bef195ad2071",
-    image: euAiActImg
   },
   {
     title: "The Real Bottleneck in Most AI Initiatives Isn't AI. It's Infrastructure",
@@ -105,11 +78,14 @@ const WritingSection = () => {
           className="text-center mb-12"
         >
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
-            Ideas
+            Selected Writing
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
             <span className="text-gradient">Writing</span>
           </h2>
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body">
+            Practical notes on AI governance, data infrastructure, and production delivery.
+          </p>
         </motion.div>
       </div>
 

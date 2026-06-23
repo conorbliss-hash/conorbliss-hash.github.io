@@ -23,7 +23,7 @@ const HeroSection = () => {
         >
           <img 
             src={profileImage} 
-            alt="Conor Henaghan" 
+            alt="Conor Bliss" 
             className="w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto object-cover border-4 border-primary/20 shadow-lg"
           />
         </motion.div>
@@ -34,7 +34,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
         >
           <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
-            AI Enablement Lead
+            AI Lead — Governance, Data Platforms, Automation
           </p>
         </motion.div>
 

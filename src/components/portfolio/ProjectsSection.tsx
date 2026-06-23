@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Plus, Minus, Github, ArrowRight, Shield, FileText, Clock, Database, CheckCircle, Activity } from "lucide-react";
+import { Plus, Minus, Github } from "lucide-react";
 
 interface ProjectDetail {
   context: string;
@@ -18,6 +18,7 @@ const professionalProjects = [
     subtitle: "Unified executive reporting across CRM, finance, and operations",
     tags: ["Data Architecture", "Analytics", "Automation"],
     outcome: "Real-time executive dashboard replacing manual cross-system reporting",
+    metric: "3 source systems unified; manual reconciliation removed from leadership reporting",
     mechanism: "HubSpot + Salesforce + NetSuite → Cloud Functions → Firestore → custom front-end",
     delta: "Three disconnected systems unified into a single source of truth"
   },
@@ -27,6 +28,7 @@ const professionalProjects = [
     subtitle: "First AI management system certification across the portfolio",
     tags: ["AI Governance", "Compliance", "Risk"],
     outcome: "Passed external ISO 42001 audit (Schellman) — production AI systems certified compliant",
+    metric: "External Schellman audit passed; production AI governance baseline established",
     mechanism: "Risk registry  |  model documentation  |  human oversight controls  |  audit trail",
     delta: "Framework governs all production AI systems, serves as compliance baseline"
   },
@@ -36,6 +38,7 @@ const professionalProjects = [
     subtitle: "GDPR-compliant data foundation, validated by external penetration test",
     tags: ["Data Infrastructure", "Security", "GDPR"],
     outcome: "Passed external penetration test with zero critical findings",
+    metric: "0 critical pentest findings; GDPR-ready controls validated before rollout",
     mechanism: "Ingestion pipeline  |  schema validation  |  access controls  |  audit logging",
     delta: "Foundation for all downstream AI and reporting systems"
   },
@@ -45,6 +48,7 @@ const professionalProjects = [
     subtitle: "Automated presentation generation from structured data inputs",
     tags: ["Automation", "LLM Integration", "Google Workspace"],
     outcome: "Presentation-ready outputs generated in minutes, replacing hours of manual work",
+    metric: "Recurring reporting slides generated in minutes instead of hours",
     mechanism: "Google Apps Script  +  Gemini API  +  structured template engine",
     delta: "Used across multiple reporting cycles with human review checkpoint before distribution"
   },
@@ -138,40 +142,12 @@ const projectDetails: Record<string, ProjectDetail> = {
 };
 
 const openSourceProject = {
-  title: "Health Coach",
+  title: "Open-source governance demo: Health Coach",
   subtitle: "Google Fit → Google Sheets",
-  tags: ["Data Governance", "Validation", "Audit"],
-  description: "A fully open-source personal system that transforms raw activity data into structured, actionable guidance.",
-  details: [
-    "Built as a fully transparent, end-to-end system with clear boundaries between data ingestion, logic, and output.",
-    "Demonstrates governance principles I apply at organizational scale: schema validation, deterministic transforms, and audit-ready outputs."
-  ],
-  techTags: ["Open Source", "Data Pipeline", "Health Tech"],
+  description: "A compact demo of schema validation, audit logging, and automated reporting patterns applied to personal health data.",
+  badges: ["Open source", "Daily automated sync", "Validation gates", "Audit-ready outputs"],
   link: "https://github.com/conorbliss/health-coach"
 };
-
-const pipelineSteps = [
-  { label: "Google Fit API", icon: Activity },
-  { label: "Sync Engine", icon: Clock },
-  { label: "Validation Gate", icon: Shield },
-  { label: "Google Sheets", icon: Database },
-  { label: "Weekly Reports", icon: FileText },
-];
-
-const governanceBadges = [
-  { label: "Schema Validation", icon: CheckCircle },
-  { label: "Audit Logging", icon: FileText },
-  { label: "Decision Log", icon: Shield },
-  { label: "Cron Automation", icon: Clock },
-  { label: "Data Ownership", icon: Database },
-];
-
-const maturityMetrics = [
-  { value: "14+", label: "Docs" },
-  { value: "5", label: "Pipeline Stages" },
-  { value: "Daily", label: "Automated Sync" },
-  { value: "100%", label: "Open Source" },
-];
 
 const ProjectCard = ({ 
   project, 
@@ -223,6 +199,7 @@ const ProjectCard = ({
       </div>
 
       <p className="text-muted-foreground text-sm font-body mb-2">{project.outcome}</p>
+    <p className="text-sm text-foreground font-medium mb-2">{project.metric}</p>
       <p className="text-xs text-primary/70 font-medium">{project.mechanism}</p>
 
       {/* Expandable Content */}
@@ -332,19 +309,19 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* Open Source Featured */}
+        {/* Open Source Demo */}
         <div ref={openSourceRef}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={openSourceInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase mb-2">
-              Featured
+              Open Source
             </p>
-            <h3 className="font-display text-3xl md:text-4xl font-semibold">
-              Open <span className="text-gradient">Source</span>
+            <h3 className="font-display text-2xl md:text-3xl font-semibold">
+              Governance patterns, <span className="text-gradient">publicly visible</span>
             </h3>
           </motion.div>
 
@@ -352,73 +329,31 @@ const ProjectsSection = () => {
             initial={{ opacity: 0 }}
             animate={openSourceInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-            className="max-w-4xl mx-auto p-5 sm:p-8 rounded-2xl border border-border bg-card"
+            className="max-w-4xl mx-auto p-5 sm:p-6 rounded-2xl border border-border bg-card"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <h4 className="font-display text-2xl font-semibold mb-1">{openSourceProject.title}</h4>
-                <p className="text-muted-foreground">{openSourceProject.subtitle}</p>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+              <div className="flex-1">
+                <h4 className="font-display text-xl sm:text-2xl font-semibold mb-1">{openSourceProject.title}</h4>
+                <p className="text-muted-foreground text-sm mb-3">{openSourceProject.subtitle}</p>
+                <p className="text-foreground font-body text-sm sm:text-base mb-4">{openSourceProject.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {openSourceProject.badges.map((badge) => (
+                    <span key={badge} className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
               <a 
                 href={openSourceProject.link}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity shrink-0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity shrink-0"
               >
                 <Github className="w-4 h-4" />
                 View on GitHub
               </a>
-            </div>
-
-            <p className="text-foreground font-body mb-2">{openSourceProject.description}</p>
-            <p className="text-sm text-primary/70 italic mb-6">Same governance patterns I apply at organizational scale — fully transparent.</p>
-
-            {/* Architecture Pipeline — lightweight */}
-            <div className="mb-6">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Data Pipeline</p>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 justify-center text-sm">
-                {pipelineSteps.map((step, i) => {
-                  const Icon = step.icon;
-                  return (
-                    <span key={step.label} className="inline-flex items-center gap-1.5 text-foreground/80">
-                      <Icon className="w-3.5 h-3.5 text-primary" />
-                      <span className="font-medium">{step.label}</span>
-                      {i < pipelineSteps.length - 1 && (
-                        <ArrowRight className="w-3 h-3 text-muted-foreground ml-1" />
-                      )}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Metrics + Governance — compact */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-secondary/50 border border-border">
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Project Maturity</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {maturityMetrics.map((metric) => (
-                    <div key={metric.label} className="text-center">
-                      <p className="text-lg font-display font-semibold text-primary">{metric.value}</p>
-                      <p className="text-xs text-muted-foreground">{metric.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-secondary/50 border border-border">
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Governance Controls</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {governanceBadges.map((badge) => {
-                    const Icon = badge.icon;
-                    return (
-                      <span key={badge.label} className="inline-flex items-center gap-1 px-2 py-0.5 text-xs text-primary/80 rounded-full bg-primary/5">
-                        <Icon className="w-3 h-3" />
-                        {badge.label}
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>

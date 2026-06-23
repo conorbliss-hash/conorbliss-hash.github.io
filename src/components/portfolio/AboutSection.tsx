@@ -34,11 +34,8 @@ const AboutSection = () => {
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
             About
           </p>
-          <p className="text-foreground font-body text-base md:text-lg leading-relaxed mb-4">
-            I'm an AI Lead based in Stockholm, working at the intersection of engineering, compliance, and executive stakeholders. Over the past two years I've built production AI systems — from data pipelines and LLM integrations to the governance frameworks that make them auditable and defensible.
-          </p>
-          <p className="text-muted-foreground font-body text-sm md:text-base leading-relaxed">
-            My recent work includes leading an ISO 42001 certification, building a multi-source business intelligence platform, and shipping an automated slide generator used across recurring reporting cycles. I work in English and Swedish (C1) and operate across both technical and strategic contexts.
+          <p className="text-foreground font-body text-base md:text-lg leading-relaxed">
+            I'm an AI Lead based in Stockholm, working across AI governance, data infrastructure, and production automation. Recent work includes leading ISO 42001 certification, building a multi-source business intelligence platform, and shipping LLM-enabled reporting automation. I operate across engineering, compliance, and executive stakeholders in English and Swedish (C1).
           </p>
         </motion.div>
 
