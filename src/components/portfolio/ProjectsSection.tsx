@@ -15,41 +15,41 @@ const professionalProjects = [
   {
     id: "ai-strategy-roadmap",
     title: "AI Strategy & Use Case Portfolio",
-    subtitle: "From executive ambition to ranked PoC roadmap and operating model",
-    tags: ["AI Strategy", "Operating Model", "ROI"],
-    outcome: "Interviewed leaders across 10+ business departments, translated 20+ opportunities into PRDs and business cases, and selected two quick-win PoCs.",
-    metric: "Seven-figure annual efficiency opportunity identified across top use cases; two pilots green-lit",
-    mechanism: "Department interviews → impact/effort scoring → PRDs → business cases → pilot roadmap",
+    subtitle: "Prioritized AI roadmap for investment decisions",
+    tags: ["AI Strategy", "Business Cases", "ROI"],
+    outcome: "Turned scattered AI requests from 10+ departments into a ranked portfolio with business cases, owners, success metrics, and two selected pilots.",
+    metric: "20+ opportunities assessed; two pilots selected; seven-figure annual efficiency opportunity identified",
+    mechanism: "Department interviews | workflow baselines | impact/effort scoring | build-vs-buy review | pilot roadmap",
     delta: "Turned scattered AI demand into an executable portfolio and governance-backed roadmap"
   },
   {
     id: "bi-platform",
     title: "Business Intelligence Platform",
-    subtitle: "Unified executive reporting across CRM, finance, and operations",
+    subtitle: "Live reporting layer for leadership decisions",
     tags: ["Data Architecture", "Analytics", "Automation"],
-    outcome: "Real-time executive dashboard replacing manual cross-system reporting",
+    outcome: "Connected CRM, finance, and operations data so leadership could review one consistent view instead of reconciling reports manually.",
     metric: "3 source systems unified; manual reconciliation removed from leadership reporting",
-    mechanism: "HubSpot + Salesforce + NetSuite → Cloud Functions → Firestore → custom front-end",
-    delta: "Three disconnected systems unified into a single source of truth"
+    mechanism: "Automated data ingestion | transformation rules | Firestore | role-scoped dashboard",
+    delta: "Three disconnected systems unified into one consistent reporting view"
   },
   {
     id: "iso-42001",
     title: "ISO 42001 Validated Governance Framework",
-    subtitle: "First AI management system certification across the portfolio",
+    subtitle: "Controls for production AI, validated by external audit",
     tags: ["AI Governance", "Compliance", "Risk"],
-    outcome: "Passed external ISO 42001 audit (Schellman), certifying production AI systems as compliant",
+    outcome: "Built the framework used to classify AI risk, document systems, assign human oversight, and maintain an audit trail for production AI use.",
     metric: "External Schellman audit passed; production AI governance baseline established",
-    mechanism: "Risk registry  |  model documentation  |  human oversight controls  |  audit trail",
+    mechanism: "Risk registry | model documentation | human oversight rules | incident response | audit trail",
     delta: "Framework governs all production AI systems, serves as compliance baseline"
   },
   {
     id: "data-platform",
     title: "Centralized Data Infrastructure",
-    subtitle: "GDPR-compliant data foundation, validated by external penetration test",
+    subtitle: "Secure data layer for analytics and AI workflows",
     tags: ["Data Infrastructure", "Security", "GDPR"],
-    outcome: "Passed external penetration test with zero critical findings",
-    metric: "0 critical pentest findings; GDPR-ready controls validated before rollout",
-    mechanism: "Ingestion pipeline  |  schema validation  |  access controls  |  audit logging",
+    outcome: "Built the ingestion, validation, access-control, and logging layer needed to make internal data usable for reporting and AI systems.",
+    metric: "External penetration test passed with zero critical findings before rollout",
+    mechanism: "Data ingestion | schema validation | ownership mapping | access controls | audit logging",
     delta: "Foundation for all downstream AI and reporting systems"
   },
 ];
@@ -92,7 +92,7 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Leadership has a single source of truth, updated in real time",
+      "Leadership has one consistent reporting view, updated in real time",
       "No analyst time spent on data prep before leadership meetings",
       "Conflicting numbers across systems eliminated"
     ]
@@ -296,7 +296,7 @@ const ProjectsSection = () => {
             Systems & <span className="text-gradient">Strategy</span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body">
-            AI work from executive roadmap to production delivery: business cases, data foundations, governance, and automation.
+            Selected work turning AI priorities into governed systems, usable data, and measurable business outcomes.
           </p>
         </motion.div>
 
