@@ -7,7 +7,7 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-14 md:py-20" ref={ref}>
+    <section id="about" className="py-10 md:py-12" ref={ref}>
       <div className="section-container">
         {/* Bio */}
         <motion.div

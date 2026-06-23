@@ -311,7 +311,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-14 md:py-24" ref={ref}>
+    <section id="projects" className="py-12 md:py-16" ref={ref}>
       <div className="section-container">
         {/* Professional Systems */}
         <motion.div
@@ -331,7 +331,7 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-16 md:mb-24">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-14">
           {professionalProjects.map((project, index) => (
             <ProjectCard 
               key={project.id} 

@@ -3,7 +3,7 @@ import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pt-28 pb-10 md:pt-32 md:pb-12">
+    <section className="relative flex items-center justify-center overflow-hidden pt-28 pb-8 md:pt-32 md:pb-8">
       {/* Background gradient */}
       <div 
         className="absolute inset-0 -z-10"
