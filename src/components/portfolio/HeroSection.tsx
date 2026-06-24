@@ -54,7 +54,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
           className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-4 font-body px-2"
         >
-          From use-case portfolios and ROI models to production systems with validation, logging, rollback, and controlled access.
+          From use-case portfolios and business cases to production systems with validation, logging, rollback, and controlled access.
         </motion.p>
 
         <motion.div
