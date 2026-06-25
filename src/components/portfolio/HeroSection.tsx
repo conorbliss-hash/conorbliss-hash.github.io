@@ -63,8 +63,8 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           className="mb-0"
         >
-          <div className="flex flex-wrap gap-2 justify-center px-4">
-            {["AI Strategy", "ISO 42001 Certified", "External Pentest Passed", "C1 Swedish", "Stockholm-based"].map((chip) => (
+              <div className="flex flex-wrap gap-2 justify-center px-4">
+                {["AIGP Certified", "ISO 42001 Certified", "External Pentest Passed", "C1 Swedish", "Stockholm-based"].map((chip) => (
               <span
                 key={chip}
                 className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
