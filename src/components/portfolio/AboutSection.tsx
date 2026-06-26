@@ -21,10 +21,7 @@ const AboutSection = () => {
           </p>
           <div className="space-y-4 text-foreground font-body text-base md:text-lg leading-loose">
             <p>
-              I'm an AIGP-certified AI Lead based in Stockholm, combining management consulting experience with hands-on delivery across AI strategy, governance, data infrastructure, and production automation.
-            </p>
-            <p>
-              Recent work includes shaping an AI use-case portfolio and pilot roadmap, leading ISO 42001 certification, building a multi-source business intelligence platform, and shipping production automation. I operate across engineering, compliance, and executive stakeholders in English and Swedish (C1).
+              I'm an AI Lead based in Stockholm. I've spent the last few years doing the full stack of AI work that most people split across three roles: defining strategy, building the data infrastructure, shipping production systems, and getting them through external audit. I hold AIGP certification and have led ISO 42001 certification through Schellman. I work in English and Swedish (C1).
             </p>
           </div>
         </motion.div>

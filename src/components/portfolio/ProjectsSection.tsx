@@ -187,7 +187,10 @@ const ProjectCard = ({
         </button>
       </div>
       
-      <div className="flex flex-wrap gap-2 mb-4">
+      <p className="text-sm text-foreground font-semibold mb-1">{project.metric}</p>
+      <p className="text-muted-foreground text-sm font-body mb-3">{project.outcome}</p>
+
+      <div className="flex flex-wrap gap-2 mb-3">
         {project.tags.map((tag) => (
           <span 
             key={tag}
@@ -198,8 +201,6 @@ const ProjectCard = ({
         ))}
       </div>
 
-      <p className="text-muted-foreground text-sm font-body mb-2">{project.outcome}</p>
-      <p className="text-sm text-foreground font-medium mb-2">{project.metric}</p>
       <p className="text-xs text-primary/70 font-medium">{project.mechanism}</p>
 
       {/* Expandable Content */}

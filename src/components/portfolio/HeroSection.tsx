@@ -38,33 +38,42 @@ const HeroSection = () => {
           </p>
         </motion.div>
 
-        <motion.h1
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+          className="text-primary text-sm font-medium mb-4 font-body"
+        >
+          Currently open to AI leadership roles in Stockholm or remote within CET ±2.
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
           className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 max-w-6xl mx-auto leading-tight"
         >
-          I turn AI strategy into systems that ship, with{" "}
-          <span className="text-gradient">the governance</span> that keeps them live.
+          I take AI from strategy to production —{" "}
+          <span className="text-gradient">and make sure it stays there.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-4 font-body px-2"
         >
-          From use-case portfolios and business cases to production systems with validation, logging, rollback, and controlled access.
+          Use-case portfolios, business cases, production systems — with validation, logging, and access controls built in.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
           className="mb-0"
         >
               <div className="flex flex-wrap gap-2 justify-center px-4">
-                {["AIGP Certified", "ISO 42001 Certified", "External Pentest Passed", "C1 Swedish", "Stockholm-based"].map((chip) => (
+                {["ISO 42001 Certified", "AIGP Certified", "External Pentest Passed", "C1 Swedish", "Stockholm-based"].map((chip) => (
               <span
                 key={chip}
                 className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
