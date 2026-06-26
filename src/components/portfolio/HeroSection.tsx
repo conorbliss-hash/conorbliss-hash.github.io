@@ -38,15 +38,6 @@ const HeroSection = () => {
           </p>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-          className="text-primary text-sm font-medium mb-4 font-body"
-        >
-          Currently open to AI leadership roles in Stockholm or remote within CET ±2.
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
