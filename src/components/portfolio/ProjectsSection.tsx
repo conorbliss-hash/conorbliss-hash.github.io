@@ -16,41 +16,33 @@ const professionalProjects = [
     id: "ai-strategy-roadmap",
     title: "AI Strategy & Use Case Portfolio",
     subtitle: "Prioritized AI roadmap for investment decisions",
-    tags: ["AI Strategy", "Business Cases", "Pilot Roadmap"],
-    outcome: "Turned scattered AI requests from 10+ departments into a ranked portfolio with business cases, owners, success metrics, and two selected pilots.",
-    metric: "20+ opportunities assessed; two pilots selected; seven-figure annual efficiency opportunity identified",
+    outcome: "Developed AI Governance Operating Model ratified by SteerCo. Rolled out AI enablement programme across 4 countries (70% attendance, 6.3/7 satisfaction). Prioritised 23 use cases and governed the pilot programme from concept to production.",
+    metric: "Seven-figure annual savings pipeline across 10+ departments",
     mechanism: "Department interviews | workflow baselines | impact/effort scoring | build-vs-buy review | pilot roadmap",
-    delta: "Turned scattered AI demand into an executable portfolio and governance-backed roadmap"
   },
   {
     id: "bi-platform",
     title: "Business Intelligence Platform",
     subtitle: "Live reporting layer for leadership decisions",
-    tags: ["System Integration", "Executive Reporting", "Automation"],
     outcome: "Connected CRM, finance, and operations data so leadership could review one consistent view instead of reconciling reports manually.",
     metric: "3 source systems unified; manual reconciliation removed from leadership reporting",
     mechanism: "Automated data ingestion | transformation rules | Firestore | role-scoped dashboard",
-    delta: "Three disconnected systems unified into one consistent reporting view"
   },
   {
     id: "iso-42001",
     title: "ISO 42001 Validated Governance Framework",
     subtitle: "Controls for production AI, validated by external audit",
-    tags: ["AI Governance", "External Audit", "Risk Controls"],
-    outcome: "Built the framework used to classify AI risk, document systems, assign human oversight, and maintain an audit trail for production AI use.",
+    outcome: "Named primary interviewee across 38 audit criteria alongside CCRO. Zero major non-conformities. Brought Technology, Legal, and Compliance into a unified audit position.",
     metric: "External Schellman audit passed; production AI governance baseline established",
     mechanism: "Risk registry | model documentation | human oversight rules | incident response | audit trail",
-    delta: "Framework governs all production AI systems, serves as compliance baseline"
   },
   {
     id: "data-platform",
     title: "Centralized Data Infrastructure",
     subtitle: "Secure data layer for analytics and AI workflows",
-    tags: ["Data Infrastructure", "Access Controls", "Audit Logging"],
     outcome: "Built the ingestion, validation, access-control, and logging layer needed to make internal data usable for reporting and AI systems.",
     metric: "External penetration test passed with zero critical findings before rollout",
     mechanism: "Data ingestion | schema validation | ownership mapping | access controls | audit logging",
-    delta: "Foundation for all downstream AI and reporting systems"
   },
 ];
 
