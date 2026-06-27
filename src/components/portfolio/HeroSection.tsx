@@ -44,7 +44,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
           className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 max-w-6xl mx-auto leading-tight"
         >
-          I take AI from strategy to production —{" "}
+          I take AI from strategy to production -{" "}
           <span className="text-gradient">and make sure it stays there.</span>
         </motion.h1>
 
@@ -54,7 +54,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-4 font-body px-2"
         >
-          Use-case portfolios, business cases, production systems — with validation, logging, and access controls built in.
+          Use-case portfolios, business cases, production systems - with validation, logging, and access controls built in.
         </motion.p>
 
         <motion.div
