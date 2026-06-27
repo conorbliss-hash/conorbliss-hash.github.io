@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Plus, Minus, Github } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 interface ProjectDetail {
   context: string;
