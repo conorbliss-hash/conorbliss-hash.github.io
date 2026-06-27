@@ -10,7 +10,7 @@ const OpenSourceSection = () => {
         <div className="max-w-3xl mx-auto p-5 rounded-xl border border-border bg-card flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h3 className="font-display text-base font-semibold mb-1">
-              Health Coach — governance patterns in a personal demo
+              Health Coach - governance patterns in a personal demo
             </h3>
             <p className="text-muted-foreground text-sm">
               Schema validation, audit logging, and automated reporting applied to Google Fit → Google Sheets.
