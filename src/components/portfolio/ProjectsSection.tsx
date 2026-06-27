@@ -182,18 +182,8 @@ const ProjectCard = ({
       <p className="text-sm text-foreground font-semibold mb-1">{project.metric}</p>
       <p className="text-muted-foreground text-sm font-body mb-3">{project.outcome}</p>
 
-      <div className="flex flex-wrap gap-2 mb-3">
-        {project.tags.map((tag) => (
-          <span 
-            key={tag}
-            className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
       <p className="text-xs text-primary/70 font-medium">{project.mechanism}</p>
+
 
       {/* Expandable Content */}
       <AnimatePresence>
