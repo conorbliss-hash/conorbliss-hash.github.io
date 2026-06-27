@@ -7,15 +7,9 @@ const ContactSection = () => {
     <section id="contact" className="py-16 md:py-20">
       <div className="section-container">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-8">
             Get in touch
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4">
-            Open to AI leadership roles
           </h2>
-          <p className="text-muted-foreground text-base mb-8 font-body">
-            Stockholm or remote within CET ±2.
-          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={`mailto:${EMAIL}`}
