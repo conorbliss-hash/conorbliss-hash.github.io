@@ -247,8 +247,6 @@ const ProjectCard = ({
 const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const openSourceRef = useRef(null);
-  const openSourceInView = useInView(openSourceRef, { once: true, margin: "-100px" });
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const handleToggle = (id: string) => {
@@ -258,7 +256,6 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-12 md:py-16" ref={ref}>
       <div className="section-container">
-        {/* Professional Systems */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -276,69 +273,21 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-14">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           {professionalProjects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
+            <ProjectCard
+              key={project.id}
+              project={project}
               index={index}
               isExpanded={expandedId === project.id}
               onToggle={() => handleToggle(project.id)}
             />
           ))}
         </div>
-
-        {/* Open Source Demo */}
-        <div ref={openSourceRef}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={openSourceInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-center mb-8"
-          >
-            <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase mb-2">
-              Open Source
-            </p>
-            <h3 className="font-display text-2xl md:text-3xl font-semibold">
-              Governance patterns, <span className="text-gradient">publicly visible</span>
-            </h3>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={openSourceInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-            className="max-w-4xl mx-auto p-5 sm:p-6 rounded-2xl border border-border bg-card"
-            style={{ boxShadow: "var(--shadow-card)" }}
-          >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-              <div className="flex-1">
-                <h4 className="font-display text-xl sm:text-2xl font-semibold mb-1">{openSourceProject.title}</h4>
-                <p className="text-muted-foreground text-sm mb-3">{openSourceProject.subtitle}</p>
-                <p className="text-foreground font-body text-sm sm:text-base mb-4">{openSourceProject.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {openSourceProject.badges.map((badge) => (
-                    <span key={badge} className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full">
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <a 
-                href={openSourceProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity shrink-0"
-              >
-                <Github className="w-4 h-4" />
-                View on GitHub
-              </a>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
 };
+
 
 export default ProjectsSection;
