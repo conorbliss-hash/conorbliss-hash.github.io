@@ -133,13 +133,6 @@ const projectDetails: Record<string, ProjectDetail> = {
   }
 };
 
-const openSourceProject = {
-  title: "Open-source governance demo: Health Coach",
-  subtitle: "Google Fit → Google Sheets",
-  description: "A compact demo of schema validation, audit logging, and automated reporting patterns applied to personal health data.",
-  badges: ["Open source", "Daily automated sync", "Validation gates", "Audit-ready outputs"],
-  link: "https://github.com/conorbliss-hash/health-coach"
-};
 
 const ProjectCard = ({ 
   project, 
