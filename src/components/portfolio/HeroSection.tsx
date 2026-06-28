@@ -7,17 +7,14 @@ const buildSignals = [
   {
     label: "Shipped systems",
     icon: Rocket,
-    detail: "Production delivery, not just recommendations",
   },
   {
     label: "Public code",
     icon: Code2,
-    detail: "Inspectable work outside employer context",
   },
   {
     label: "Governed delivery",
     icon: ShieldCheck,
-    detail: "Validation, logging, and access controls built in",
   },
 ];
 
@@ -106,24 +103,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-          className="mt-7 max-w-4xl mx-auto"
+          className="mt-6 max-w-4xl mx-auto"
         >
-          <div className="grid gap-3 sm:grid-cols-3 rounded-2xl border border-border/80 bg-background/70 p-3 sm:p-4 backdrop-blur-sm">
+          <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border/60 bg-background/55 px-4 py-3 backdrop-blur-sm">
             {buildSignals.map((signal) => {
               const Icon = signal.icon;
 
               return (
                 <div
                   key={signal.label}
-                  className="rounded-xl border border-border bg-card/80 p-4 text-left shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-1.5 text-xs text-muted-foreground"
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <p className="text-sm font-semibold text-foreground">{signal.label}</p>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{signal.detail}</p>
+                  <Icon className="h-3.5 w-3.5 text-primary" />
+                  <span>{signal.label}</span>
                 </div>
               );
             })}
