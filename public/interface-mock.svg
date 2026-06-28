@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Health Coach dashboard interface mock">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="55%" stop-color="#13233b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#51a7d1" />
+      <stop offset="100%" stop-color="#2c7fb4" />
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#59c4ff" />
+      <stop offset="100%" stop-color="#79e0b8" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)" />
+
+  <circle cx="980" cy="120" r="130" fill="#1e40af" fill-opacity="0.12" />
+  <circle cx="160" cy="560" r="180" fill="#0ea5e9" fill-opacity="0.09" />
+
+  <rect x="56" y="52" width="1088" height="596" rx="28" fill="#0f172a" fill-opacity="0.72" stroke="#ffffff" stroke-opacity="0.08" />
+
+  <rect x="84" y="82" width="1040" height="70" rx="18" fill="#0b1220" fill-opacity="0.78" stroke="#ffffff" stroke-opacity="0.06" />
+  <text x="118" y="125" fill="#e5eef7" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Health Coach</text>
+  <text x="334" y="125" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="18">Google Fit · validation · audit log · Sheets</text>
+
+  <rect x="930" y="98" width="168" height="38" rx="12" fill="url(#accent)" />
+  <text x="1004" y="122" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">Live sync</text>
+
+  <rect x="84" y="178" width="276" height="158" rx="22" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08" />
+  <rect x="84" y="356" width="276" height="236" rx="22" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08" />
+
+  <rect x="384" y="178" width="416" height="414" rx="22" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08" />
+  <rect x="824" y="178" width="300" height="180" rx="22" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08" />
+  <rect x="824" y="382" width="300" height="210" rx="22" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08" />
+
+  <text x="112" y="214" fill="#9fb4c9" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="2">TODAY</text>
+  <text x="112" y="252" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">1,284</text>
+  <text x="112" y="282" fill="#9fb4c9" font-family="Inter, Arial, sans-serif" font-size="18">records processed</text>
+
+  <rect x="112" y="308" width="116" height="18" rx="9" fill="#11314d" />
+  <rect x="112" y="308" width="78" height="18" rx="9" fill="url(#chart)" />
+  <text x="112" y="606" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="15">Validation gates</text>
+
+  <rect x="112" y="396" width="220" height="58" rx="16" fill="#0b1220" fill-opacity="0.7" />
+  <circle cx="140" cy="425" r="12" fill="#79e0b8" />
+  <text x="164" y="421" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Schema checks</text>
+  <text x="164" y="442" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="14">0 failed today</text>
+
+  <rect x="112" y="468" width="220" height="58" rx="16" fill="#0b1220" fill-opacity="0.7" />
+  <circle cx="140" cy="497" r="12" fill="#59c4ff" />
+  <text x="164" y="493" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Audit logging</text>
+  <text x="164" y="514" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="14">Immutable trail active</text>
+
+  <text x="412" y="214" fill="#9fb4c9" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="2">HEALTH ENERGY REPORT</text>
+  <path d="M420 518 L468 470 L530 492 L586 430 L644 446 L712 360" fill="none" stroke="url(#chart)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M420 518 L468 470 L530 492 L586 430 L644 446 L712 360 L712 560 L420 560 Z" fill="#59c4ff" fill-opacity="0.08" />
+  <line x1="420" y1="518" x2="420" y2="560" stroke="#ffffff" stroke-opacity="0.12" />
+  <line x1="500" y1="420" x2="500" y2="560" stroke="#ffffff" stroke-opacity="0.07" />
+  <line x1="580" y1="390" x2="580" y2="560" stroke="#ffffff" stroke-opacity="0.07" />
+  <line x1="660" y1="360" x2="660" y2="560" stroke="#ffffff" stroke-opacity="0.07" />
+  <line x1="740" y1="330" x2="740" y2="560" stroke="#ffffff" stroke-opacity="0.07" />
+
+  <rect x="856" y="208" width="116" height="108" rx="18" fill="#0b1220" fill-opacity="0.72" />
+  <text x="880" y="246" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="15">Sync</text>
+  <text x="880" y="283" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">98%</text>
+  <rect x="880" y="296" width="64" height="8" rx="4" fill="#59c4ff" />
+
+  <rect x="988" y="208" width="116" height="108" rx="18" fill="#0b1220" fill-opacity="0.72" />
+  <text x="1012" y="246" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="15">Checks</text>
+  <text x="1012" y="283" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">24</text>
+  <rect x="1012" y="296" width="64" height="8" rx="4" fill="#79e0b8" />
+
+  <text x="856" y="406" fill="#9fb4c9" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="1.8">RECENT RUNS</text>
+  <rect x="856" y="428" width="240" height="28" rx="10" fill="#0b1220" fill-opacity="0.72" />
+  <rect x="856" y="468" width="240" height="28" rx="10" fill="#0b1220" fill-opacity="0.72" />
+  <rect x="856" y="508" width="240" height="28" rx="10" fill="#0b1220" fill-opacity="0.72" />
+  <circle cx="874" cy="442" r="6" fill="#79e0b8" />
+  <circle cx="874" cy="482" r="6" fill="#59c4ff" />
+  <circle cx="874" cy="522" r="6" fill="#f5b14a" />
+  <text x="890" y="447" fill="#e5eef7" font-family="Inter, Arial, sans-serif" font-size="15">Validation passed</text>
+  <text x="890" y="487" fill="#e5eef7" font-family="Inter, Arial, sans-serif" font-size="15">Audit log updated</text>
+  <text x="890" y="527" fill="#e5eef7" font-family="Inter, Arial, sans-serif" font-size="15">Report queued</text>
+
+  <text x="412" y="612" fill="#8ea2b8" font-family="Inter, Arial, sans-serif" font-size="15">Google Fit → validation → audit log → Sheets</text>
+</svg>

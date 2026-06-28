@@ -1,6 +1,5 @@
 import { ArrowRight, Github } from "lucide-react";
 
-import coachInboxImg from "@/assets/articles/coach-inbox.png";
 import { trackEvent } from "@/lib/analytics";
 
 const OpenSourceSection = () => {
@@ -14,8 +13,8 @@ const OpenSourceSection = () => {
           <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
             <div className="relative min-h-[240px] lg:min-h-[340px] bg-[#0f172a]">
               <img
-                src={coachInboxImg}
-                alt="Health Coach before and after interface showing the shift from scattered inputs to a report view"
+                src="/interface-mock.svg"
+                alt="Health Coach interface mock showing a dashboard, metrics, and reporting flow"
                 className="h-full w-full object-cover"
               />
             </div>
