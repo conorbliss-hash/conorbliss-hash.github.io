@@ -1,6 +1,7 @@
 import { ArrowRight, Github } from "lucide-react";
 
 import coachInboxImg from "@/assets/articles/coach-inbox.png";
+import { trackEvent } from "@/lib/analytics";
 
 const OpenSourceSection = () => {
   return (
@@ -63,6 +64,7 @@ const OpenSourceSection = () => {
                   href="https://github.com/conorbliss-hash/health-coach"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent("Outbound Click", { destination: "health-coach-github" })}
                   className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity shrink-0"
                 >
                   <Github className="w-4 h-4" />

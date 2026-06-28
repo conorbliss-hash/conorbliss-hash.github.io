@@ -7,6 +7,8 @@ import operatingSystemDataImg from "@/assets/articles/operating-system-data.png"
 import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.png";
 import euAiActImg from "@/assets/articles/eu-ai-act.png";
 import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.png";
+import { trackEvent } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 const articles = [
   {
@@ -40,6 +42,7 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
     href={article.link}
     target="_blank"
     rel="noopener noreferrer"
+    onClick={() => trackEvent("Outbound Click", { destination: article.title })}
     className="group rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
   >
     <div className="aspect-[16/10] overflow-hidden">
