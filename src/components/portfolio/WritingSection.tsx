@@ -56,7 +56,7 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
         </h3>
         <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" />
       </div>
-      <p className="text-muted-foreground text-xs sm:text-sm mt-2 line-clamp-2">{article.subtitle}</p>
+      <p className="text-muted-foreground text-xs sm:text-sm mt-2 line-clamp-2 leading-relaxed">{article.subtitle}</p>
     </div>
   </a>
 );
@@ -80,7 +80,7 @@ const WritingSection = () => {
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
             <span className="text-gradient">Writing</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body leading-relaxed">
             Practical notes on AI governance, data infrastructure, and production delivery.
           </p>
         </motion.div>

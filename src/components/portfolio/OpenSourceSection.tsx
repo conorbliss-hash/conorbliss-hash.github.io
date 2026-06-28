@@ -49,7 +49,7 @@ const OpenSourceSection = () => {
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-muted-foreground leading-relaxed">
                   <span className="font-medium text-foreground">Google Fit</span>
                   <ArrowRight className="mx-2 inline-block h-4 w-4 align-[-2px]" />
                   <span className="font-medium text-foreground">validation</span>

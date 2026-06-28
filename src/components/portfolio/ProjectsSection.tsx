@@ -160,7 +160,7 @@ const ProjectCard = ({
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1 pr-4">
           <h3 className="font-display text-xl font-semibold mb-1">{project.title}</h3>
-          <p className="text-muted-foreground text-sm">{project.subtitle}</p>
+          <p className="text-muted-foreground text-sm leading-relaxed">{project.subtitle}</p>
         </div>
         <button 
           onClick={onToggle}
@@ -172,10 +172,10 @@ const ProjectCard = ({
         </button>
       </div>
       
-      <p className="text-sm text-foreground font-semibold mb-1">{project.metric}</p>
-      <p className="text-muted-foreground text-sm font-body mb-3">{project.outcome}</p>
+      <p className="text-sm text-foreground font-semibold mb-1 leading-relaxed">{project.metric}</p>
+      <p className="text-muted-foreground text-sm font-body mb-3 leading-relaxed">{project.outcome}</p>
 
-      <p className="text-xs text-primary/70 font-medium">{project.mechanism}</p>
+      <p className="text-xs text-primary/70 font-medium leading-relaxed">{project.mechanism}</p>
 
 
       {/* Expandable Content */}
@@ -204,7 +204,7 @@ const ProjectCard = ({
               {/* Key Decisions */}
               <div>
                 <h4 className="text-sm font-semibold text-foreground mb-2">Key Decisions</h4>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 leading-relaxed">
                   {details.keyDecisions.map((decision, i) => (
                     <li key={i} className="text-sm text-muted-foreground pl-3 border-l-2 border-primary/40">
                       {decision}
@@ -216,7 +216,7 @@ const ProjectCard = ({
               {/* Governance & Risk */}
               <div>
                 <h4 className="text-sm font-semibold text-foreground mb-2">Governance & Risk</h4>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 leading-relaxed">
                   {details.governanceRisk.map((item, i) => (
                     <li key={i} className="text-sm text-muted-foreground pl-3 border-l-2 border-muted-foreground/30">
                       {item}
@@ -228,7 +228,7 @@ const ProjectCard = ({
               {/* Outcomes */}
               <div>
                 <h4 className="text-sm font-semibold text-foreground mb-2">Outcomes</h4>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 leading-relaxed">
                   {details.outcome.map((item, i) => (
                     <li key={i} className="text-sm text-primary/80 pl-3 border-l-2 border-primary/60">
                       {item}
@@ -268,7 +268,7 @@ const ProjectsSection = () => {
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
             Systems & <span className="text-gradient">Strategy</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body leading-relaxed">
             Selected work turning AI priorities into governed systems, usable data, and measurable business outcomes.
           </p>
         </motion.div>
