@@ -9,7 +9,7 @@ const OpenSourceSection = () => {
         <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase mb-4 text-center">
           Open source
         </p>
-        <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+        <div className="max-w-6xl mx-auto overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
           <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
             <div className="relative min-h-[240px] lg:min-h-[340px] bg-[#0f172a]">
               <img
@@ -19,7 +19,7 @@ const OpenSourceSection = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-between gap-6 p-6 sm:p-8 md:p-10">
+            <div className="flex flex-col justify-between gap-7 p-6 sm:p-8 md:p-10">
               <div>
                 <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase mb-3">
                   Open source build proof

@@ -9,7 +9,6 @@ const buildSignals = [
     label: "Shipped systems",
     icon: Rocket,
     href: "#projects",
-    summary: "Production delivery and rollout experience",
     expandedTitle: "Shipped systems",
     expandedPoints: [
       "Production systems shipped to live environments",
@@ -21,7 +20,6 @@ const buildSignals = [
     label: "Public code",
     icon: Code2,
     href: "#open-source",
-    summary: "Inspectable work outside employer context",
     expandedTitle: "Public code",
     expandedPoints: [
       "Health Coach demo in a public repo",
@@ -33,7 +31,6 @@ const buildSignals = [
     label: "Governed delivery",
     icon: ShieldCheck,
     href: "#about",
-    summary: "Supported ISO 42001 certification and audit prep",
     expandedTitle: "Governed delivery",
     expandedPoints: [
       "Supported ISO 42001 certification",
@@ -147,7 +144,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-          className="mt-6 max-w-6xl mx-auto"
+          className="mt-6 max-w-7xl mx-auto"
         >
           <div className="grid gap-3 md:grid-cols-3">
             {buildSignals.map((signal) => {
@@ -155,15 +152,12 @@ const HeroSection = () => {
 
               const cardContent = (
                 <>
-                  <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2">
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
                         <Icon className="h-4 w-4" />
                       </div>
-                      <div>
-                        <p className="font-semibold text-sm text-foreground">{signal.label}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{signal.summary}</p>
-                      </div>
+                      <p className="font-semibold text-sm text-foreground">{signal.label}</p>
                     </div>
                     {isDesktop ? (
                       <span className="text-xs text-muted-foreground">Click to expand</span>
@@ -171,10 +165,6 @@ const HeroSection = () => {
                       <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
                     )}
                   </div>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {signal.summary}
-                  </p>
                 </>
               );
 
@@ -183,7 +173,7 @@ const HeroSection = () => {
                   <a
                     key={signal.label}
                     href={signal.href}
-                    className="group rounded-2xl border border-border bg-card/80 px-5 py-4 text-left transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
+                    className="group rounded-2xl border border-border bg-card/80 px-5 py-5 text-left transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
                   >
                     {cardContent}
                   </a>
@@ -195,7 +185,7 @@ const HeroSection = () => {
                   key={signal.label}
                   type="button"
                   onClick={() => setActiveSignal((currentSignal) => (currentSignal === signal.label ? null : signal.label))}
-                  className={`group rounded-2xl border px-5 py-4 text-left transition-all hover:shadow-md hover:shadow-primary/5 ${
+                  className={`group rounded-2xl border px-5 py-5 text-left transition-all hover:shadow-md hover:shadow-primary/5 ${
                     activeSignal === signal.label
                       ? "border-primary bg-primary/5"
                       : "border-border bg-card/80 hover:border-primary/40"
