@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Code2, Rocket, ShieldCheck } from "lucide-react";
+import { ArrowRight, Code2, Rocket, ShieldCheck } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import profileImage from "@/assets/profile.png";
 
@@ -7,18 +8,61 @@ const buildSignals = [
   {
     label: "Shipped systems",
     icon: Rocket,
+    href: "#projects",
+    summary: "Production delivery and rollout experience",
+    expandedTitle: "Shipped systems",
+    expandedPoints: [
+      "Production systems shipped to live environments",
+      "Rollout experience across multiple workstreams",
+      "Delivery work tied to measurable business outcomes",
+    ],
   },
   {
     label: "Public code",
     icon: Code2,
+    href: "#open-source",
+    summary: "Inspectable work outside employer context",
+    expandedTitle: "Public code",
+    expandedPoints: [
+      "Health Coach demo in a public repo",
+      "Validation gates and audit logging visible in code",
+      "A concrete build signal without confidentiality risk",
+    ],
   },
   {
     label: "Governed delivery",
     icon: ShieldCheck,
+    href: "#about",
+    summary: "Supported ISO 42001 certification and audit prep",
+    expandedTitle: "Governed delivery",
+    expandedPoints: [
+      "Supported ISO 42001 certification",
+      "Responsible for AI documentation and audit preparation",
+      "Controlled access, logging, and readiness built into delivery",
+    ],
   },
 ];
 
 const HeroSection = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [activeSignal, setActiveSignal] = useState<string | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+    const updateLayout = () => {
+      setIsDesktop(mediaQuery.matches);
+      setActiveSignal((currentSignal) => (mediaQuery.matches ? currentSignal : null));
+    };
+
+    updateLayout();
+    mediaQuery.addEventListener("change", updateLayout);
+
+    return () => mediaQuery.removeEventListener("change", updateLayout);
+  }, []);
+
+  const selectedSignal = buildSignals.find((signal) => signal.label === activeSignal) ?? null;
+
   return (
     <section className="relative flex items-center justify-center overflow-hidden pt-28 pb-8 md:pt-32 md:pb-8">
       <div
@@ -83,7 +127,7 @@ const HeroSection = () => {
         >
           <div className="flex flex-wrap gap-2 justify-center px-4">
             {[
-              "ISO 42001 Certified",
+              "Supported ISO 42001 certification",
               "AIGP Certified",
               "External Pentest Passed",
               "C1 Swedish",
@@ -103,23 +147,104 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-          className="mt-6 max-w-4xl mx-auto"
+          className="mt-6 max-w-6xl mx-auto"
         >
-          <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border/60 bg-background/55 px-4 py-3 backdrop-blur-sm">
+          <div className="grid gap-3 md:grid-cols-3">
             {buildSignals.map((signal) => {
               const Icon = signal.icon;
 
+              const cardContent = (
+                <>
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-sm text-foreground">{signal.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{signal.summary}</p>
+                      </div>
+                    </div>
+                    {isDesktop ? (
+                      <span className="text-xs text-muted-foreground">Click to expand</span>
+                    ) : (
+                      <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
+                    )}
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {signal.summary}
+                  </p>
+                </>
+              );
+
+              if (!isDesktop) {
+                return (
+                  <a
+                    key={signal.label}
+                    href={signal.href}
+                    className="group rounded-2xl border border-border bg-card/80 px-5 py-4 text-left transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
+                  >
+                    {cardContent}
+                  </a>
+                );
+              }
+
               return (
-                <div
+                <button
                   key={signal.label}
-                  className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-1.5 text-xs text-muted-foreground"
+                  type="button"
+                  onClick={() => setActiveSignal((currentSignal) => (currentSignal === signal.label ? null : signal.label))}
+                  className={`group rounded-2xl border px-5 py-4 text-left transition-all hover:shadow-md hover:shadow-primary/5 ${
+                    activeSignal === signal.label
+                      ? "border-primary bg-primary/5"
+                      : "border-border bg-card/80 hover:border-primary/40"
+                  }`}
+                  aria-expanded={activeSignal === signal.label}
+                  aria-controls="hero-build-proof-details"
                 >
-                  <Icon className="h-3.5 w-3.5 text-primary" />
-                  <span>{signal.label}</span>
-                </div>
+                  {cardContent}
+                </button>
               );
             })}
           </div>
+
+          {isDesktop && selectedSignal && (
+            <motion.div
+              id="hero-build-proof-details"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="mt-4 rounded-2xl border border-border bg-background/70 p-5 text-left backdrop-blur-sm"
+            >
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div>
+                  <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-2">
+                    More detail
+                  </p>
+                  <h3 className="font-display text-lg font-semibold">{selectedSignal.expandedTitle}</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveSignal(null)}
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="grid gap-2 sm:grid-cols-3">
+                {selectedSignal.expandedPoints.map((point) => (
+                  <div
+                    key={point}
+                    className="rounded-xl border border-border bg-card/80 px-4 py-3 text-sm text-muted-foreground"
+                  >
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>
