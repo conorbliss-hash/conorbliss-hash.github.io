@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Conor Bliss favicon">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d7db3" />
+      <stop offset="100%" stop-color="#1f5e8a" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" />
+  <circle cx="32" cy="32" r="22" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" />
+  <path d="M21 24h6.2c4.2 0 7.3 2.5 7.3 6.1 0 2.3-1.1 4.1-3.1 5.1 2.7.8 4.2 2.9 4.2 5.8 0 4-3.4 6.5-8.1 6.5H21V24zm6.1 9.4c2.1 0 3.5-1 3.5-2.7 0-1.6-1.3-2.6-3.5-2.6h-1.7v5.3h1.7zm.4 11c2.5 0 4-1 4-3 0-1.8-1.5-2.8-4.1-2.8h-2v5.8h2.1z" fill="#ffffff"/>
+  <path d="M43.3 24h4.8v16.7h9.1V45H43.3V24z" fill="#ffffff"/>
+</svg>
