@@ -12,7 +12,7 @@ const articles = [
   {
     title: "ISO 42001 in Practice: A Practitioner's Guide to AI Governance Certification",
     subtitle: "What the standard actually requires, and how to build a framework that passes",
-    link: "https://medium.com/@conor.bliss.henaghan",
+    link: "https://medium.com/@conor.bliss.henaghan/iso-42001-audits-your-process-it-doesnt-audit-your-ai-0a99d87b3dcc",
     image: euAiActImg
   },
   {
@@ -40,7 +40,7 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
     href={article.link}
     target="_blank"
     rel="noopener noreferrer"
-    className="group flex-shrink-0 w-[300px] sm:w-[350px] rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
+    className="group rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
   >
     <div className="aspect-[16/10] overflow-hidden">
       <img 
@@ -64,9 +64,6 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
 const WritingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  // Duplicate articles for seamless loop
-  const duplicatedArticles = [...articles, ...articles];
 
   return (
     <section id="writing" className="py-12 md:py-16 bg-card/50" ref={ref}>
@@ -93,16 +90,11 @@ const WritingSection = () => {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-        className="overflow-hidden"
+        className="max-w-6xl mx-auto rounded-3xl border border-border bg-background/70 p-4 sm:p-6 md:p-8"
       >
-        <div 
-          className="flex gap-6 animate-scroll hover:pause-animation"
-          style={{
-            width: "max-content",
-          }}
-        >
-          {duplicatedArticles.map((article, index) => (
-            <ArticleCard key={`${article.title}-${index}`} article={article} />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {articles.map((article) => (
+            <ArticleCard key={article.title} article={article} />
           ))}
         </div>
       </motion.div>
