@@ -62,12 +62,10 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This repo deploys from `main` to GitHub Pages through `.github/workflows/static.yml`.
 
-## Can I connect a custom domain to my Lovable project?
+If you are changing the custom domain, update `public/CNAME` and the Pages settings in GitHub.
 
-Yes, you can!
+## Can I connect a custom domain to this site?
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Yes. GitHub Pages supports custom domains through the repository Pages settings.
