@@ -16,7 +16,7 @@ const professionalProjects = [
     id: "ai-strategy-roadmap",
     title: "AI Strategy & Use Case Portfolio",
     subtitle: "Prioritized AI roadmap for investment decisions",
-    outcome: "Developed AI Governance Operating Model ratified by SteerCo. Rolled out AI enablement programme across 4 countries (70% attendance, 6.3/7 satisfaction). Prioritised 23 use cases and governed the pilot programme from concept to production.",
+    outcome: "Built an AI Governance Operating Model ratified by SteerCo. Rolled out enablement across 4 countries (70% attendance, 6.3/7 satisfaction). Governed 23 use cases from concept to production.",
     metric: "Seven-figure annual savings pipeline across 10+ departments",
     mechanism: "Department interviews | workflow baselines | impact/effort scoring | build-vs-buy review | pilot roadmap",
   },
@@ -24,7 +24,7 @@ const professionalProjects = [
     id: "bi-platform",
     title: "Business Intelligence Platform",
     subtitle: "Live reporting layer for leadership decisions",
-    outcome: "Connected CRM, finance, and operations data so leadership could review one consistent view instead of reconciling reports manually.",
+    outcome: "Unified CRM, finance, and operations data so leadership stopped reconciling reports manually and reviewed one consistent view.",
     metric: "3 source systems unified; manual reconciliation removed from leadership reporting",
     mechanism: "Automated data ingestion | transformation rules | Firestore | role-scoped dashboard",
   },
@@ -32,7 +32,7 @@ const professionalProjects = [
     id: "iso-42001",
     title: "ISO 42001 Validated Governance Framework",
     subtitle: "Controls for production AI, validated by external audit",
-    outcome: "Named primary interviewee across 38 audit criteria alongside CCRO. Zero major non-conformities. Brought Technology, Legal, and Compliance into a unified audit position.",
+    outcome: "Primary interviewee across 38 audit criteria alongside CCRO. Zero major non-conformities. Unified Technology, Legal, and Compliance into one audit position.",
     metric: "External Schellman audit passed; production AI governance baseline established",
     mechanism: "Risk registry | model documentation | human oversight rules | incident response | audit trail",
   },
@@ -40,7 +40,7 @@ const professionalProjects = [
     id: "data-platform",
     title: "Centralized Data Infrastructure",
     subtitle: "Secure data layer for analytics and AI workflows",
-    outcome: "Built the ingestion, validation, access-control, and logging layer needed to make internal data usable for reporting and AI systems.",
+    outcome: "Built the ingestion, validation, access-control, and logging layer that made internal data usable for reporting and AI systems.",
     metric: "External penetration test passed with zero critical findings before rollout",
     mechanism: "Data ingestion | schema validation | ownership mapping | access controls | audit logging",
   },
@@ -48,28 +48,28 @@ const professionalProjects = [
 
 const projectDetails: Record<string, ProjectDetail> = {
   "ai-strategy-roadmap": {
-    context: "A multi-department organization had strong AI demand but fragmented experimentation, uneven data readiness, and no shared prioritization model. Led the strategy work to turn scattered ideas into an executive-ready portfolio of AI initiatives with quantified business cases and a staged implementation roadmap.",
+    context: "Strong AI demand across departments, but fragmented experimentation and no shared prioritization model. I turned scattered ideas into an executive-ready portfolio with quantified business cases and a staged roadmap.",
     systemDesign: "Department interviews → KPI baselines → impact/effort scoring → PRDs + business cases → pilot selection → governance model → delivery roadmap",
     keyDecisions: [
-      "Interviewed leaders across 10+ business departments to map current workflows, pain points, and adoption readiness",
+      "Mapped workflows, pain points, and adoption readiness across 10+ departments",
       "Structured 20+ AI opportunities into product requirement documents and business cases",
-      "Ranked use cases by annual savings, feasibility, and build-vs-buy suitability rather than novelty",
-      "Selected two quick-win pilots where value, data access, and stakeholder ownership were strongest"
+      "Ranked use cases by annual savings, feasibility, and build-vs-buy fit",
+      "Selected two quick-win pilots with the strongest value, data access, and ownership"
     ],
     governanceRisk: [
-      "Identified shadow AI usage already occurring across departments and proposed centralized governance controls",
-      "Separated near-term pilots from initiatives blocked by foundational data centralization work",
-      "Defined human review, data ownership, and KPI measurement requirements before build",
+      "Mapped shadow AI usage and proposed centralized governance controls",
+      "Separated near-term pilots from initiatives blocked by foundational data work",
+      "Defined human review, ownership, and KPI requirements before build",
       "Details redacted and generalized to protect employer context"
     ],
     outcome: [
-      "Executive steering group received a clear go/no-go decision package for the next AI investment stage",
+      "SteerCo received a clear go/no-go package for the next investment stage",
       "Seven-figure annual efficiency opportunity surfaced across the highest-impact use cases",
-      "Two pilots moved forward with scoped PRDs, target KPIs, owners, and delivery timeline"
+      "Two pilots moved forward with scoped PRDs, owners, and delivery timeline"
     ]
   },
   "bi-platform": {
-    context: "Three disconnected systems (CRM, ERP, finance) produced conflicting numbers and required manual reconciliation before each leadership meeting. Built a unified ingestion pipeline with automated transformation and a live dashboard.",
+    context: "Three disconnected systems produced conflicting numbers and required manual reconciliation before every leadership meeting. I built a unified ingestion pipeline and live dashboard.",
     systemDesign: "HubSpot + Salesforce + NetSuite → Cloud Functions → automated transformation → Firestore → custom front-end dashboard",
     keyDecisions: [
       "Single ingestion pipeline across three source systems to eliminate manual reconciliation",
@@ -84,13 +84,13 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Details abstracted to protect employer context"
     ],
     outcome: [
-      "Leadership has one consistent reporting view, updated in real time",
+      "One consistent, real-time reporting view for leadership",
       "No analyst time spent on data prep before leadership meetings",
       "Conflicting numbers across systems eliminated"
     ]
   },
   "iso-42001": {
-    context: "Designed and implemented an AI governance framework from scratch, covering risk classification, model documentation, human oversight requirements, and incident response procedures.",
+    context: "Designed and implemented an AI governance framework from scratch covering risk classification, model documentation, human oversight, and incident response.",
     systemDesign: "Risk registry → model documentation → human oversight controls → incident response procedures → audit trail → external audit (Schellman)",
     keyDecisions: [
       "Risk-based classification of all production AI systems before framework design",
@@ -99,7 +99,7 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Framework scoped to cover all production AI systems, not just high-risk ones"
     ],
     governanceRisk: [
-      "Commissioned and passed Schellman external audit with no major findings",
+      "Passed Schellman external audit with no major findings",
       "Framework now governs all production AI systems",
       "Serves as the compliance baseline for all new AI deployments",
       "Details abstracted to protect employer context"
@@ -111,7 +111,7 @@ const projectDetails: Record<string, ProjectDetail> = {
     ]
   },
   "data-platform": {
-    context: "Built the core data infrastructure underpinning analytics and AI workflows: structured ingestion with validation gates, ownership mapping, least-privilege access controls, and full audit logging.",
+    context: "Built the core data infrastructure for analytics and AI: structured ingestion, validation gates, ownership mapping, least-privilege access, and audit logging.",
     systemDesign: "Ingestion layer → schema validation → ownership/lineage mapping → access controls (least-privilege) → audit logging → curated data layer → downstream AI and reporting systems",
     keyDecisions: [
       "Reject or flag bad data at ingestion, not downstream where the cost is higher",
