@@ -8,7 +8,6 @@ import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.png";
 import euAiActImg from "@/assets/articles/eu-ai-act.png";
 import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.png";
 import { trackEvent } from "@/lib/analytics";
-import { trackEvent } from "@/lib/analytics";
 
 const articles = [
   {
