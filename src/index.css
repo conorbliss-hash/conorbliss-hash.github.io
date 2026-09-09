@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
 @layer base {
   :root {
     --background: 210 25% 98%;
@@ -44,8 +42,8 @@
     --shadow-glow: 0 0 50px hsl(200 60% 38% / 0.10);
     --shadow-card: 0 8px 32px -8px hsl(215 30% 40% / 0.12);
 
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Manrope', sans-serif;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 215 28% 17%;

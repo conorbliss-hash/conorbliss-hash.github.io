@@ -2,6 +2,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import aiStrategyImage from "@/assets/projects/ai-strategy.jpg";
+import biPlatformImage from "@/assets/projects/bi-platform.jpg";
+import isoGovernanceImage from "@/assets/projects/iso-governance.jpg";
+import dataPlatformImage from "@/assets/projects/data-platform.jpg";
 
 interface ProjectDetail {
   context: string;
@@ -16,33 +21,41 @@ const professionalProjects = [
     id: "ai-strategy-roadmap",
     title: "AI Strategy & Use Case Portfolio",
     subtitle: "Prioritized AI roadmap for investment decisions",
-    outcome: "Built an AI Governance Operating Model ratified by SteerCo. Rolled out enablement across 4 countries (70% attendance, 6.3/7 satisfaction). Governed 23 use cases from concept to production.",
+    outcome: "Turned 23 use cases into a governed investment roadmap across four countries.",
     metric: "Seven-figure annual savings pipeline across 10+ departments",
-    mechanism: "Department interviews | workflow baselines | impact/effort scoring | build-vs-buy review | pilot roadmap",
+    category: "Strategy",
+    image: aiStrategyImage,
+    imageAlt: "Executive team prioritizing an AI roadmap around a workshop table",
   },
   {
     id: "bi-platform",
     title: "Business Intelligence Platform",
     subtitle: "Live reporting layer for leadership decisions",
-    outcome: "Unified CRM, finance, and operations data so leadership stopped reconciling reports manually and reviewed one consistent view.",
+    outcome: "Unified CRM, finance and operations data into one leadership view.",
     metric: "3 source systems unified; manual reconciliation removed from leadership reporting",
-    mechanism: "Automated data ingestion | transformation rules | Firestore | role-scoped dashboard",
+    category: "Intelligence",
+    image: biPlatformImage,
+    imageAlt: "Executive analytics display combining several data streams",
   },
   {
     id: "iso-42001",
     title: "ISO 42001 Validated Governance Framework",
     subtitle: "Controls for production AI, validated by external audit",
-    outcome: "Primary interviewee across 38 audit criteria alongside CCRO. Zero major non-conformities. Unified Technology, Legal, and Compliance into one audit position.",
+    outcome: "Aligned Technology, Legal and Compliance around one auditable framework.",
     metric: "External Schellman audit passed; production AI governance baseline established",
-    mechanism: "Risk registry | model documentation | human oversight rules | incident response | audit trail",
+    category: "Governance",
+    image: isoGovernanceImage,
+    imageAlt: "AI governance audit evidence arranged in a modern boardroom",
   },
   {
     id: "data-platform",
     title: "Centralized Data Infrastructure",
     subtitle: "Secure data layer for analytics and AI workflows",
-    outcome: "Built the ingestion, validation, access-control, and logging layer that made internal data usable for reporting and AI systems.",
+    outcome: "Built the secure data layer supporting reporting and production AI.",
     metric: "External penetration test passed with zero critical findings before rollout",
-    mechanism: "Data ingestion | schema validation | ownership mapping | access controls | audit logging",
+    category: "Infrastructure",
+    image: dataPlatformImage,
+    imageAlt: "Secure centralized data infrastructure in a bright modern facility",
   },
 ];
 
@@ -150,33 +163,45 @@ const ProjectCard = ({
   const details = projectDetails[project.id];
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
-      className="group relative p-6 rounded-2xl border border-border bg-card hover:border-primary/50 transition-colors"
+      className="group"
     >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex-1 pr-4">
-          <h3 className="font-display text-xl font-semibold mb-1">{project.title}</h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">{project.subtitle}</p>
+      <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-md bg-secondary">
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          width={1200}
+          height={900}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.025]"
+        />
+        <span className="absolute right-4 top-4 rounded-sm border border-border/70 bg-card/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-foreground backdrop-blur-sm">
+          {project.category}
+        </span>
+      </div>
+
+      <div className="flex items-start justify-between gap-5">
+        <div className="min-w-0">
+          <p className="mb-2 text-xs font-medium uppercase tracking-widest text-primary">0{index + 1} / {project.subtitle}</p>
+          <h3 className="font-display text-xl font-semibold leading-snug md:text-2xl">{project.title}</h3>
+          <p className="mt-3 max-w-xl text-base font-semibold leading-relaxed text-foreground">{project.metric}</p>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{project.outcome}</p>
         </div>
-        <button 
+        <Button
           onClick={onToggle}
-          className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors shrink-0"
+          variant="outline"
+          size="icon"
+          className="mt-7 h-9 w-9 shrink-0 rounded-full bg-card"
           aria-expanded={isExpanded}
           aria-label={isExpanded ? "Collapse details" : "Expand details"}
         >
           {isExpanded ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-        </button>
+        </Button>
       </div>
-      
-      <p className="text-sm text-foreground font-semibold mb-1 leading-relaxed">{project.metric}</p>
-      <p className="text-muted-foreground text-sm font-body mb-3 leading-relaxed">{project.outcome}</p>
-
-      <p className="text-xs text-primary/70 font-medium leading-relaxed">{project.mechanism}</p>
-
 
       {/* Expandable Content */}
       <AnimatePresence>
@@ -188,7 +213,7 @@ const ProjectCard = ({
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="overflow-hidden"
           >
-            <div className="pt-6 mt-6 border-t border-border space-y-5">
+            <div className="mt-6 space-y-5 border-t border-border pt-6">
               {/* Context */}
               <div>
                 <h4 className="text-sm font-semibold text-foreground mb-2">Context</h4>
@@ -240,7 +265,7 @@ const ProjectCard = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </motion.article>
   );
 };
 
@@ -254,26 +279,24 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-12 md:py-16" ref={ref}>
+    <section id="projects" className="py-16 md:py-24" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-center mb-12"
+          className="mb-12 flex flex-col items-start justify-between gap-5 border-b border-border pb-8 md:mb-16 md:flex-row md:items-end"
         >
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
-            Portfolio
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold">
-            Systems & <span className="text-gradient">Strategy</span>
-          </h2>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mt-4 font-body leading-relaxed">
-            Selected work turning AI priorities into governed systems, usable data, and measurable business outcomes.
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Selected work</p>
+            <h2 className="font-display text-4xl font-semibold md:text-5xl">Systems & Strategy</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
+            Four case studies spanning strategy, governance, intelligence and infrastructure.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5 md:gap-7">
+        <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 md:gap-y-16">
           {professionalProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
