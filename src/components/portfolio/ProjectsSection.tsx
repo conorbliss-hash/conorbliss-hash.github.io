@@ -175,7 +175,7 @@ const ProjectCard = ({
           src={project.image}
           alt={project.imageAlt}
           width={1200}
-          height={900}
+          height={912}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.025]"
         />
