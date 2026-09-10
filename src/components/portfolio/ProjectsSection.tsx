@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aiStrategyImage from "@/assets/projects/ai-strategy.jpg";
+import aiStrategyImage from "@/assets/projects/ai-strategy.png";
 import biPlatformImage from "@/assets/projects/bi-platform.jpg";
 import isoGovernanceImage from "@/assets/projects/iso-governance.jpg";
 import dataPlatformImage from "@/assets/projects/data-platform.jpg";
@@ -25,7 +25,7 @@ const professionalProjects = [
     metric: "Seven-figure annual savings pipeline across 10+ departments",
     category: "Strategy",
     image: aiStrategyImage,
-    imageAlt: "Executive team prioritizing an AI roadmap around a workshop table",
+    imageAlt: "Impact versus effort chart showing 23 candidate use cases prioritized into 2 funded pilots",
   },
   {
     id: "bi-platform",
