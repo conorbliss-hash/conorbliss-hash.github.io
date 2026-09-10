@@ -25,7 +25,7 @@ const professionalProjects = [
     metric: "Seven-figure annual savings pipeline across 10+ departments",
     category: "Strategy",
     image: aiStrategyImage,
-    imageAlt: "Executive team prioritizing an AI roadmap around a workshop table",
+    imageAlt: "Impact versus effort chart showing 23 candidate use cases prioritized into 2 funded pilots",
   },
   {
     id: "bi-platform",
