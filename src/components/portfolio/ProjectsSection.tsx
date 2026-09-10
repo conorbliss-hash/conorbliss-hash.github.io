@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aiStrategyImage from "@/assets/projects/ai-strategy.jpg";
+import aiStrategyImage from "@/assets/projects/ai-strategy.png";
 import biPlatformImage from "@/assets/projects/bi-platform.jpg";
 import isoGovernanceImage from "@/assets/projects/iso-governance.jpg";
 import dataPlatformImage from "@/assets/projects/data-platform.jpg";
