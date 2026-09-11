@@ -4,7 +4,7 @@ import { trackEvent } from "@/lib/analytics";
 
 const OpenSourceSection = () => {
   return (
-    <section id="open-source" className="py-10 md:py-12">
+    <section id="open-source" className="surface-dark py-14 md:py-20">
       <div className="section-container">
         <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase mb-4 text-center">
           Open source
