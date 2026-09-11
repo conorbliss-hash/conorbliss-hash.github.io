@@ -77,13 +77,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="order-last px-6 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
+          className="order-last px-6 pt-2 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
         >
-          <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-sm lg:mx-0 lg:ml-auto lg:max-w-sm">
+          <div className="mx-auto w-full max-w-[16rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[18rem] lg:mx-0 lg:ml-auto lg:max-w-[18rem]">
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="aspect-[4/5] w-full object-cover object-top scale-[1.18] origin-top"
+              className="aspect-[3/4] w-full object-cover object-top scale-[1.12] origin-top"
             />
           </div>
         </motion.div>
