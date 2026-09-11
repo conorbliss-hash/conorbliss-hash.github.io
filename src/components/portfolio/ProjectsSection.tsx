@@ -222,12 +222,12 @@ const ProjectCard = ({
       className="group"
     >
       {featured ? (
-        <div className="mb-8 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
+        <div className="overflow-hidden">
           <img
             src={project.image}
             alt={project.imageAlt}
             loading="lazy"
-            className="h-auto w-full min-w-[700px] max-w-4xl"
+            className="h-auto w-full"
           />
         </div>
       ) : (
