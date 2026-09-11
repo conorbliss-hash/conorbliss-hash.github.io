@@ -79,13 +79,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="order-last px-6 lg:px-0 lg:pr-0"
+          className="order-last px-6 lg:px-0"
         >
-          <div className="relative flex min-h-[220px] items-center justify-center overflow-hidden rounded-3xl bg-secondary/60 border border-border lg:min-h-[420px] lg:rounded-none lg:rounded-l-3xl lg:border-r-0">
+          <div className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl bg-secondary/40 lg:mx-0 lg:max-w-none lg:rounded-none lg:rounded-l-3xl">
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="w-[220px] md:w-[340px] h-auto rounded-3xl shadow-lg"
+              className="aspect-[4/5] w-full object-cover object-top"
             />
           </div>
         </motion.div>
