@@ -36,8 +36,8 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
               className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight"
             >
-              I take AI from strategy to production -{" "}
-              <span className="text-gradient">and make sure it stays there.</span>
+              Most AI programmes stall on data and compliance.{" "}
+              <span className="text-gradient">I clear that, then ship.</span>
             </motion.h1>
 
             <motion.p
@@ -46,7 +46,7 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
               className="text-muted-foreground text-base md:text-lg mb-6 font-body leading-relaxed"
             >
-              Use-case portfolios, business cases, production systems - with validation, logging, and access controls built in.
+              Compliant data foundations, AI governance that passes external audit, and the use-case portfolios that run on top of both.
             </motion.p>
 
             <motion.div
@@ -58,9 +58,8 @@ const HeroSection = () => {
                 {[
                   "Supported ISO 42001 certification",
                   "AIGP Certified",
-                  "External Pentest Passed",
-                  "C1 Swedish",
-                  "Stockholm-based",
+                  "External pentest passed",
+                  "Stockholm",
                 ].map((chip) => (
                   <span
                     key={chip}
