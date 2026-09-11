@@ -1,14 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 214" width="380" height="214" role="img" aria-label="Three identical bars with a solid disc beside them.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 214" width="380" height="214" role="img" aria-label="Three identical bars beside a solid disc carrying the number 42001.">
   <style>
-    svg { --dg-line:#1F4D7A; --dg-fill:#E6EDF3; --dg-sq:#8FAAC4; }
-    @media (prefers-color-scheme: dark) {
-      svg { --dg-line:#7FA8CE; --dg-fill:#1A2632; --dg-sq:#4A6580; }
+    svg {
+      --ink:#14181D; --ink-2:#4E555F; --ink-3:#888E96; --surface:#FCFCFB;
+      --dg-line:#1F4D7A; --dg-fill:#E6EDF3; --dg-sq:#8FAAC4;
+      --dg-amber:#9C6F26; --dg-amber-fill:#EFE0C4;
+      --dg-z1:#E5EBF1; --dg-z2:#F1F4F6; --dg-z3:#D3DEE9;
     }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ink:#E9E9E6; --ink-2:#A1A6AD; --ink-3:#70767E; --surface:#191B1F;
+        --dg-line:#7FA8CE; --dg-fill:#1A2632; --dg-sq:#4A6580;
+        --dg-amber:#C9974A; --dg-amber-fill:#3A2F1B;
+        --dg-z1:#1B2531; --dg-z2:#16191E; --dg-z3:#21303E;
+      }
+    }
+    text { font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   </style>
   <g fill="var(--dg-fill)" stroke="var(--dg-line)" stroke-width="2.5">
-    <rect x="56" y="56" width="200" height="26" rx="3"/>
-    <rect x="56" y="94" width="200" height="26" rx="3"/>
-    <rect x="56" y="132" width="200" height="26" rx="3"/>
+    <rect x="50" y="56" width="195" height="26" rx="3"/>
+    <rect x="50" y="94" width="195" height="26" rx="3"/>
+    <rect x="50" y="132" width="195" height="26" rx="3"/>
   </g>
-  <circle cx="292" cy="107" r="32" fill="var(--dg-line)"/>
+  <circle cx="296" cy="107" r="38" fill="var(--dg-line)"/>
+  <text x="296" y="115" font-size="24" letter-spacing="0.5" text-anchor="middle" fill="var(--surface)">42001</text>
 </svg>

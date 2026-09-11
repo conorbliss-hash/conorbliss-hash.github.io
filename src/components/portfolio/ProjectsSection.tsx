@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import dataFoundationDiagram from "@/assets/diagrams/data-foundation-diagram.svg";
+import dataFoundationDiagramTall from "@/assets/diagrams/data-foundation-diagram-tall.svg";
 import markGovernance from "@/assets/diagrams/mark-02-governance.svg";
 import markPortfolio from "@/assets/diagrams/mark-03-portfolio.svg";
 import markBi from "@/assets/diagrams/mark-04-bi.svg";
@@ -325,13 +326,16 @@ const ProjectsSection = () => {
 
         <div className="space-y-14 md:space-y-16">
           <div className="grid gap-8 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
-            <div className="overflow-hidden lg:order-first">
-              <img
-                src={featured.image}
-                alt={featured.imageAlt}
-                loading="lazy"
-                className="h-auto w-full"
-              />
+            <div className="lg:order-first">
+              <picture>
+                <source media="(max-width: 760px)" srcSet={dataFoundationDiagramTall} />
+                <img
+                  src={featured.image}
+                  alt={featured.imageAlt}
+                  loading="lazy"
+                  className="mx-auto h-auto w-full max-w-[440px] sm:max-w-none"
+                />
+              </picture>
             </div>
             <ProjectCard
               project={featured}
