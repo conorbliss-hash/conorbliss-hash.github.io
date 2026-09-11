@@ -47,7 +47,7 @@ const record = async (
       session_id: getSessionId(),
       device: getDevice(),
       screen_width: window.innerWidth,
-      props: props ? (props as Record<string, unknown>) : null,
+      props: props ? JSON.parse(JSON.stringify(props)) : null,
     });
   } catch {
     // analytics must never break the page
