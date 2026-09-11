@@ -85,7 +85,7 @@ const HeroSection = () => {
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="aspect-[9/10] w-full object-cover object-top"
+              className="aspect-[4/5] w-full object-cover object-top scale-[1.18] origin-top"
             />
           </div>
         </motion.div>
