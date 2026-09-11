@@ -34,7 +34,7 @@ const professionalProjects = [
     id: "iso-42001",
     title: "ISO 42001 Validated Governance Framework",
     subtitle: "The controls that keep it compliant",
-    outcome: "External audit passed. Technology, Legal and Compliance aligned around one auditable framework.",
+    outcome: "New AI deployments now ship against one framework instead of ad hoc review.",
     metric: "External audit passed with no major findings",
     category: "Governance",
     image: markGovernance,
@@ -68,19 +68,18 @@ const projectDetails: Record<string, ProjectDetail> = {
     systemDesign: "Department interviews → KPI baselines → impact/effort scoring → PRDs + business cases → pilot selection → governance model → delivery roadmap",
     keyDecisions: [
       "Mapped workflows, pain points, and adoption readiness across 10+ departments",
-      "Structured 20+ AI opportunities into product requirement documents and business cases",
+      "Structured 23 AI opportunities into product requirement documents and business cases",
       "Ranked use cases by annual savings, feasibility, and build-vs-buy fit",
       "Selected two quick-win pilots with the strongest value, data access, and ownership"
     ],
     governanceRisk: [
       "Mapped shadow AI usage and proposed centralized governance controls",
       "Separated near-term pilots from initiatives blocked by foundational data work",
-      "Defined human review, ownership, and KPI requirements before build",
-      "Details redacted and generalized to protect employer context"
+      "Defined human review, ownership, and KPI requirements before build"
     ],
     outcome: [
       "SteerCo received a clear go/no-go package for the next investment stage",
-      "Modelled (not realised) seven-figure annual efficiency pipeline across the highest-impact use cases",
+      "Seven-figure annual efficiency pipeline, modelled and not yet realised",
       "Two pilots moved forward with scoped PRDs, owners, and delivery timeline"
     ]
   },
@@ -325,7 +324,7 @@ const ProjectsSection = () => {
             <h2 className="font-display text-4xl font-semibold md:text-5xl">Systems &amp; Strategy</h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
-            Four case studies spanning infrastructure, governance, strategy and intelligence.
+            Specifics are redacted or generalised to protect employer context.
           </p>
         </motion.div>
 
