@@ -44,7 +44,7 @@ const Footer = () => {
 
           {/* Disclaimer */}
           <p className="text-muted-foreground text-sm text-center max-w-lg">
-            Work examples are redacted, generalized, and/or recreated with synthetic data to protect employer and client confidentiality.
+            Work examples are generalised. Patterns and decisions are described; specific systems and figures are not.
           </p>
 
           {/* Copyright */}
