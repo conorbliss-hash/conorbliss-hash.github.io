@@ -65,7 +65,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-              className="text-muted-foreground text-base md:text-lg mb-2 md:mb-6 font-body leading-relaxed"
+              className="text-muted-foreground text-base md:text-lg mb-5 md:mb-6 font-body leading-relaxed"
             >
               Data foundations that clear legal, and AI governance that passes external audit.
             </motion.p>
@@ -78,14 +78,14 @@ const HeroSection = () => {
               className="lg:hidden"
             >
               <div className="flex items-start gap-2">
-                <div className="flex-1 min-w-0 pt-0.5">
+                <div className="flex-1 min-w-0 pt-1">
                   <CredentialPills />
                 </div>
-                <div className="w-32 flex-shrink-0 overflow-hidden rounded-2xl bg-secondary/40">
+                <div className="w-36 flex-shrink-0 overflow-hidden rounded-2xl bg-secondary/40">
                   <img
                     src={profileImage}
                     alt="Conor Bliss"
-                    className="aspect-[4/5] w-full object-cover object-[center_15%] scale-[1.12] origin-top"
+                    className="aspect-[4/5] w-full object-cover object-[42%_28%] scale-[1.08] origin-top"
                   />
                 </div>
               </div>
