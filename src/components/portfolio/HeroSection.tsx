@@ -25,7 +25,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
             >
-              <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
+              <p className="text-muted-foreground text-xs font-semibold mb-3 tracking-widest uppercase font-body">
                 AI Lead: Strategy, Governance, Data Platforms
               </p>
             </motion.div>
@@ -34,7 +34,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
-              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight"
+              className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight"
             >
               I take AI from strategy to production -{" "}
               <span className="text-gradient">and make sure it stays there.</span>
@@ -44,7 +44,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-              className="text-muted-foreground text-sm sm:text-base md:text-lg mb-6 font-body"
+              className="text-muted-foreground text-base md:text-lg mb-6 font-body leading-relaxed"
             >
               Use-case portfolios, business cases, production systems - with validation, logging, and access controls built in.
             </motion.p>

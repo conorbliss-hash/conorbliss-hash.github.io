@@ -6,7 +6,7 @@ const OpenSourceSection = () => {
   return (
     <section id="open-source" className="surface-dark py-14 md:py-20">
       <div className="section-container">
-        <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase mb-4 text-center">
+        <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-4 text-center">
           Open source
         </p>
         <div className="max-w-6xl mx-auto overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
@@ -21,13 +21,13 @@ const OpenSourceSection = () => {
 
             <div className="flex flex-col justify-between gap-7 p-6 sm:p-8 md:p-10">
               <div>
-                <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase mb-3">
+                <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-3">
                   Open source build proof
                 </p>
-                <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 leading-tight">
+                <h3 className="font-display text-xl md:text-2xl font-semibold mb-3 leading-snug">
                   Health Coach - governance patterns in a personal demo
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-5">
+                <p className="text-muted-foreground text-base leading-relaxed mb-5">
                   A public demo showing schema validation, audit logging, and automated reporting applied to Google Fit → Google Sheets.
                 </p>
 
