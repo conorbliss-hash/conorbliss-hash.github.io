@@ -82,9 +82,6 @@ const WritingSection = () => {
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
             <span className="text-gradient">Writing</span>
           </h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto mt-4 font-body leading-relaxed">
-            Practical notes on AI governance, data infrastructure, and production delivery.
-          </p>
         </motion.div>
       </div>
 
