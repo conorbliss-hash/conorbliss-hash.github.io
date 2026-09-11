@@ -151,12 +151,14 @@ const ProjectCard = ({
   project, 
   index,
   isExpanded,
-  onToggle 
+  onToggle,
+  featured = false
 }: { 
   project: typeof professionalProjects[0]; 
   index: number;
   isExpanded: boolean;
   onToggle: () => void;
+  featured?: boolean;
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -170,7 +172,7 @@ const ProjectCard = ({
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
       className="group"
     >
-      <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-md bg-secondary">
+      <div className={`relative mb-5 overflow-hidden rounded-md bg-secondary ${featured ? "aspect-[16/9] md:aspect-[21/9]" : "aspect-[4/3]"}`}>
         <img
           src={project.image}
           alt={project.imageAlt}
