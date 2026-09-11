@@ -8,8 +8,21 @@ Deno.serve(async (req) => {
 
   try {
     const url = new URL(req.url);
+    let bodyDays: number | undefined;
+    let bodyPasscode: string | undefined;
+    if (req.method === "POST") {
+      try {
+        const parsed = await req.json();
+        bodyDays = Number(parsed?.days);
+        bodyPasscode = typeof parsed?.passcode === "string" ? parsed.passcode : undefined;
+      } catch {
+        // ignore empty body
+      }
+    }
     const passcode =
-      req.headers.get("x-analytics-passcode") ?? url.searchParams.get("passcode");
+      req.headers.get("x-analytics-passcode") ??
+      bodyPasscode ??
+      url.searchParams.get("passcode");
 
     if (!passcode || passcode !== Deno.env.get("ANALYTICS_PASSCODE")) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
