@@ -339,7 +339,15 @@ const ProjectsSection = () => {
         </motion.div>
 
         <div className="space-y-14 md:space-y-16">
-          <div>
+          <div className="grid gap-8 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
+            <div className="overflow-hidden lg:order-first">
+              <img
+                src={featured.image}
+                alt={featured.imageAlt}
+                loading="lazy"
+                className="h-auto w-full"
+              />
+            </div>
             <ProjectCard
               project={featured}
               index={0}
@@ -347,32 +355,6 @@ const ProjectsSection = () => {
               isExpanded={featuredExpanded}
               onToggle={() => handleToggle(featured.id)}
             />
-
-            <div className="mt-6">
-              <button
-                type="button"
-                onClick={() => handleToggle(featured.id)}
-                aria-expanded={featuredExpanded}
-                className="inline-flex items-center gap-2 border-b border-border pb-1.5 text-[10px] font-medium uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-              >
-                {featuredExpanded ? "Hide controls" : "The controls"}
-                {featuredExpanded ? <Minus className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
-              </button>
-
-              <AnimatePresence>
-                {featuredExpanded && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="overflow-hidden"
-                  >
-                    <ProjectDetails details={projectDetails[featured.id]} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
           </div>
 
           <div className="grid gap-x-8 gap-y-14 md:grid-cols-3 md:gap-y-16">
