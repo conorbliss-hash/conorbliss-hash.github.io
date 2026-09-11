@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 920" width="440" height="920" role="img" aria-label="The same pattern read top to bottom: data arrives from outside, is de-identified, then tokenised, and lands in the protected core. It travels back out through the shared tier and the restricted tier, is re-scoped, and returns outside. Amber marks every point where data is transformed; denser fill means tighter access.">
+  <style>
+svg {
+      --ink:#14181D; --ink-2:#4E555F; --ink-3:#888E96; --surface:#FCFCFB;
+      --dg-line:#1F4D7A; --dg-sq:#8FAAC4;
+      --dg-amber:#9C6F26; --dg-amber-fill:#EFE0C4;
+      --dg-z1:#E5EBF1; --dg-z2:#F1F4F6; --dg-z3:#D3DEE9;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ink:#E9E9E6; --ink-2:#A1A6AD; --ink-3:#70767E; --surface:#191B1F;
+        --dg-line:#7FA8CE; --dg-sq:#4A6580;
+        --dg-amber:#C9974A; --dg-amber-fill:#3A2F1B;
+        --dg-z1:#1B2531; --dg-z2:#16191E; --dg-z3:#21303E;
+      }
+    }
+    text { font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  </style>
+
+  <rect x="70" y="24" width="300" height="54" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="2.5"/>
+  <text x="220" y="57" font-size="18" text-anchor="middle" fill="var(--ink)">External</text>
+
+  <rect x="70" y="104" width="300" height="52" rx="3" fill="var(--dg-amber-fill)" stroke="var(--dg-amber)" stroke-width="2.5"/>
+  <text x="220" y="136" font-size="17" text-anchor="middle" fill="var(--ink)">De-identify</text>
+
+  <rect x="70" y="182" width="300" height="52" rx="3" fill="var(--dg-amber-fill)" stroke="var(--dg-amber)" stroke-width="2.5"/>
+  <text x="220" y="214" font-size="17" text-anchor="middle" fill="var(--ink)">Tokenise</text>
+
+  <rect x="70" y="260" width="300" height="170" rx="4" fill="var(--dg-z3)" stroke="var(--dg-line)" stroke-width="3"/>
+  <text x="86" y="286" font-size="12.5" letter-spacing="1.8" fill="var(--ink-3)">PROTECTED CORE</text>
+  <rect x="88" y="298" width="264" height="52" rx="3" fill="var(--surface)" stroke="var(--dg-line)" stroke-width="2"/>
+  <text x="220" y="330" font-size="15" text-anchor="middle" fill="var(--ink)">System of record</text>
+  <rect x="88" y="362" width="264" height="56" rx="3" fill="var(--surface)" stroke="var(--dg-line)" stroke-width="2"/>
+  <text x="220" y="386" font-size="14" text-anchor="middle" fill="var(--ink)">Key store,</text>
+  <text x="220" y="405" font-size="14" text-anchor="middle" fill="var(--ink)">separate custody</text>
+
+  <rect x="70" y="456" width="300" height="100" rx="4" fill="var(--dg-z2)" stroke="var(--dg-sq)" stroke-width="2"/>
+  <text x="86" y="482" font-size="12.5" letter-spacing="1.8" fill="var(--ink-3)">SHARED</text>
+  <text x="220" y="522" font-size="16" text-anchor="middle" fill="var(--ink-2)">Team-level analysis</text>
+
+  <rect x="70" y="582" width="300" height="100" rx="4" fill="var(--dg-z1)" stroke="var(--dg-line)" stroke-width="2"/>
+  <text x="86" y="608" font-size="12.5" letter-spacing="1.8" fill="var(--ink-3)">RESTRICTED</text>
+  <text x="220" y="648" font-size="16" text-anchor="middle" fill="var(--ink-2)">Scoped working copies</text>
+
+  <rect x="70" y="708" width="300" height="52" rx="3" fill="var(--dg-amber-fill)" stroke="var(--dg-amber)" stroke-width="2.5"/>
+  <text x="220" y="740" font-size="17" text-anchor="middle" fill="var(--ink)">Re-scope</text>
+
+  <rect x="70" y="786" width="300" height="54" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="2.5"/>
+  <text x="220" y="819" font-size="18" text-anchor="middle" fill="var(--ink)">Back to external</text>
+
+  <g fill="none" stroke="var(--dg-line)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M220 78 V100"/><path d="M215 95 l5 5 l5 -5"/>
+    <path d="M220 156 V178"/><path d="M215 173 l5 5 l5 -5"/>
+    <path d="M220 234 V256"/><path d="M215 251 l5 5 l5 -5"/>
+    <path d="M220 430 V452"/><path d="M215 447 l5 5 l5 -5"/>
+    <path d="M220 556 V578"/><path d="M215 573 l5 5 l5 -5"/>
+    <path d="M220 682 V704"/><path d="M215 699 l5 5 l5 -5"/>
+    <path d="M220 760 V782"/><path d="M215 777 l5 5 l5 -5"/>
+  </g>
+
+  <g font-size="13.5" fill="var(--ink-2)">
+    <rect x="70" y="862" width="14" height="14" rx="2" fill="var(--dg-amber-fill)" stroke="var(--dg-amber)" stroke-width="2"/>
+    <text x="94" y="874">Data is transformed here</text>
+    <rect x="70" y="888" width="14" height="14" rx="2" fill="var(--dg-z3)" stroke="var(--dg-line)" stroke-width="2"/>
+    <text x="94" y="900">Denser fill = tighter access</text>
+  </g>
+</svg>
