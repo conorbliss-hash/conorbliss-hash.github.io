@@ -34,8 +34,11 @@ Deno.serve(async (req) => {
     return new Response('ok', { headers: corsHeaders })
   }
 
-  const unauthorized = authenticateCronRequest(req)
-  if (unauthorized) return unauthorized
+  const expected = Deno.env.get('WEEKLY_REPORT_SECRET')
+  const provided = req.headers.get('x-report-secret')
+  if (!expected || provided !== expected) {
+    return new Response('Unauthorized', { status: 401, headers: corsHeaders })
+  }
 
   const supabaseUrl = Deno.env.get('SUPABASE_URL')!
   const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
