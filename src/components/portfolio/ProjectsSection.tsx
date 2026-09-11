@@ -221,16 +221,7 @@ const ProjectCard = ({
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
       className="group"
     >
-      {featured ? (
-        <div className="mb-8 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
-          <img
-            src={project.image}
-            alt={project.imageAlt}
-            loading="lazy"
-            className="h-auto w-full min-w-[700px] max-w-4xl"
-          />
-        </div>
-      ) : (
+      {!featured && (
         <div className="mb-5 flex aspect-[19/11] items-center justify-center overflow-hidden">
           <img
             src={project.image}
@@ -247,6 +238,33 @@ const ProjectCard = ({
           <h3 className="font-display text-xl font-semibold leading-snug md:text-2xl">{project.title}</h3>
           <p className="mt-3 max-w-xl text-base font-semibold leading-relaxed text-foreground">{project.metric}</p>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{project.outcome}</p>
+          {featured && (
+            <div className="mt-6">
+              <button
+                type="button"
+                onClick={onToggle}
+                aria-expanded={isExpanded}
+                className="inline-flex items-center gap-2 border-b border-border pb-1.5 text-[10px] font-medium uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+              >
+                {isExpanded ? "Hide controls" : "The controls"}
+                {isExpanded ? <Minus className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
+              </button>
+
+              <AnimatePresence>
+                {isExpanded && details && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
+                    <ProjectDetails details={details} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
         </div>
         {!featured && (
           <Button
@@ -294,13 +312,13 @@ const ProjectsSection = () => {
   const featuredExpanded = expandedId === featured.id;
 
   return (
-    <section id="projects" className="py-16 md:py-24" ref={ref}>
+    <section id="projects" className="pt-6 pb-16 md:pt-10 md:pb-24" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="mb-12 flex flex-col items-start justify-between gap-5 border-b border-border pb-8 md:mb-16 md:flex-row md:items-end"
+          className="mb-10 flex flex-col items-start justify-between gap-5 border-b border-border pb-8 md:mb-12 md:flex-row md:items-end"
         >
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Selected work</p>
@@ -312,7 +330,15 @@ const ProjectsSection = () => {
         </motion.div>
 
         <div className="space-y-14 md:space-y-16">
-          <div>
+          <div className="grid gap-8 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
+            <div className="overflow-hidden lg:order-first">
+              <img
+                src={featured.image}
+                alt={featured.imageAlt}
+                loading="lazy"
+                className="h-auto w-full"
+              />
+            </div>
             <ProjectCard
               project={featured}
               index={0}
@@ -320,32 +346,6 @@ const ProjectsSection = () => {
               isExpanded={featuredExpanded}
               onToggle={() => handleToggle(featured.id)}
             />
-
-            <div className="mt-6">
-              <button
-                type="button"
-                onClick={() => handleToggle(featured.id)}
-                aria-expanded={featuredExpanded}
-                className="inline-flex items-center gap-2 border-b border-border pb-1.5 text-[10px] font-medium uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-              >
-                {featuredExpanded ? "Hide controls" : "The controls"}
-                {featuredExpanded ? <Minus className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
-              </button>
-
-              <AnimatePresence>
-                {featuredExpanded && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="overflow-hidden"
-                  >
-                    <ProjectDetails details={projectDetails[featured.id]} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
           </div>
 
           <div className="grid gap-x-8 gap-y-14 md:grid-cols-3 md:gap-y-16">

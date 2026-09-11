@@ -4,7 +4,7 @@ import profileImage from "@/assets/portrait-city.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden pt-28 pb-12 md:pt-32 md:pb-16">
+    <section className="relative overflow-hidden pt-24 pb-6 md:pt-28 md:pb-8">
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "var(--gradient-hero)" }}
