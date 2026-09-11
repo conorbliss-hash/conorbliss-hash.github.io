@@ -221,16 +221,7 @@ const ProjectCard = ({
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
       className="group"
     >
-      {featured ? (
-        <div className="overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.imageAlt}
-            loading="lazy"
-            className="h-auto w-full"
-          />
-        </div>
-      ) : (
+      {!featured && (
         <div className="mb-5 flex aspect-[19/11] items-center justify-center overflow-hidden">
           <img
             src={project.image}
@@ -321,7 +312,7 @@ const ProjectsSection = () => {
   const featuredExpanded = expandedId === featured.id;
 
   return (
-    <section id="projects" className="py-16 md:py-24" ref={ref}>
+    <section id="projects" className="pt-6 pb-16 md:pt-10 md:pb-24" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0 }}
