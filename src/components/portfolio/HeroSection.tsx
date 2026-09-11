@@ -72,14 +72,14 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right column: visual, bleeds to the right edge */}
+        {/* Right column: visual, aligned to the content edge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="order-last px-6 lg:px-0"
+          className="order-last px-6 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
         >
-          <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-sm lg:mx-0 lg:ml-auto lg:max-w-sm lg:rounded-none lg:rounded-l-3xl">
+          <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-sm lg:mx-0 lg:ml-auto lg:max-w-sm">
             <img
               src={profileImage}
               alt="Conor Bliss"
