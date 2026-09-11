@@ -1,6 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
-import { authenticateCronRequest } from '../_shared/cron-auth.ts'
+
 
 const RECIPIENT = 'conor.bliss.henaghan@gmail.com'
 
