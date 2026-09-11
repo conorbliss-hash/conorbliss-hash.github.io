@@ -127,24 +127,24 @@ const projectDetails: Record<string, ProjectDetail> = {
     ]
   },
   "data-platform": {
-    context: "Built the core data foundation for analytics and AI: three access perimeters, de-identification at every crossing, ownership mapping, least-privilege access, and audit logging.",
-    systemDesign: "Ingestion → hard de-identification → field mapping and pseudonymisation → core store → shared access layer → project-scoped ring (soft de-identification)",
+    context: "A pattern, not a system diagram: three access tiers - restricted, shared and a protected core - with a control at every crossing, each sized to who can read the data next.",
+    systemDesign: "External → de-identify → tokenise → protected core → shared tier → restricted tier (re-scope on egress)",
     keyDecisions: [
-      "Reject or flag bad data at ingestion, not downstream where the cost is higher",
-      "Explicit ownership assignment for every data entity before it enters the platform",
-      "Least-privilege access: consumers only see what they need",
-      "Full audit logging from day one, not retrofitted after the pentest"
+      "Minimise at intake, not later: a field never collected cannot leak or be subject-accessed, and every downstream control is cheaper for it",
+      "Separate the keys from the data: tokenisation only helps if the lookup lives elsewhere under different access",
+      "Set the boundary by audience, not by role: start from the smallest group that can still do the work - roles drift, this boundary survives audit",
+      "Review what leaves: egress is where re-identification actually happens, and the stage auditors ask about after everything else has passed"
     ],
     governanceRisk: [
-      "Commissioned and passed external penetration test with zero critical findings",
+      "External penetration test passed with zero critical findings",
       "All findings addressed before production rollout",
-      "GDPR-compliant by design: data categories mapped, access controls enforced",
-      "Details abstracted to protect employer context"
+      "Legal and compliance involved from the start, not consulted at the end",
+      "Specifics belong in conversation rather than on a public page"
     ],
     outcome: [
-      "Passed external penetration test with zero critical findings",
-      "GDPR-compliant data foundation for all downstream AI and reporting systems",
-      "Security posture validated independently before production rollout"
+      "External penetration test passed with zero critical findings before rollout",
+      "Cleared legal review without redesign",
+      "Pattern reused for downstream analytics and AI systems"
     ]
   }
 };
