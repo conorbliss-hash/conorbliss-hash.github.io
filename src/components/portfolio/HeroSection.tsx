@@ -58,7 +58,9 @@ const HeroSection = () => {
                 {[
                   "Supported ISO 42001 certification",
                   "AIGP Certified (AI Governance)",
-                  "Stockholm",
+                  "Strategy consulting background",
+                  "ROI-focused delivery",
+                  "Experienced project lead",
                 ].map((chip) => (
                   <span
                     key={chip}
@@ -83,7 +85,7 @@ const HeroSection = () => {
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="aspect-square sm:aspect-[3/4] w-full object-cover object-top scale-[1.12] origin-top"
+              className="aspect-square sm:aspect-[3/4] w-full object-cover object-[center_25%] sm:object-top scale-[1.12] origin-top"
             />
           </div>
         </motion.div>
