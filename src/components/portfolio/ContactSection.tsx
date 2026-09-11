@@ -1,5 +1,6 @@
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, FileDown } from "lucide-react";
 
+import cvAsset from "@/assets/conor-bliss-cv.pdf.asset.json";
 import { trackEvent } from "@/lib/analytics";
 
 const EMAIL = "conor.bliss.henaghan@gmail.com";
@@ -30,6 +31,15 @@ const ContactSection = () => {
             >
               <Linkedin className="w-4 h-4" />
               LinkedIn
+            </a>
+            <a
+              href={cvAsset.url}
+              download="Conor-Bliss-CV.pdf"
+              onClick={() => trackEvent("Outbound Click", { destination: "cv-download" })}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border border-border rounded-lg font-medium hover:border-primary/50 transition-colors"
+            >
+              <FileDown className="w-4 h-4" />
+              Download CV
             </a>
           </div>
         </div>
