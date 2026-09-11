@@ -110,7 +110,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="hidden lg:block order-last px-6 pt-6 md:pt-2 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
         >
-          <div className="mx-auto w-full max-w-[12rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[14rem] md:max-w-[16rem] lg:mx-0 lg:ml-auto lg:max-w-[18rem]">
+          <div className="mx-auto w-full max-w-[12rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[14rem] md:max-w-[16rem] lg:mx-0 lg:ml-auto lg:max-w-[20rem]">
             <img
               src={profileImage}
               alt="Conor Bliss"
