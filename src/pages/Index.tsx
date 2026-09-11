@@ -6,8 +6,14 @@ import WritingSection from "@/components/portfolio/WritingSection";
 import OpenSourceSection from "@/components/portfolio/OpenSourceSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
+import { useEffect } from "react";
+import { trackPageview } from "@/lib/analytics";
 
 const Index = () => {
+  useEffect(() => {
+    trackPageview();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
