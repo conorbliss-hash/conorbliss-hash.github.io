@@ -36,8 +36,8 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
               className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight"
             >
-              Most AI programmes stall on data and compliance.{" "}
-              <span className="text-gradient">I clear that, then ship.</span>
+              I take AI programmes past the data and compliance hurdles:{" "}
+              <span className="text-gradient">into production, and kept there.</span>
             </motion.h1>
 
             <motion.p
@@ -57,7 +57,7 @@ const HeroSection = () => {
               <div className="flex flex-wrap gap-2">
                 {[
                   "Supported ISO 42001 certification",
-                  "AIGP Certified",
+                  "AIGP Certified (AI Governance)",
                   "Stockholm",
                 ].map((chip) => (
                   <span
