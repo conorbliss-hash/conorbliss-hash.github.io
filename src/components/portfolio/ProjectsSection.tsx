@@ -247,6 +247,33 @@ const ProjectCard = ({
           <h3 className="font-display text-xl font-semibold leading-snug md:text-2xl">{project.title}</h3>
           <p className="mt-3 max-w-xl text-base font-semibold leading-relaxed text-foreground">{project.metric}</p>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{project.outcome}</p>
+          {featured && (
+            <div className="mt-6">
+              <button
+                type="button"
+                onClick={onToggle}
+                aria-expanded={isExpanded}
+                className="inline-flex items-center gap-2 border-b border-border pb-1.5 text-[10px] font-medium uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+              >
+                {isExpanded ? "Hide controls" : "The controls"}
+                {isExpanded ? <Minus className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
+              </button>
+
+              <AnimatePresence>
+                {isExpanded && details && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
+                    <ProjectDetails details={details} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
         </div>
         {!featured && (
           <Button
