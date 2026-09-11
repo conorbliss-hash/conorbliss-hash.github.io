@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 214" width="380" height="214" role="img" aria-label="Three identical bars with a solid disc beside them.">
+  <style>
+    svg { --dg-line:#1F4D7A; --dg-fill:#E6EDF3; --dg-sq:#8FAAC4; }
+    @media (prefers-color-scheme: dark) {
+      svg { --dg-line:#7FA8CE; --dg-fill:#1A2632; --dg-sq:#4A6580; }
+    }
+  </style>
+  <g fill="var(--dg-fill)" stroke="var(--dg-line)" stroke-width="2.5">
+    <rect x="56" y="56" width="200" height="26" rx="3"/>
+    <rect x="56" y="94" width="200" height="26" rx="3"/>
+    <rect x="56" y="132" width="200" height="26" rx="3"/>
+  </g>
+  <circle cx="292" cy="107" r="32" fill="var(--dg-line)"/>
+</svg>
