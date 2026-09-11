@@ -107,25 +107,29 @@ Deno.serve(async (req) => {
     statsUrl: 'https://conorbliss.com/stats',
   }
 
-  const sendRes = await fetch(`${supabaseUrl}/functions/v1/send-transactional-email`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${serviceKey}`,
-      apikey: serviceKey,
-    },
-    body: JSON.stringify({
-      templateName: 'weekly-traffic',
-      recipientEmail: RECIPIENT,
-      idempotencyKey: `weekly-traffic-${weekAgo.toISOString().slice(0, 10)}`,
-      templateData,
-    }),
+  const html = await renderAsync(React.createElement(WeeklyTraffic, templateData))
+  const text = await renderAsync(React.createElement(WeeklyTraffic, templateData), {
+    plainText: true,
   })
 
-  const sendBody = await sendRes.text()
-  if (!sendRes.ok) {
-    console.error('Send failed', sendRes.status, sendBody)
-    return new Response(JSON.stringify({ error: 'Send failed', status: sendRes.status }), {
+  try {
+    await sendLovableEmail(
+      {
+        to: RECIPIENT,
+        from: { name: 'conorbliss.com', address: 'noreply@conorbliss.com' },
+        sender_domain: 'notify.conorbliss.com',
+        subject: `conorbliss.com weekly traffic: ${cur.visitors} visitors`,
+        html,
+        text,
+        purpose: 'transactional',
+        label: 'weekly-traffic',
+        idempotency_key: `weekly-traffic-${weekAgo.toISOString().slice(0, 10)}`,
+      },
+      { apiKey: Deno.env.get('LOVABLE_API_KEY')! },
+    )
+  } catch (e) {
+    console.error('Send failed', e instanceof Error ? e.message : e)
+    return new Response(JSON.stringify({ error: 'Send failed' }), {
       status: 502,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
