@@ -53,7 +53,7 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
     </div>
     <div className="p-4 sm:p-5">
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-display text-base font-semibold group-hover:text-primary transition-colors leading-snug line-clamp-2">
+        <h3 className="font-display text-sm md:text-base font-semibold group-hover:text-primary transition-colors leading-snug line-clamp-2">
           {article.title}
         </h3>
         <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" />
@@ -79,7 +79,7 @@ const WritingSection = () => {
           <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">
             Selected Writing
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold">
+          <h2 className="font-display text-[28px] md:text-5xl font-semibold">
             <span className="text-gradient">Writing</span>
           </h2>
         </motion.div>

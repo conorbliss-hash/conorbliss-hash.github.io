@@ -19,7 +19,7 @@ const AboutSection = () => {
             About
           </p>
           <div className="border-b border-border mb-8" />
-          <div className="space-y-5 text-foreground font-body text-base md:text-lg leading-loose">
+          <div className="space-y-5 text-foreground font-body text-sm md:text-base leading-relaxed md:leading-loose">
             <p>
               I'm an AI Lead based in Stockholm. I set AI strategy, build the data infrastructure it runs on, and ship the production systems on top.
             </p>
