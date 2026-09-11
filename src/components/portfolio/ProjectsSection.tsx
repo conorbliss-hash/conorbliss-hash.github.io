@@ -21,11 +21,10 @@ const professionalProjects = [
   {
     id: "data-platform",
     title: "Data foundations that clear legal the first time",
-    subtitle: "How I place controls",
+    subtitle: "Data legal can approve",
     outcome:
       "Legal signed off, compliance signed off, and delivery never stopped. Most data programmes manage two of those.",
-    metric:
-      "A control at every stage of the lifecycle, each one sized to who can read the data next.",
+    metric: "Sensitive data usable for AI without a legal veto.",
     category: "Infrastructure",
     image: dataFoundationDiagram,
     imageAlt:
@@ -33,8 +32,8 @@ const professionalProjects = [
   },
   {
     id: "iso-42001",
-    title: "ISO 42001 Validated Governance Framework",
-    subtitle: "The controls that keep it compliant",
+    title: "AI governance that passed external audit",
+    subtitle: "Governance that passed audit",
     outcome: "New AI deployments now ship against one framework by default.",
     metric: "Built the AI governance framework that cleared external certification",
     category: "Governance",
@@ -44,9 +43,9 @@ const professionalProjects = [
   {
     id: "ai-strategy-roadmap",
     title: "AI Strategy & Use Case Portfolio",
-    subtitle: "Where the capability gets pointed",
+    subtitle: "Choosing what to build first",
     outcome: "From scattered experimentation to a funded, staged pilot programme.",
-    metric: "20+ initiatives triaged into a governed roadmap",
+    metric: "20+ AI ideas ranked into a funded plan",
     category: "Strategy",
     image: markPortfolio,
     imageAlt: "Three tapering blocks narrowing left to right",
@@ -54,10 +53,10 @@ const professionalProjects = [
   {
     id: "bi-platform",
     title: "Business Intelligence Platform",
-    subtitle: "What leadership sees",
+    subtitle: "Reporting leadership trusts",
     outcome: "Three source systems unified behind one reporting layer.",
     metric: "Leadership reporting with no manual reconciliation",
-    category: "Intelligence",
+    category: "Reporting",
     image: markBi,
     imageAlt: "Three separate blocks feeding into a single framed panel containing three rows",
   },
