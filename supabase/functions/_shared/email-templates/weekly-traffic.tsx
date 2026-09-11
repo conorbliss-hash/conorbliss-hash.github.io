@@ -13,7 +13,6 @@ import {
   Text,
   Link,
 } from 'npm:@react-email/components@0.0.22'
-import type { TemplateEntry } from './registry.ts'
 
 interface Item {
   label: string
@@ -120,21 +119,3 @@ export const WeeklyTraffic = ({
     </Body>
   </Html>
 )
-
-export const template = {
-  component: WeeklyTraffic,
-  displayName: 'Weekly traffic report',
-  subject: (data: Record<string, any>) =>
-    `conorbliss.com weekly traffic: ${data?.visitors ?? 0} visitors`,
-  previewData: {
-    periodLabel: 'last 7 days',
-    visitors: 42,
-    pageviews: 96,
-    clicks: 7,
-    visitorsPrev: 31,
-    pageviewsPrev: 80,
-    topPages: [{ label: '/', count: 80 }, { label: '/stats', count: 16 }],
-    topSources: [{ label: 'linkedin.com', count: 22 }, { label: 'Direct', count: 18 }],
-    topClicks: [{ label: 'email_click', count: 4 }, { label: 'linkedin_click', count: 3 }],
-  },
-} satisfies TemplateEntry
