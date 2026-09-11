@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="Three zones left to right: project-scoped ring, shared access layer and core store, each labelled with its access restriction. An inbound path from the client passes hard de-identification and then field mapping and pseudonymisation into the core; a return path runs back out through the zones via soft de-identification.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="Three access tiers — restricted, shared and a protected core. Data from outside passes de-identification and tokenisation into the core; it returns outward through the tiers and through a re-scoping control before leaving.">
   <style>
     svg {
       --ink:#14181D; --ink-2:#4E555F; --ink-3:#888E96; --surface:#FCFCFB;
@@ -17,61 +17,49 @@
     text { font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   </style>
 
-  <rect x="24" y="140" width="62" height="110" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="2.5"/>
-  <text x="55" y="200" font-size="16" text-anchor="middle" fill="var(--ink)">Client</text>
+  <rect x="20" y="140" width="80" height="110" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="2.5"/>
+  <text x="60" y="200" font-size="14" text-anchor="middle" fill="var(--ink)">External</text>
 
   <rect x="200" y="70" width="200" height="200" rx="4" fill="var(--dg-z1)" stroke="var(--dg-line)" stroke-width="2"/>
   <rect x="440" y="70" width="200" height="200" rx="4" fill="var(--dg-z2)" stroke="var(--dg-sq)" stroke-width="2"/>
   <rect x="680" y="70" width="240" height="200" rx="4" fill="var(--dg-z3)" stroke="var(--dg-line)" stroke-width="3"/>
 
   <g font-size="12" letter-spacing="2.2" fill="var(--ink-3)">
-    <text x="200" y="54">PROJECT-SCOPED RING</text>
-    <text x="440" y="54">SHARED ACCESS LAYER</text>
-    <text x="680" y="54">CORE STORE</text>
+    <text x="200" y="54">RESTRICTED</text>
+    <text x="440" y="54">SHARED</text>
+    <text x="680" y="54">PROTECTED CORE</text>
   </g>
 
-  <g font-size="10.5" letter-spacing="1.4" text-anchor="middle">
-    <rect x="310" y="84" width="80" height="21" rx="2" fill="var(--surface)" stroke="var(--dg-sq)"/>
-    <text x="350" y="99" fill="var(--ink-2)">MODERATE</text>
-    <rect x="580" y="84" width="48" height="21" rx="2" fill="var(--surface)" stroke="var(--dg-sq)"/>
-    <text x="604" y="99" fill="var(--ink-2)">LOW</text>
-    <rect x="850" y="84" width="58" height="21" rx="2" fill="var(--surface)" stroke="var(--dg-sq)"/>
-    <text x="879" y="99" fill="var(--ink-2)">HIGH</text>
+  <g font-size="14" fill="var(--ink-2)" text-anchor="middle">
+    <text x="300" y="232">Scoped working copies</text>
+    <text x="540" y="232">Team-level analysis</text>
   </g>
 
-  <g font-size="15" fill="var(--ink)" text-anchor="middle">
-    <text x="300" y="216">Client files, scoped</text>
-    <text x="300" y="237">to the engagement</text>
-    <text x="540" y="216">Cross-functional access</text>
-    <text x="540" y="237">for delivery teams</text>
-  </g>
-
-  <rect x="700" y="120" width="200" height="64" rx="3" fill="var(--surface)" stroke="var(--dg-line)" stroke-width="2"/>
-  <rect x="700" y="196" width="200" height="56" rx="3" fill="var(--surface)" stroke="var(--dg-line)" stroke-width="2"/>
+  <rect x="700" y="118" width="200" height="54" rx="3" fill="var(--surface)" stroke="var(--dg-line)" stroke-width="2"/>
+  <rect x="700" y="190" width="200" height="62" rx="3" fill="var(--surface)" stroke="var(--dg-line)" stroke-width="2"/>
   <g font-size="13.5" fill="var(--ink)" text-anchor="middle">
-    <text x="800" y="146">Single source of truth,</text>
-    <text x="800" y="166">partially anonymised</text>
-    <text x="800" y="221">Field mapping table,</text>
-    <text x="800" y="240">held separately</text>
+    <text x="800" y="150">System of record</text>
+    <text x="800" y="215">Key store,</text>
+    <text x="800" y="234">separate custody</text>
   </g>
 
   <g fill="none" stroke="var(--dg-line)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M676 170 H648"/><path d="M653 165 l-5 5 l5 5"/>
     <path d="M436 170 H408"/><path d="M413 165 l-5 5 l5 5"/>
-    <path d="M131 170 H92"/><path d="M97 165 l-5 5 l5 5"/>
-    <path d="M55 250 V330 H246"/><path d="M241 325 l5 5 l-5 5"/>
-    <path d="M420 330 H566"/><path d="M561 325 l5 5 l-5 5"/>
-    <path d="M790 330 H856 V278"/><path d="M851 283 l5 -5 l5 5"/>
+    <path d="M131 170 H112"/><path d="M117 165 l-5 5 l5 5"/>
+    <path d="M60 250 V330 H246"/><path d="M241 325 l5 5 l-5 5"/>
+    <path d="M420 330 H596"/><path d="M591 325 l5 5 l-5 5"/>
+    <path d="M750 330 H856 V278"/><path d="M851 283 l5 -5 l5 5"/>
   </g>
 
   <g stroke="var(--dg-amber)" stroke-width="2.5" fill="var(--dg-amber-fill)">
     <rect x="135" y="151" width="130" height="38" rx="3"/>
     <rect x="250" y="311" width="170" height="39" rx="3"/>
-    <rect x="570" y="311" width="220" height="39" rx="3"/>
+    <rect x="600" y="311" width="150" height="39" rx="3"/>
   </g>
   <g font-size="13.5" fill="var(--ink)" text-anchor="middle">
-    <text x="200" y="175">Soft de-identify</text>
-    <text x="335" y="336">Hard de-identify</text>
-    <text x="680" y="336">Field mapping &amp; pseudonymise</text>
+    <text x="200" y="175">Re-scope</text>
+    <text x="335" y="336">De-identify</text>
+    <text x="675" y="336">Tokenise</text>
   </g>
 </svg>

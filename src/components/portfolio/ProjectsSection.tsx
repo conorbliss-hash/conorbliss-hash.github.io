@@ -19,16 +19,16 @@ interface ProjectDetail {
 const professionalProjects = [
   {
     id: "data-platform",
-    title: "Compliant Data Foundation for AI",
-    subtitle: "The foundation everything else runs on",
+    title: "Data foundations that clear legal the first time",
+    subtitle: "How I place controls",
     outcome:
-      "Aligned with Delivery, Legal, Compliance and IT; external penetration test passed with zero critical findings before rollout.",
+      "External penetration test passed with zero critical findings - with legal and compliance in the room from the start rather than consulted at the end.",
     metric:
-      "Three access perimeters with de-identification at every crossing - compliant by design, and built so it doesn't slow consulting delivery.",
+      "A control at every stage of the lifecycle, each one sized to who can read the data next.",
     category: "Infrastructure",
     image: dataFoundationDiagram,
     imageAlt:
-      "Three zones left to right: project-scoped ring, shared access layer and core store, with de-identification steps on the paths between them",
+      "Three access tiers - restricted, shared and a protected core. Data from outside passes de-identification and tokenisation into the core; it returns outward through the tiers and through a re-scoping control before leaving.",
   },
   {
     id: "iso-42001",
