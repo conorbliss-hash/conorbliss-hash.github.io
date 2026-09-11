@@ -21,10 +21,10 @@ const AboutSection = () => {
           <div className="border-b border-border mb-8" />
           <div className="space-y-5 text-foreground font-body text-base md:text-lg leading-loose">
             <p>
-              I'm an AI Lead based in Stockholm. I've spent the last few years doing the full stack of AI work that most people split across three roles: defining strategy, building the data infrastructure, and shipping production systems.
+              I'm an AI Lead based in Stockholm. I set AI strategy, build the data infrastructure it runs on, and ship the production systems on top.
             </p>
             <p>
-              I also support external audit readiness and governance work. I hold AIGP certification and have helped a company through ISO 42001 certification with Schellman. I work in English and Swedish (C1).
+              I take those systems through external audit. I hold AIGP certification and took a company through ISO 42001 certification with Schellman. I work in English and Swedish (C1).
             </p>
           </div>
         </motion.div>

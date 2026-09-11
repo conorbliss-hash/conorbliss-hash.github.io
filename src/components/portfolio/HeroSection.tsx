@@ -46,7 +46,7 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
               className="text-muted-foreground text-base md:text-lg mb-6 font-body leading-relaxed"
             >
-              Compliant data foundations, AI governance that passes external audit, and the use-case portfolios that run on top of both.
+              Data foundations that clear legal, and AI governance that passes external audit.
             </motion.p>
 
             <motion.div
