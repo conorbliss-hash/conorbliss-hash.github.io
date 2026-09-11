@@ -4,7 +4,7 @@ import profileImage from "@/assets/portrait-city.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden pt-24 pb-6 md:pt-28 md:pb-8">
+    <section className="relative overflow-hidden pt-16 pb-6 md:pt-28 md:pb-8">
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "var(--gradient-hero)" }}
@@ -34,7 +34,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
-              className="font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight"
+              className="font-display text-[26px] leading-[1.15] sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4"
             >
               I take AI programmes past the data and compliance hurdles:{" "}
               <span className="text-gradient">into production, and kept there.</span>
@@ -77,13 +77,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="order-last px-6 pt-2 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
+          className="order-last px-6 pt-6 md:pt-2 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
         >
-          <div className="mx-auto w-full max-w-[16rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[18rem] lg:mx-0 lg:ml-auto lg:max-w-[18rem]">
+          <div className="mx-auto w-full max-w-[12rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[14rem] md:max-w-[16rem] lg:mx-0 lg:ml-auto lg:max-w-[18rem]">
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="aspect-[3/4] w-full object-cover object-top scale-[1.12] origin-top"
+              className="aspect-square sm:aspect-[3/4] w-full object-cover object-top scale-[1.12] origin-top"
             />
           </div>
         </motion.div>

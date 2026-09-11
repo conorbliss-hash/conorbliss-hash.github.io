@@ -225,8 +225,8 @@ const ProjectCard = ({
       <div className="flex items-start justify-between gap-5">
         <div className="min-w-0">
           <p className="mb-2 text-xs font-medium uppercase tracking-widest text-primary">0{index + 1} / {project.subtitle}</p>
-          <h3 className="font-display text-xl font-semibold leading-snug md:text-2xl">{project.title}</h3>
-          <p className="mt-3 max-w-xl text-base font-semibold leading-relaxed text-foreground">{project.metric}</p>
+          <h3 className="font-display text-lg font-semibold leading-snug md:text-2xl">{project.title}</h3>
+          <p className="mt-3 max-w-xl text-sm font-semibold leading-relaxed text-foreground md:text-base">{project.metric}</p>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{project.outcome}</p>
           {featured && (
             <div className="mt-6">
@@ -312,7 +312,7 @@ const ProjectsSection = () => {
         >
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Selected work</p>
-            <h2 className="font-display text-4xl font-semibold md:text-5xl">Systems &amp; Strategy</h2>
+            <h2 className="font-display text-[28px] font-semibold md:text-5xl">Systems &amp; Strategy</h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
             Details are generalised. Patterns and decisions are described rather than specific systems.

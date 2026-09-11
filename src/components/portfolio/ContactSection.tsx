@@ -9,7 +9,7 @@ const ContactSection = () => {
     <section id="contact" className="py-10 md:py-14">
       <div className="section-container">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-8 tracking-tight">
+          <h2 className="font-display text-[28px] md:text-4xl font-semibold mb-8 tracking-tight">
             Get in touch
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

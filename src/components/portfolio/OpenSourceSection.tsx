@@ -21,10 +21,10 @@ const OpenSourceSection = () => {
                 <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-3">
                   Open source build proof
                 </p>
-                <h3 className="font-display text-xl md:text-2xl font-semibold mb-3 leading-snug">
+                <h3 className="font-display text-lg md:text-2xl font-semibold mb-3 leading-snug">
                   Health Coach - governance patterns in a personal demo
                 </h3>
-                <p className="text-muted-foreground text-base leading-relaxed mb-5">
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
                   A public demo showing schema validation, audit logging, and automated reporting applied to Google Fit → Google Sheets.
                 </p>
 
