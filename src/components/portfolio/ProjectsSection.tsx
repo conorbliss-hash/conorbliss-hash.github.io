@@ -151,12 +151,14 @@ const ProjectCard = ({
   project, 
   index,
   isExpanded,
-  onToggle 
+  onToggle,
+  featured = false
 }: { 
   project: typeof professionalProjects[0]; 
   index: number;
   isExpanded: boolean;
   onToggle: () => void;
+  featured?: boolean;
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -170,7 +172,7 @@ const ProjectCard = ({
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
       className="group"
     >
-      <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-md bg-secondary">
+      <div className={`relative mb-5 overflow-hidden rounded-md bg-secondary ${featured ? "aspect-[16/9] md:aspect-[21/9]" : "aspect-[4/3]"}`}>
         <img
           src={project.image}
           alt={project.imageAlt}
@@ -296,16 +298,26 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 md:gap-y-16">
-          {professionalProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              isExpanded={expandedId === project.id}
-              onToggle={() => handleToggle(project.id)}
-            />
-          ))}
+        <div className="space-y-14 md:space-y-16">
+          <ProjectCard
+            project={professionalProjects[0]}
+            index={0}
+            featured
+            isExpanded={expandedId === professionalProjects[0].id}
+            onToggle={() => handleToggle(professionalProjects[0].id)}
+          />
+
+          <div className="grid gap-x-8 gap-y-14 md:grid-cols-3 md:gap-y-16">
+            {professionalProjects.slice(1).map((project, i) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={i + 1}
+                isExpanded={expandedId === project.id}
+                onToggle={() => handleToggle(project.id)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

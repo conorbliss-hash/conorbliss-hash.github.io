@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
- 
 
 import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pt-28 pb-8 md:pt-32 md:pb-8">
+    <section className="relative overflow-hidden pt-28 pb-12 md:pt-32 md:pb-16">
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "var(--gradient-hero)" }}
@@ -17,73 +16,79 @@ const HeroSection = () => {
         style={{ animationDelay: "-3s" }}
       />
 
-      <div className="section-container text-center">
+      <div className="grid items-center gap-10 lg:grid-cols-[60fr_40fr] lg:gap-12">
+        {/* Left column: text, aligned to the page content margin */}
+        <div className="px-6 lg:pl-[max(2rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-0">
+          <div className="max-w-2xl text-left">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
+            >
+              <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
+                AI Lead: Strategy, Governance, Data Platforms
+              </p>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight"
+            >
+              I take AI from strategy to production -{" "}
+              <span className="text-gradient">and make sure it stays there.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+              className="text-muted-foreground text-sm sm:text-base md:text-lg mb-6 font-body"
+            >
+              Use-case portfolios, business cases, production systems - with validation, logging, and access controls built in.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
+            >
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Supported ISO 42001 certification",
+                  "AIGP Certified",
+                  "External Pentest Passed",
+                  "C1 Swedish",
+                  "Stockholm-based",
+                ].map((chip) => (
+                  <span
+                    key={chip}
+                    className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Right column: visual, bleeds to the right edge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="mb-6"
+          className="order-last px-6 lg:px-0 lg:pr-0"
         >
-          <img
-            src={profileImage}
-            alt="Conor Bliss"
-            className="w-[120px] h-[120px] md:w-[168px] md:h-[168px] rounded-full mx-auto object-cover border-4 border-primary/20 shadow-lg"
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
-        >
-          <p className="text-muted-foreground text-sm md:text-base mb-3 tracking-widest uppercase font-body">
-            AI Lead: Strategy, Governance, Data Platforms
-          </p>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
-          className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 max-w-6xl mx-auto leading-tight"
-        >
-          I take AI from strategy to production -{" "}
-          <span className="text-gradient">and make sure it stays there.</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-          className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-4 font-body px-2"
-        >
-          Use-case portfolios, business cases, production systems - with validation, logging, and access controls built in.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
-          className="mb-0"
-        >
-          <div className="flex flex-wrap gap-2 justify-center px-4">
-            {[
-              "Supported ISO 42001 certification",
-              "AIGP Certified",
-              "External Pentest Passed",
-              "C1 Swedish",
-              "Stockholm-based",
-            ].map((chip) => (
-              <span
-                key={chip}
-                className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
-              >
-                {chip}
-              </span>
-            ))}
+          <div className="relative flex min-h-[220px] items-center justify-center overflow-hidden rounded-3xl bg-secondary/60 border border-border lg:min-h-[420px] lg:rounded-none lg:rounded-l-3xl lg:border-r-0">
+            <img
+              src={profileImage}
+              alt="Conor Bliss"
+              className="w-[180px] h-[180px] md:w-[252px] md:h-[252px] rounded-full object-cover border-4 border-primary/20 shadow-lg"
+            />
           </div>
         </motion.div>
-
       </div>
     </section>
   );
