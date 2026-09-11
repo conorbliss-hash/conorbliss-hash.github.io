@@ -81,11 +81,11 @@ const HeroSection = () => {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="order-last px-6 lg:px-0"
         >
-          <div className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl bg-secondary/40 lg:mx-0 lg:max-w-none lg:rounded-none lg:rounded-l-3xl">
+          <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-sm lg:mx-0 lg:ml-auto lg:max-w-sm lg:rounded-none lg:rounded-l-3xl">
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="aspect-[4/5] w-full object-cover object-top"
+              className="aspect-[9/10] w-full object-cover object-top"
             />
           </div>
         </motion.div>
