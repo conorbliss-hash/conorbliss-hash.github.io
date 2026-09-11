@@ -3,3 +3,6 @@ project_id = "kuobyfjxjxwmqiwagjyg"
 [functions]
   [functions.auth-email-hook]
     verify_jwt = false
+
+  [functions.weekly-traffic-report]
+    verify_jwt = false
