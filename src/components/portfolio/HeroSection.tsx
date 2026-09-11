@@ -83,7 +83,7 @@ const HeroSection = () => {
         >
           <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-sm lg:mx-0 lg:ml-auto lg:max-w-sm lg:rounded-none lg:rounded-l-3xl">
             <img
-              src={profileImage.url}
+              src={profileImage}
               alt="Conor Bliss"
               className="aspect-[9/10] w-full object-cover object-top"
             />
