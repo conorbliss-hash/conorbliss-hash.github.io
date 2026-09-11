@@ -25,8 +25,8 @@ const Stats = () => {
     setLoading(true);
     setError(null);
     const { data: result, error: fnError } = await supabase.functions.invoke(
-      `analytics-summary?days=${nextDays}`,
-      { headers: { "x-analytics-passcode": code } },
+      "analytics-summary",
+      { body: { days: nextDays, passcode: code } },
     );
     setLoading(false);
     if (fnError) {

@@ -31,7 +31,10 @@ Deno.serve(async (req) => {
       });
     }
 
-    const days = Math.min(Math.max(Number(url.searchParams.get("days") ?? 30), 1), 365);
+    const requestedDays = bodyDays && !Number.isNaN(bodyDays)
+      ? bodyDays
+      : Number(url.searchParams.get("days") ?? 30);
+    const days = Math.min(Math.max(requestedDays || 30, 1), 365);
     const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
 
     const supabase = createClient(
