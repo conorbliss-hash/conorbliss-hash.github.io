@@ -56,11 +56,11 @@ const HeroSection = () => {
             >
               <div className="flex flex-wrap gap-2">
                 {[
-                  "Supported ISO 42001 certification",
-                  "AIGP Certified (AI Governance)",
-                  "Strategy consulting background",
+                  "ISO 42001 certified",
+                  "AIGP Certified",
+                  "Strategy consulting",
                   "ROI-focused delivery",
-                  "Experienced project lead",
+                  "Cross-functional lead",
                 ].map((chip) => (
                   <span
                     key={chip}
