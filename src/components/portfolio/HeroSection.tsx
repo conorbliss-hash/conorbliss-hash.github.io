@@ -58,7 +58,9 @@ const HeroSection = () => {
                 {[
                   "Supported ISO 42001 certification",
                   "AIGP Certified (AI Governance)",
-                  "Stockholm",
+                  "Strategy consulting background",
+                  "ROI-focused delivery",
+                  "Experienced project lead",
                 ].map((chip) => (
                   <span
                     key={chip}
