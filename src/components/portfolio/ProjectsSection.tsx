@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import dataFoundationDiagram from "@/assets/diagrams/data-foundation-diagram.svg";
+import dataFoundationDiagramTall from "@/assets/diagrams/data-foundation-diagram-tall.svg";
 import markGovernance from "@/assets/diagrams/mark-02-governance.svg";
 import markPortfolio from "@/assets/diagrams/mark-03-portfolio.svg";
 import markBi from "@/assets/diagrams/mark-04-bi.svg";
