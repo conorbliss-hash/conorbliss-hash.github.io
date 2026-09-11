@@ -95,8 +95,7 @@ const projectDetails: Record<string, ProjectDetail> = {
     governanceRisk: [
       "Ownership mapping across all three source systems",
       "Transformation logic versioned and auditable",
-      "Access controls scoped by role, so executives see aggregates, not raw records",
-      "Details abstracted to protect employer context"
+      "Access controls scoped by role, so executives see aggregates, not raw records"
     ],
     outcome: [
       "One consistent, real-time reporting view for leadership",
@@ -114,15 +113,12 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Framework scoped to cover all production AI systems, not just high-risk ones"
     ],
     governanceRisk: [
-      "Passed external audit with no major findings",
-      "Framework now governs all production AI systems",
-      "Serves as the compliance baseline for all new AI deployments",
-      "Details abstracted to protect employer context"
+      "Risk tiers, oversight duties and incident routes documented per system",
+      "Audit trail covers every production AI system"
     ],
     outcome: [
-      "Passed external ISO 42001 audit, certifying production AI systems as compliant",
-      "AI governance framework now serves as organizational default for new deployments",
-      "Compliance baseline established for ongoing AI risk management"
+      "Passed external ISO 42001 audit with no major findings",
+      "New AI deployments are built against this framework by default"
     ]
   },
   "data-platform": {
@@ -137,8 +133,7 @@ const projectDetails: Record<string, ProjectDetail> = {
     governanceRisk: [
       "External penetration test passed with zero critical findings",
       "All findings addressed before production rollout",
-      "Legal and compliance involved from the start, not consulted at the end",
-      "Specifics belong in conversation rather than on a public page"
+      "Legal and compliance involved from the start, not consulted at the end"
     ],
     outcome: [
       "External penetration test passed with zero critical findings before rollout",
