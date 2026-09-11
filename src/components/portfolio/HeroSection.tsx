@@ -77,15 +77,15 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
               className="lg:hidden"
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2">
                 <div className="flex-1 min-w-0 pt-0.5">
                   <CredentialPills />
                 </div>
-                <div className="w-24 flex-shrink-0 overflow-hidden rounded-2xl bg-secondary/40">
+                <div className="w-32 flex-shrink-0 overflow-hidden rounded-2xl bg-secondary/40">
                   <img
                     src={profileImage}
                     alt="Conor Bliss"
-                    className="aspect-[4/5] w-full object-cover object-[center_18%] scale-[1.15] origin-top"
+                    className="aspect-[4/5] w-full object-cover object-[center_15%] scale-[1.12] origin-top"
                   />
                 </div>
               </div>
