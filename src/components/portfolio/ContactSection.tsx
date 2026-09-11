@@ -6,7 +6,7 @@ const EMAIL = "conor.bliss.henaghan@gmail.com";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-16 md:py-20">
+    <section id="contact" className="py-10 md:py-14">
       <div className="section-container">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-4xl font-semibold mb-8 tracking-tight">

@@ -318,7 +318,7 @@ const ProjectsSection = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="mb-12 flex flex-col items-start justify-between gap-5 border-b border-border pb-8 md:mb-16 md:flex-row md:items-end"
+          className="mb-10 flex flex-col items-start justify-between gap-5 border-b border-border pb-8 md:mb-12 md:flex-row md:items-end"
         >
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Selected work</p>

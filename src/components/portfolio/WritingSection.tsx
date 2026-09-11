@@ -88,18 +88,19 @@ const WritingSection = () => {
         </motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-        className="max-w-6xl mx-auto rounded-3xl border border-border bg-background/70 p-4 sm:p-6 md:p-8"
-      >
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {articles.map((article) => (
-            <ArticleCard key={article.title} article={article} />
-          ))}
-        </div>
-      </motion.div>
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+        >
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {articles.map((article) => (
+              <ArticleCard key={article.title} article={article} />
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
