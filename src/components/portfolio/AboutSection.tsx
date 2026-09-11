@@ -24,7 +24,7 @@ const AboutSection = () => {
               I'm an AI Lead based in Stockholm. I set AI strategy, build the data infrastructure it runs on, and ship the production systems on top.
             </p>
             <p>
-              I take those systems through external audit. I hold AIGP certification and took a company through ISO 42001 certification with Schellman. I work in English and Swedish (C1).
+              I take those systems through external audit. I hold AIGP certification and have taken an organisation through ISO 42001 certification. I work in English and Swedish (C1).
             </p>
           </div>
         </motion.div>

@@ -23,7 +23,7 @@ const professionalProjects = [
     title: "Data foundations that clear legal the first time",
     subtitle: "How I place controls",
     outcome:
-      "External penetration test passed with zero critical findings - with legal and compliance in the room from the start rather than consulted at the end.",
+      "Legal signed off, compliance signed off, and delivery never stopped. Most data programmes manage two of those.",
     metric:
       "A control at every stage of the lifecycle, each one sized to who can read the data next.",
     category: "Infrastructure",
@@ -35,8 +35,8 @@ const professionalProjects = [
     id: "iso-42001",
     title: "ISO 42001 Validated Governance Framework",
     subtitle: "The controls that keep it compliant",
-    outcome: "New AI deployments now ship against one framework instead of ad hoc review.",
-    metric: "External audit passed with no major findings",
+    outcome: "New AI deployments now ship against one framework by default.",
+    metric: "Built the AI governance framework that cleared external certification",
     category: "Governance",
     image: markGovernance,
     imageAlt: "Three identical bars with a solid disc beside them",
@@ -45,8 +45,8 @@ const professionalProjects = [
     id: "ai-strategy-roadmap",
     title: "AI Strategy & Use Case Portfolio",
     subtitle: "Where the capability gets pointed",
-    outcome: "Across four countries, from scattered experimentation to funded pilots.",
-    metric: "23 initiatives triaged into a governed roadmap",
+    outcome: "From scattered experimentation to a funded, staged pilot programme.",
+    metric: "20+ initiatives triaged into a governed roadmap",
     category: "Strategy",
     image: markPortfolio,
     imageAlt: "Three tapering blocks narrowing left to right",
@@ -65,27 +65,25 @@ const professionalProjects = [
 
 const projectDetails: Record<string, ProjectDetail> = {
   "ai-strategy-roadmap": {
-    context: "Strong AI demand across departments, but fragmented experimentation and no shared prioritization model. I turned scattered ideas into an executive-ready portfolio with quantified business cases and a staged roadmap.",
+    context: "High AI demand with no shared prioritisation model is the common starting position. I turned scattered ideas into an executive-ready portfolio with quantified business cases and a staged roadmap.",
     systemDesign: "Department interviews → KPI baselines → impact/effort scoring → PRDs + business cases → pilot selection → governance model → delivery roadmap",
     keyDecisions: [
-      "Mapped workflows, pain points, and adoption readiness across 10+ departments",
-      "Structured 23 AI opportunities into product requirement documents and business cases",
+      "Mapped workflows, pain points and adoption readiness across every business unit",
+      "Structured 20+ AI opportunities into product requirement documents and business cases",
       "Ranked use cases by annual savings, feasibility, and build-vs-buy fit",
-      "Selected two quick-win pilots with the strongest value, data access, and ownership"
+      "Selected a small number of quick-win pilots with the strongest value, data access, and ownership"
     ],
     governanceRisk: [
-      "Mapped shadow AI usage and proposed centralized governance controls",
       "Separated near-term pilots from initiatives blocked by foundational data work",
       "Defined human review, ownership, and KPI requirements before build"
     ],
     outcome: [
-      "SteerCo received a clear go/no-go package for the next investment stage",
-      "Seven-figure annual efficiency pipeline, modelled and not yet realised",
-      "Two pilots moved forward with scoped PRDs, owners, and delivery timeline"
+      "Leadership received a clear go/no-go package for the next investment stage",
+      "Fewer than three initiatives reached pilot, each with scoped PRDs, owners and a delivery timeline"
     ]
   },
   "bi-platform": {
-    context: "Three disconnected systems produced conflicting numbers and required manual reconciliation before every leadership meeting. I built a unified ingestion pipeline and live dashboard.",
+    context: "Disconnected source systems producing conflicting numbers is a common reporting failure. I built a unified ingestion pipeline and live dashboard to remove the manual reconciliation it forces.",
     systemDesign: "Three source systems → cloud functions → automated transformation → document store → custom front-end dashboard",
     keyDecisions: [
       "Single ingestion pipeline across three source systems to eliminate manual reconciliation",
@@ -118,7 +116,7 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Audit trail covers every production AI system"
     ],
     outcome: [
-      "Passed external ISO 42001 audit with no major findings",
+      "Framework cleared external ISO 42001 certification audit",
       "New AI deployments are built against this framework by default"
     ]
   },
@@ -132,12 +130,10 @@ const projectDetails: Record<string, ProjectDetail> = {
       "Review what leaves: egress is where re-identification actually happens, and the stage auditors ask about after everything else has passed"
     ],
     governanceRisk: [
-      "External penetration test passed with zero critical findings",
-      "All findings addressed before production rollout",
+      "Security review built into the rollout gate, not run after it",
       "Legal and compliance involved from the start, not consulted at the end"
     ],
     outcome: [
-      "External penetration test passed with zero critical findings before rollout",
       "Cleared legal review without redesign",
       "Pattern reused for downstream analytics and AI systems"
     ]
@@ -320,7 +316,7 @@ const ProjectsSection = () => {
             <h2 className="font-display text-4xl font-semibold md:text-5xl">Systems &amp; Strategy</h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
-            Specifics are redacted or generalised to protect employer context.
+            Details are generalised. Patterns and decisions are described rather than specific systems.
           </p>
         </motion.div>
 

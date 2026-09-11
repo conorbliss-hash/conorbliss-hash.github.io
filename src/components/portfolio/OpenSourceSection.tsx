@@ -6,9 +6,6 @@ const OpenSourceSection = () => {
   return (
     <section id="open-source" className="surface-dark py-14 md:py-20">
       <div className="section-container">
-        <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-4 text-center">
-          Open source
-        </p>
         <div className="max-w-6xl mx-auto overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
           <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
             <div className="relative min-h-[240px] lg:min-h-[340px] bg-[#0f172a]">

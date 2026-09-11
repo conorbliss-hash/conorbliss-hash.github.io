@@ -58,7 +58,6 @@ const HeroSection = () => {
                 {[
                   "Supported ISO 42001 certification",
                   "AIGP Certified",
-                  "External pentest passed",
                   "Stockholm",
                 ].map((chip) => (
                   <span
