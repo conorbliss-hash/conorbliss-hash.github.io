@@ -37,10 +37,10 @@ const HeroSection = () => {
         style={{ animationDelay: "-3s" }}
       />
 
-      <div className="grid items-start gap-10 lg:grid-cols-[60fr_40fr] lg:items-center lg:gap-12">
+      <div className="grid items-start gap-10 lg:grid-cols-[65fr_35fr] lg:items-center lg:gap-8">
         {/* Left column: text, aligned to the page content margin */}
         <div className="px-6 lg:pl-[max(2rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-0">
-          <div className="max-w-3xl text-left">
+          <div className="max-w-none text-left">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
