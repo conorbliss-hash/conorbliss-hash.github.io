@@ -81,11 +81,11 @@ const HeroSection = () => {
                 <div className="flex-1 min-w-0 pt-1">
                   <CredentialPills />
                 </div>
-                <div className="w-36 flex-shrink-0 overflow-hidden rounded-2xl bg-secondary/40">
+                <div className="w-32 flex-shrink-0 overflow-hidden rounded-2xl bg-secondary/40">
                   <img
                     src={profileImage}
                     alt="Conor Bliss"
-                    className="aspect-[4/5] w-full object-cover object-top"
+                    className="aspect-square w-full object-cover object-[center_15%] brightness-[0.98] saturate-[0.85]"
                   />
                 </div>
               </div>
@@ -110,11 +110,11 @@ const HeroSection = () => {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="hidden lg:block order-last px-6 pt-6 md:pt-2 lg:pr-[max(2rem,calc((100vw-80rem)/2+2.5rem))]"
         >
-          <div className="mx-auto w-full max-w-[12rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[14rem] md:max-w-[16rem] lg:mx-0 lg:ml-auto lg:max-w-[20rem]">
+          <div className="mx-auto w-full max-w-[12rem] overflow-hidden rounded-2xl bg-secondary/40 sm:max-w-[14rem] md:max-w-[16rem] lg:mx-0 lg:ml-auto lg:max-w-[18rem]">
             <img
               src={profileImage}
               alt="Conor Bliss"
-              className="aspect-square sm:aspect-[3/4] w-full object-cover object-top"
+              className="aspect-[4/5] w-full object-cover object-[center_15%] brightness-[0.98] saturate-[0.85]"
             />
           </div>
         </motion.div>
