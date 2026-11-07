@@ -19,13 +19,13 @@ const OpenSourceSection = () => {
             <div className="flex flex-col justify-between gap-7 p-6 sm:p-8 md:p-10">
               <div>
                 <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-3">
-                  Open source build proof
+                  Personal project · Open source
                 </p>
-                <h3 className="font-display text-lg md:text-2xl font-semibold mb-3 leading-snug">
-                  Health Coach - governance patterns in a personal demo
+                <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 leading-snug">
+                  Health Coach: fitness data turned into useful reports
                 </h3>
                 <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
-                  A public demo showing schema validation, audit logging, and automated reporting applied to Google Fit → Google Sheets.
+                  A personal project that takes fitness data from Google Fit, checks it for errors, and creates reports in Google Sheets. Included here to show how I build reliable data workflows, not just plan them.
                 </p>
 
                 <div className="grid gap-2 sm:grid-cols-2">
