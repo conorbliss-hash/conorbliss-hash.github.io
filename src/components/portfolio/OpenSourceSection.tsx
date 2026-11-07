@@ -18,8 +18,8 @@ const OpenSourceSection = () => {
 
             <div className="flex flex-col justify-between gap-7 p-6 sm:p-8 md:p-10">
               <div>
-                <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-3">
-                  Personal project · Open source
+                <p className="font-display text-primary text-xl md:text-2xl font-semibold mb-4">
+                  Personal project
                 </p>
                 <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 leading-snug">
                   Health Coach: fitness data turned into useful reports
