@@ -1,6 +1,7 @@
 import { ArrowRight, Github } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
+import HealthCoachMock from "@/components/portfolio/HealthCoachMock";
 
 const OpenSourceSection = () => {
   return (
@@ -8,12 +9,8 @@ const OpenSourceSection = () => {
       <div className="section-container">
         <div className="max-w-6xl mx-auto overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
           <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative min-h-[240px] lg:min-h-[340px] bg-[#0f172a]">
-              <img
-                src="/interface-mock.svg"
-                alt="Health Coach interface mock showing a dashboard, metrics, and reporting flow"
-                className="h-full w-full object-cover"
-              />
+            <div className="relative min-h-[240px] lg:min-h-[340px] overflow-hidden bg-[#0f172a]">
+              <HealthCoachMock />
             </div>
 
             <div className="flex flex-col justify-between gap-7 p-6 sm:p-8 md:p-10">

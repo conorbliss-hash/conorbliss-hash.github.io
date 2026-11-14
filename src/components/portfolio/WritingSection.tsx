@@ -3,10 +3,10 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import operatingSystemDataImg from "@/assets/articles/operating-system-data.png";
-import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.png";
-import euAiActImg from "@/assets/articles/eu-ai-act.png";
-import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.png";
+import operatingSystemDataImg from "@/assets/articles/operating-system-data.webp";
+import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.webp";
+import euAiActImg from "@/assets/articles/eu-ai-act.webp";
+import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.webp";
 import { trackEvent } from "@/lib/analytics";
 
 const articles = [
@@ -36,18 +36,31 @@ const articles = [
   },
 ];
 
+// Moves the card's spotlight (see .spotlight-card in index.css) to the cursor.
+const trackSpotlight = (e: React.PointerEvent<HTMLElement>) => {
+  if (e.pointerType !== "mouse") return;
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty("--spot-x", `${e.clientX - r.left}px`);
+  el.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
+};
+
 const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
   <a
     href={article.link}
     target="_blank"
     rel="noopener noreferrer"
     onClick={() => trackEvent("Outbound Click", { destination: article.title })}
-    className="group rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
+    onPointerMove={trackSpotlight}
+    className="spotlight-card group rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
   >
     <div className="aspect-[16/10] overflow-hidden">
-      <img 
-        src={article.image} 
+      <img
+        src={article.image}
         alt={article.title}
+        loading="lazy"
+        width={960}
+        height={644}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>

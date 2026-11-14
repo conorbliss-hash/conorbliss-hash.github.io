@@ -1,5 +1,3 @@
-import { supabase } from "@/integrations/supabase/client";
-
 type PlausibleEventOptions = {
   props?: Record<string, string | number | boolean | undefined>;
 };
@@ -11,6 +9,14 @@ declare global {
 }
 
 const SESSION_KEY = "cb_session_id";
+
+// The Supabase client is only needed to record events, so it is loaded on demand
+// instead of being part of the bundle that has to download before the page renders.
+let supabasePromise: Promise<typeof import("@/integrations/supabase/client")["supabase"]> | null = null;
+const getSupabase = () => {
+  supabasePromise ??= import("@/integrations/supabase/client").then((m) => m.supabase);
+  return supabasePromise;
+};
 
 const getSessionId = () => {
   if (typeof window === "undefined") return null;
@@ -40,6 +46,7 @@ const record = async (
 ) => {
   if (typeof window === "undefined") return;
   try {
+    const supabase = await getSupabase();
     await supabase.from("site_events").insert({
       event_name: eventName,
       path: window.location.pathname,

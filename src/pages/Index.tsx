@@ -6,6 +6,7 @@ import WritingSection from "@/components/portfolio/WritingSection";
 import OpenSourceSection from "@/components/portfolio/OpenSourceSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
+import Aurora from "@/components/portfolio/Aurora";
 import { useEffect } from "react";
 import { trackPageview } from "@/lib/analytics";
 
@@ -15,7 +16,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
+      <Aurora />
       <Navbar />
       <main>
         <HeroSection />

@@ -8,6 +8,7 @@ import dataFoundationDiagramTall from "@/assets/diagrams/data-foundation-diagram
 import markGovernance from "@/assets/diagrams/mark-02-governance.svg";
 import markPortfolio from "@/assets/diagrams/mark-03-portfolio.svg";
 import markBi from "@/assets/diagrams/mark-04-bi.svg";
+import DataFoundationDiagram from "@/components/portfolio/DataFoundationDiagram";
 
 interface ProjectDetail {
   context: string;
@@ -322,15 +323,16 @@ const ProjectsSection = () => {
         <div className="space-y-14 md:space-y-16">
           <div className="grid gap-8 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
             <div className="lg:order-first">
-              <picture>
-                <source media="(max-width: 760px)" srcSet={dataFoundationDiagramTall} />
-                <img
-                  src={featured.image}
-                  alt={featured.imageAlt}
-                  loading="lazy"
-                  className="mx-auto h-auto w-full max-w-[440px] sm:max-w-none"
-                />
-              </picture>
+              {/* Narrow screens keep the tall static diagram; wider screens get the interactive one */}
+              <img
+                src={dataFoundationDiagramTall}
+                alt={featured.imageAlt}
+                loading="lazy"
+                className="mx-auto h-auto w-full max-w-[440px] min-[761px]:hidden"
+              />
+              <div className="hidden min-[761px]:block">
+                <DataFoundationDiagram />
+              </div>
             </div>
             <ProjectCard
               project={featured}
