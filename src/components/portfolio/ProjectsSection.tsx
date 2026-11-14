@@ -210,7 +210,11 @@ const ProjectCard = ({
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
-      className="group"
+      className={
+        featured
+          ? "group"
+          : "group h-full rounded-xl border border-border/80 bg-card/60 p-5 shadow-sm transition-colors duration-300 hover:border-primary/40 md:p-6"
+      }
     >
       {!featured && (
         <div className="mb-5 flex aspect-[19/11] items-center justify-center overflow-hidden">
@@ -343,7 +347,7 @@ const ProjectsSection = () => {
             />
           </div>
 
-          <div className="grid gap-x-8 gap-y-14 md:grid-cols-3 md:gap-y-16">
+          <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
             {professionalProjects.slice(1).map((project, i) => (
               <ProjectCard
                 key={project.id}
