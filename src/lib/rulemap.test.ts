@@ -10,12 +10,13 @@ const with_ = (over: Partial<Profile>): Profile => ({ ...BLANK_PROFILE, ...over 
 describe("rule map golden profiles", () => {
   it("example: Swedish SaaS with AI, selling to banks and insurers", () => {
     expect(ids(EXAMPLE_PROFILE)).toEqual(
-      ["ai-act-baseline", "ai-act-high-risk", "ai-act-transparency", "ccd2", "dora-supplier", "gdpr-ai"].sort(),
+      // 19 Nov expert review added nis2-cloud (medium SaaS) and pld (software as a product).
+      ["ai-act-baseline", "ai-act-high-risk", "ai-act-transparency", "ccd2", "dora-supplier", "gdpr-ai", "nis2-cloud", "pld"].sort(),
     );
   });
 
   it("no AI, no regulated customers: nothing applies", () => {
-    expect(ids(with_({ countries: ["SE"] }))).toEqual([]);
+    expect(ids(with_({ countries: ["SE"], size: "small" }))).toEqual([]);
   });
 
   it("Norway-only AI user gets the Norway watch, not the EU AI Act duties", () => {
@@ -47,7 +48,7 @@ describe("rule map golden profiles", () => {
   });
 
   it("installable software triggers the Cyber Resilience Act", () => {
-    expect(ids(with_({ countries: ["SE"], installable: true }))).toEqual(["cra"]);
+    expect(ids(with_({ countries: ["SE"], size: "small", installable: true }))).toEqual(["cra", "pld"]);
   });
 
   it("public-sector AI vendor sees procurement clauses", () => {
@@ -98,5 +99,32 @@ describe("rule map golden profiles", () => {
 
   it("no credit scoring, no Consumer Credit Directive", () => {
     expect(ids(with_({ countries: ["SE"], firmType: "financial", customers: ["consumers"], aiUse: "product" }))).not.toContain("ccd2");
+  });
+
+  it("medium SaaS firm is asked to check NIS2 cloud scope; a small one isn't", () => {
+    expect(ids(with_({ countries: ["SE"], size: "medium" }))).toEqual(["nis2-cloud"]);
+    expect(ids(with_({ countries: ["SE"], size: "small" }))).not.toContain("nis2-cloud");
+  });
+
+  it("Norway-only lender doesn't get the Consumer Credit Directive (not EEA law yet)", () => {
+    const out = ids(
+      with_({ countries: ["NO"], firmType: "financial", customers: ["consumers"], aiUse: "product", highRisk: ["credit"] }),
+    );
+    expect(out).not.toContain("ccd2");
+  });
+
+  it("Norway-only DORA supplier gets the Norwegian date", () => {
+    const r = buildMap(with_({ countries: ["NO"], customers: ["finance"] })).find((x) => x.id === "dora-supplier");
+    expect(r?.date).toBe("2025-07-01");
+  });
+
+  it("specific cards lead within a status; generic AI literacy and GDPR go last", () => {
+    const now = buildMap(EXAMPLE_PROFILE).filter((r) => r.status === "now").map((r) => r.id);
+    expect(now.slice(-2)).toEqual(["ai-act-baseline", "gdpr-ai"]);
+  });
+
+  it("product liability card is only for EU sellers of software products", () => {
+    expect(ids(with_({ countries: ["NO"], aiUse: "product", personalData: "no" }))).not.toContain("pld");
+    expect(ids(with_({ countries: ["SE"], size: "small", aiUse: "internal", personalData: "no" }))).not.toContain("pld");
   });
 });

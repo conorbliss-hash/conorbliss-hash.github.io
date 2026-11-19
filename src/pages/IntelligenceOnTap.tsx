@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowDown, ArrowLeft, Check, Copy, ExternalLink, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowUp, Check, ChevronDown, Copy, ExternalLink, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
 
 import { SCAN_ENABLED, SiteScan } from "@/components/iot/SiteScan";
 import { trackEvent, trackPageview } from "@/lib/analytics";
@@ -87,12 +87,9 @@ const Chip = ({ on, onClick, children }: { on: boolean; onClick: () => void; chi
   </button>
 );
 
-const Field = ({ n, label, hint, children }: { n: number; label: string; hint?: string; children: React.ReactNode }) => (
+const Field = ({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) => (
   <fieldset className="border-t border-border pt-4">
-    <legend className="flex items-baseline gap-2 text-sm font-semibold text-foreground">
-      <span className="font-display text-xs text-primary">{n}</span>
-      {label}
-    </legend>
+    <legend className="text-sm font-semibold text-foreground">{label}</legend>
     {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
     <div className="mt-3 flex flex-wrap gap-2">{children}</div>
   </fieldset>
@@ -101,60 +98,69 @@ const Field = ({ n, label, hint, children }: { n: number; label: string; hint?: 
 const fmtDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 
+// Progressive disclosure: the card shows what applies, when, and the one first step.
+// Why it applies, the other steps, customer questions and sources sit one tap down.
 const ResultCard = ({ r }: { r: RuleResult }) => (
   <article className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm">
     <span className={`absolute inset-y-0 left-0 w-1 ${STATUS[r.status].bar}`} aria-hidden />
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
       <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${STATUS[r.status].pill}`}>{STATUS[r.status].label}</span>
-      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{r.law}</span>
+      <span className="text-xs text-muted-foreground">{r.dateLabel}</span>
     </div>
     <h3 className="mt-2 font-display text-lg font-semibold leading-snug">{r.title}</h3>
-    <p className="mt-0.5 text-sm font-medium text-primary">{r.dateLabel}</p>
-    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.why}</p>
-    <ul className="mt-3 space-y-1.5">
-      {r.actions.map((a, i) => (
-        <li key={a} className="flex gap-2 text-sm">
-          <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-          <span>
-            {i === 0 && <span className="font-semibold text-foreground">Start here: </span>}
-            {a}
-          </span>
-        </li>
-      ))}
-    </ul>
-    <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-      {r.sources.map((s) => (
-        <a
-          key={s.url}
-          href={s.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs text-muted-foreground underline-offset-2 hover:text-primary hover:underline"
-        >
-          {s.label}
-          <ExternalLink className="h-3 w-3" />
-        </a>
-      ))}
-    </div>
+    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{r.law}</p>
+    <p className="mt-3 flex gap-2 text-sm">
+      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+      <span>
+        <span className="font-semibold">First step: </span>
+        {r.actions[0]}
+      </span>
+    </p>
+    <details className="group mt-3">
+      <summary className="inline-flex cursor-pointer list-none items-center gap-1 text-sm font-medium text-primary hover:underline [&::-webkit-details-marker]:hidden">
+        Why, next steps and sources
+        <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
+      </summary>
+      <div className="mt-3 space-y-3 border-t border-border pt-3">
+        <p className="text-sm leading-relaxed text-muted-foreground">{r.why}</p>
+        {r.actions.length > 1 && (
+          <ul className="space-y-1.5">
+            {r.actions.slice(1).map((a) => (
+              <li key={a} className="flex gap-2 text-sm">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary/60" />
+                <span>{a}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {r.asks.length > 0 && (
+          <div className="rounded-lg bg-muted/50 p-3 text-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Customers will ask</p>
+            <ul className="mt-1 space-y-1">
+              {r.asks.map((q) => (
+                <li key={q}>{q}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          {r.sources.map((s) => (
+            <a
+              key={s.url}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-muted-foreground underline-offset-2 hover:text-primary hover:underline"
+            >
+              {s.label}
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </details>
   </article>
 );
-
-const Timeline = ({ items }: { items: RuleResult[] }) => {
-  if (!items.length) return null;
-  return (
-    <div className="rounded-2xl border border-border bg-card p-5">
-      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Coming up for you</p>
-      <ol className="mt-4 grid gap-4 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">
-        {items.map((r) => (
-          <li key={r.id} className="border-l-2 border-accent pl-3">
-            <p className="font-display text-sm font-semibold">{fmtDate(r.date!)}</p>
-            <p className="text-xs text-muted-foreground">{r.law}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-};
 
 const SignUp = ({ profile, count }: { profile: Profile; count: number }) => {
   const [email, setEmail] = useState("");
@@ -300,13 +306,13 @@ const Feedback = ({ profile, ruleIds }: { profile: Profile; ruleIds: string[] })
   );
 };
 
-const EXAMPLE_RESULTS = buildMap(EXAMPLE_PROFILE);
-const EXAMPLE_NOW = EXAMPLE_RESULTS.filter((r) => r.status === "now").length;
-
 const IntelligenceOnTap = () => {
   const [profile, setProfile] = useState<Profile>(EXAMPLE_PROFILE);
   const [isExample, setIsExample] = useState(true);
   const [copied, setCopied] = useState(false);
+  // High-risk uses are behind a yes/no gate so most visitors never see the eight-way list.
+  const [decidesAboutPeople, setDecidesAboutPeople] = useState(EXAMPLE_PROFILE.highRisk.length > 0);
+  const [showWatch, setShowWatch] = useState(false);
 
   useEffect(() => {
     trackPageview();
@@ -316,14 +322,10 @@ const IntelligenceOnTap = () => {
   const results = useMemo(() => buildMap(profile), [profile]);
   const next = useMemo(() => upcoming(results), [results]);
   const asks = useMemo(() => customerQuestions(results), [results]);
-  const counts = useMemo(
-    () => ({
-      now: results.filter((r) => r.status === "now").length,
-      soon: results.filter((r) => r.status === "soon").length,
-      watch: results.filter((r) => r.status === "watch").length,
-    }),
-    [results],
-  );
+  const main = results.filter((r) => r.status !== "watch");
+  const watch = results.filter((r) => r.status === "watch");
+  const nNow = results.filter((r) => r.status === "now").length;
+  const nSoon = results.filter((r) => r.status === "soon").length;
 
   const set = <K extends keyof Profile>(key: K, value: Profile[K]) => {
     setIsExample(false);
@@ -335,6 +337,11 @@ const IntelligenceOnTap = () => {
       const cur = p[key] as string[];
       return { ...p, [key]: cur.includes(value) ? cur.filter((v) => v !== value) : [...cur, value] };
     });
+  };
+  const load = (p: Profile, example: boolean) => {
+    setProfile(p);
+    setIsExample(example);
+    setDecidesAboutPeople(p.highRisk.length > 0);
   };
 
   const copy = async () => {
@@ -348,6 +355,10 @@ const IntelligenceOnTap = () => {
       /* clipboard refused: nothing else to do */
     }
   };
+
+  const summary = [nNow && `${nNow} ${nNow === 1 ? "applies" : "apply"} now`, nSoon && `${nSoon} coming`, watch.length && `${watch.length} to watch`]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <div className="min-h-screen bg-background">
@@ -370,183 +381,206 @@ const IntelligenceOnTap = () => {
             Which AI rules apply to your company?
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Answer a few questions and get a map of the EU and Nordic rules that touch your AI: what applies now, what's
-            coming and when, what to do, and the questions your customers will ask. Every line links to its source.
+            Answer a few questions. See which EU and Nordic rules apply, when, and the first step for each.
           </p>
           <p className="mt-4 flex items-start gap-2 text-sm text-muted-foreground">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <span>
-              A transparent rule set, not a chatbot. General information, not legal advice. Built by Conor Bliss, AIGP and ISO/IEC
-              42001 certified.
+              A transparent rule set, not a chatbot. Every line links to its source. General information, not legal advice. Built by
+              Conor Bliss, AIGP and ISO/IEC 42001 certified.
             </span>
           </p>
         </div>
 
-        {/* On phones the map sits several screens down, so show the example's answer first. */}
-        <div className="mt-6 rounded-2xl border border-border bg-card p-4 lg:hidden">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Example result</p>
-          <p className="mt-1 text-sm">
-            A 120-person Swedish SaaS firm with AI in its product, selling to banks and insurers:{" "}
-            <strong>{EXAMPLE_NOW} rules apply now</strong>, and its biggest deadline is <strong>2 Dec 2027</strong> (AI Act high-risk duties).
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <a href="#your-map" className="inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-sm hover:border-primary">
-              See the example map <ArrowDown className="h-3.5 w-3.5" />
-            </a>
-            <a href="#your-company" className="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              Check your own company <ArrowDown className="h-3.5 w-3.5" />
-            </a>
-          </div>
-        </div>
-
         {SCAN_ENABLED && (
-        <div className="mt-8 max-w-3xl">
-          <SiteScan
-            onPrefill={(p) => {
-              setIsExample(false);
-              setProfile(p);
-            }}
-          />
-        </div>
+          <div className="mt-8 max-w-3xl">
+            <SiteScan
+              onPrefill={(p) => {
+                load(p, false);
+              }}
+            />
+          </div>
         )}
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:items-start">
-          {/* Questions */}
-          <section id="your-company" aria-label="Your company" className="scroll-mt-4 rounded-2xl border border-border bg-card p-5 lg:sticky lg:top-6">
+          {/* Questions: five core ones; follow-ups appear only when an answer makes them matter. */}
+          <section id="your-company" aria-label="Your company" className="order-2 scroll-mt-4 rounded-2xl border border-border bg-card p-5 lg:order-1 lg:sticky lg:top-6">
             <div className="flex items-center justify-between gap-3">
               <h2 className="font-display text-lg font-semibold">Your company</h2>
               <button
                 type="button"
-                onClick={() => {
-                  setProfile(isExample ? BLANK_PROFILE : EXAMPLE_PROFILE);
-                  setIsExample(!isExample);
-                }}
+                onClick={() => (isExample ? load(BLANK_PROFILE, false) : load(EXAMPLE_PROFILE, true))}
                 className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
                 {isExample ? "Start blank" : "Load example"}
               </button>
             </div>
-            {isExample && (
-              <p className="mt-2 rounded-lg bg-accent/10 px-3 py-2 text-xs text-foreground">
-                Example: a 120-person Swedish SaaS firm with AI in its product, selling to banks and insurers. Change any answer.
-              </p>
-            )}
+            <p className="mt-2 text-xs text-muted-foreground">
+              {isExample ? "Showing an example. Change any answer. " : ""}Nothing you enter is saved unless you sign up.
+            </p>
 
-            <p className="mt-2 text-xs text-muted-foreground">Nothing you enter here is saved unless you sign up below.</p>
             <div className="mt-4 space-y-4">
-              <Field n={1} label="Where do you sell?">
+              <Field label="Where do you sell?">
                 {COUNTRIES.map((o) => (
                   <Chip key={o.value} on={profile.countries.includes(o.value)} onClick={() => toggle("countries", o.value)}>
                     {o.label}
                   </Chip>
                 ))}
               </Field>
-              <Field n={2} label="What kind of company?">
+              <Field label="What kind of company?">
                 {FIRM.map((o) => (
                   <Chip key={o.value} on={profile.firmType === o.value} onClick={() => set("firmType", o.value)}>
                     {o.label}
                   </Chip>
                 ))}
               </Field>
-              <Field n={3} label="How many staff?">
-                {SIZES.map((o) => (
-                  <Chip key={o.value} on={profile.size === o.value} onClick={() => set("size", o.value)}>
-                    {o.label}
-                  </Chip>
-                ))}
-              </Field>
-              <Field n={4} label="Who are your customers?" hint="Pick all that apply.">
+              {/* Size only changes the result for IT and SaaS firms (NIS2 size threshold). */}
+              {(profile.firmType === "msp" || profile.firmType === "software") && (
+                <Field label="How many staff?">
+                  {SIZES.map((o) => (
+                    <Chip key={o.value} on={profile.size === o.value} onClick={() => set("size", o.value)}>
+                      {o.label}
+                    </Chip>
+                  ))}
+                </Field>
+              )}
+              <Field label="Who are your customers?" hint="Pick all that apply.">
                 {CUSTOMERS.map((o) => (
                   <Chip key={o.value} on={profile.customers.includes(o.value)} onClick={() => toggle("customers", o.value)}>
                     {o.label}
                   </Chip>
                 ))}
               </Field>
-              <Field n={5} label="How do you use AI?">
+              <Field label="How do you use AI?">
                 {AI_USE.map((o) => (
                   <Chip key={o.value} on={profile.aiUse === o.value} onClick={() => set("aiUse", o.value)}>
                     {o.label}
                   </Chip>
                 ))}
               </Field>
+              <Field label="Do you sell installable software or connected devices?" hint="Not only SaaS.">
+                <Chip on={profile.installable} onClick={() => set("installable", true)}>Yes</Chip>
+                <Chip on={!profile.installable} onClick={() => set("installable", false)}>No</Chip>
+              </Field>
+
               {profile.aiUse !== "none" && (
-                <>
-                  <Field n={6} label="Does your AI talk to people or create content they see?">
+                <div className="space-y-4 rounded-xl bg-muted/40 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">About your AI</p>
+                  <Field label="Does it talk to people or create content they see?">
                     <Chip on={profile.facesUsers} onClick={() => set("facesUsers", true)}>Yes</Chip>
                     <Chip on={!profile.facesUsers} onClick={() => set("facesUsers", false)}>No</Chip>
                   </Field>
-                  <Field n={7} label="Does personal data go through your AI?">
+                  <Field label="Does personal data go through it?">
                     {(["yes", "no", "unsure"] as const).map((v) => (
                       <Chip key={v} on={profile.personalData === v} onClick={() => set("personalData", v)}>
                         {v === "yes" ? "Yes" : v === "no" ? "No" : "Not sure"}
                       </Chip>
                     ))}
                   </Field>
-                  <Field n={8} label="Is AI used for any of these?" hint="These are high-risk uses under the AI Act.">
-                    {HIGH_RISK.map((o) => (
-                      <Chip key={o.value} on={profile.highRisk.includes(o.value)} onClick={() => toggle("highRisk", o.value)}>
-                        {o.label}
-                      </Chip>
-                    ))}
+                  <Field label="Does it help decide things about people?" hint="Credit, insurance, jobs, exams, benefits, health, or biometrics.">
+                    <Chip on={decidesAboutPeople} onClick={() => setDecidesAboutPeople(true)}>Yes</Chip>
+                    <Chip
+                      on={!decidesAboutPeople}
+                      onClick={() => {
+                        setDecidesAboutPeople(false);
+                        set("highRisk", []);
+                      }}
+                    >
+                      No
+                    </Chip>
                   </Field>
-                </>
+                  {decidesAboutPeople && (
+                    <Field label="Which ones?" hint="These are high-risk uses under the AI Act.">
+                      {HIGH_RISK.map((o) => (
+                        <Chip key={o.value} on={profile.highRisk.includes(o.value)} onClick={() => toggle("highRisk", o.value)}>
+                          {o.label}
+                        </Chip>
+                      ))}
+                    </Field>
+                  )}
+                </div>
               )}
-              <Field n={profile.aiUse !== "none" ? 9 : 6} label="Do you sell installable software or connected devices?" hint="Not only SaaS.">
-                <Chip on={profile.installable} onClick={() => set("installable", true)}>Yes</Chip>
-                <Chip on={!profile.installable} onClick={() => set("installable", false)}>No</Chip>
-              </Field>
             </div>
+            <a href="#your-map" className="mt-5 flex items-center justify-center gap-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground lg:hidden">
+              See your map <ArrowUp className="h-4 w-4" />
+            </a>
           </section>
 
-          {/* Map */}
-          <section id="your-map" aria-label="Your rule map" aria-live="polite" className="scroll-mt-4 min-w-0 space-y-5">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <h2 className="font-display text-2xl font-semibold">Your rule map</h2>
+          {/* Map: the answer first, then one card per rule, details one tap down. */}
+          <section id="your-map" aria-label="Your rule map" aria-live="polite" className="order-1 scroll-mt-4 min-w-0 space-y-5 lg:order-2">
+            <div className="rounded-2xl border border-border bg-card p-5">
+              <h2 className="font-display text-2xl font-semibold">{isExample ? "Example rule map" : "Your rule map"}</h2>
+              {isExample && (
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {results.length
-                    ? `${results.length} ${results.length === 1 ? "rule touches" : "rules touch"} this profile.`
-                    : "Pick where you sell and how you use AI to see your map."}
+                  A 120-person Swedish SaaS firm with AI in its product, selling to banks and insurers.{" "}
+                  <a href="#your-company" className="font-medium text-primary hover:underline lg:hidden">
+                    Check your own company
+                  </a>
                 </p>
-              </div>
-              {results.length > 0 && (
-                <button
-                  type="button"
-                  onClick={copy}
-                  className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm hover:border-primary/50"
-                >
-                  {copied ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
-                  {copied ? "Copied" : "Copy as text"}
-                </button>
+              )}
+              {results.length ? (
+                <>
+                  <p className="mt-1 text-base">{summary}</p>
+                  {next[0] && (
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Next deadline: <strong className="text-foreground">{fmtDate(next[0].date!)}</strong>, {next[0].title.toLowerCase()} ({next[0].law}).
+                    </p>
+                  )}
+                  <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={copy}
+                    className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm hover:border-primary/50"
+                  >
+                    {copied ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
+                    {copied ? "Copied" : "Copy as text"}
+                  </button>
+                  {!isExample && (
+                    <a href="#your-company" className="inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-sm hover:border-primary/50 lg:hidden">
+                      Change answers <ArrowDown className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                  </div>
+                </>
+              ) : (
+                <p className="mt-1 text-sm text-muted-foreground">Pick where you sell and how you use AI to see your map.</p>
               )}
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
-              {(["now", "soon", "watch"] as const).map((s) => (
-                <div key={s} className="rounded-2xl border border-border bg-card p-4">
-                  <p className="font-display text-3xl font-semibold tabular-nums">{counts[s]}</p>
-                  <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <span className={`h-2 w-2 rounded-full ${STATUS[s].bar}`} />
-                    {STATUS[s].label}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <Timeline items={next} />
-
             <div className="space-y-4">
-              {results.map((r) => (
+              {main.map((r) => (
                 <ResultCard key={r.id} r={r} />
               ))}
             </div>
 
+            {watch.length > 0 && (
+              <div>
+                <button
+                  type="button"
+                  aria-expanded={showWatch}
+                  onClick={() => setShowWatch((v) => !v)}
+                  className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary"
+                >
+                  {showWatch ? "Hide" : "Show"} {watch.length} {watch.length === 1 ? "rule" : "rules"} to watch
+                  <ChevronDown className={`h-4 w-4 transition-transform ${showWatch ? "rotate-180" : ""}`} />
+                </button>
+                {showWatch && (
+                  <div className="mt-3 space-y-4">
+                    {watch.map((r) => (
+                      <ResultCard key={r.id} r={r} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
             {asks.length > 0 && (
-              <div className="rounded-2xl border border-border bg-card p-5">
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Questions your customers will ask
-                </p>
+              <details className="group rounded-2xl border border-border bg-card p-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-semibold [&::-webkit-details-marker]:hidden">
+                  The {asks.length} questions your customers will ask
+                  <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
+                </summary>
                 <ol className="mt-3 space-y-2">
                   {asks.map((q, i) => (
                     <li key={q} className="flex gap-3 text-sm">
@@ -555,7 +589,7 @@ const IntelligenceOnTap = () => {
                     </li>
                   ))}
                 </ol>
-              </div>
+              </details>
             )}
 
             {results.length > 0 && <Feedback profile={profile} ruleIds={results.map((r) => r.id)} />}
@@ -564,29 +598,27 @@ const IntelligenceOnTap = () => {
           </section>
         </div>
 
-        <section className="mt-16 grid gap-8 border-t border-border pt-10 md:grid-cols-3">
-          <div>
-            <h2 className="font-display text-lg font-semibold">How it works</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              A transparent rule set, not a chatbot. Each answer switches specific rules on or off, and every result links
-              to the law or regulator it comes from. The same answers always give the same map.
+        <details className="group mt-16 border-t border-border pt-8">
+          <summary className="flex cursor-pointer list-none items-center gap-2 font-display text-lg font-semibold [&::-webkit-details-marker]:hidden">
+            How it works and what it covers
+            <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
+          </summary>
+          <div className="mt-4 grid max-w-4xl gap-6 text-sm leading-relaxed text-muted-foreground md:grid-cols-3">
+            <p>
+              <strong className="text-foreground">How it works.</strong> Each answer switches specific rules on or off, and every
+              result links to the law or regulator it comes from. The same answers always give the same map.
+            </p>
+            <p>
+              <strong className="text-foreground">What it covers.</strong> The EU AI Act (including the 2026 Digital Omnibus dates),
+              GDPR as it touches AI, DORA and NIS2 as they reach suppliers, the Consumer Credit Directive on automated credit
+              decisions, the Cyber Resilience Act, the new Product Liability Directive, medical-device AI, and Nordic regulators. Rules reviewed {REVIEWED}.
+            </p>
+            <p>
+              <strong className="text-foreground">What it isn't.</strong> General information, not legal advice. It flags what's
+              likely to apply so you know where to look. Check anything important with your own counsel.
             </p>
           </div>
-          <div>
-            <h2 className="font-display text-lg font-semibold">What it covers</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              The EU AI Act (including the 2026 Digital Omnibus dates), GDPR as it touches AI, DORA and NIS2 as they reach
-              suppliers, the Consumer Credit Directive on automated credit decisions, the Cyber Resilience Act, medical-device AI, and Nordic regulators. Rules reviewed {REVIEWED}.
-            </p>
-          </div>
-          <div>
-            <h2 className="font-display text-lg font-semibold">What it isn't</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              General information, not legal advice. It flags what's likely to apply so you know where to look. Check
-              anything important with your own counsel.
-            </p>
-          </div>
-        </section>
+        </details>
 
         <p className="mt-10 text-sm text-muted-foreground">
           Built by{" "}
