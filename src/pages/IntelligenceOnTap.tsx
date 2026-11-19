@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, Check, Copy, ExternalLink, RotateCcw, Sparkles } from "lucide-react";
 
+import { SiteScan } from "@/components/iot/SiteScan";
 import { trackEvent, trackPageview } from "@/lib/analytics";
 import {
   BLANK_PROFILE,
@@ -368,7 +369,16 @@ const IntelligenceOnTap = () => {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:items-start">
+        <div className="mt-8 max-w-3xl">
+          <SiteScan
+            onPrefill={(p) => {
+              setIsExample(false);
+              setProfile(p);
+            }}
+          />
+        </div>
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:items-start">
           {/* Questions */}
           <section aria-label="Your company" className="rounded-2xl border border-border bg-card p-5 lg:sticky lg:top-6">
             <div className="flex items-center justify-between gap-3">
