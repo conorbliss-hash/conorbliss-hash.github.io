@@ -105,7 +105,7 @@ const HIGH_RISK_LABEL: Record<HighRisk, string> = {
 const list = (items: string[]) =>
   items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 
-export function buildMap(p: Profile): RuleResult[] {
+export function buildMap(p: Profile, today = new Date()): RuleResult[] {
   const out: RuleResult[] = [];
   const hasAI = p.aiUse !== "none";
   const builds = p.aiUse === "product" || p.aiUse === "own_models";
@@ -251,7 +251,7 @@ export function buildMap(p: Profile): RuleResult[] {
       asks: [
         "Which subcontractors, including AI model providers, support this service?",
         "How will you support us during an ICT incident or an exit?",
-        "Where is our data stored and processed, and can it stay in the EU/EEA?",
+        "Where is our data stored, and can it stay in the EU/EEA?",
       ],
       sources: [SRC.dora],
     });
@@ -278,7 +278,8 @@ export function buildMap(p: Profile): RuleResult[] {
       id: "ccd2",
       law: "Consumer Credit Directive",
       title: lender ? "Automated credit decisions for consumers" : "Your lender customers' new consumer credit rules",
-      status: "now",
+      // Applies from 20 Nov 2026; show it as coming until then so the card and timeline agree.
+      status: today >= new Date("2026-11-20") ? "now" : "soon",
       date: "2026-11-20",
       dateLabel: "From 20 Nov 2026, through national law",
       why: lender

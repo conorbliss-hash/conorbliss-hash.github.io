@@ -91,6 +91,9 @@ describe("rule map golden profiles", () => {
   it("consumer lender using automated credit scoring gets the Consumer Credit Directive", () => {
     const r = buildMap(with_({ countries: ["SE"], firmType: "financial", customers: ["consumers"], aiUse: "product", highRisk: ["credit"] }));
     expect(r.find((x) => x.id === "ccd2")?.title).toMatch(/consumers/);
+    const lender = with_({ countries: ["SE"], firmType: "financial", customers: ["consumers"], aiUse: "product", highRisk: ["credit"] });
+    expect(buildMap(lender, new Date("2026-11-19")).find((x) => x.id === "ccd2")?.status).toBe("soon");
+    expect(buildMap(lender, new Date("2026-11-21")).find((x) => x.id === "ccd2")?.status).toBe("now");
   });
 
   it("no credit scoring, no Consumer Credit Directive", () => {

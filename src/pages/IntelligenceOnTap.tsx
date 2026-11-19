@@ -576,7 +576,7 @@ const IntelligenceOnTap = () => {
             <h2 className="font-display text-lg font-semibold">What it covers</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               The EU AI Act (including the 2026 Digital Omnibus dates), GDPR as it touches AI, DORA and NIS2 as they reach
-              suppliers, the Cyber Resilience Act, medical-device AI, and Nordic regulators. Rules reviewed {REVIEWED}.
+              suppliers, the Consumer Credit Directive on automated credit decisions, the Cyber Resilience Act, medical-device AI, and Nordic regulators. Rules reviewed {REVIEWED}.
             </p>
           </div>
           <div>
