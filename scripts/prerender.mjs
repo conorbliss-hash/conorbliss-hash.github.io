@@ -46,9 +46,8 @@ const toolPage = template
   .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap/$2`)
   .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1https://conorbliss.com/og-intelligence-on-tap.png$2`)
   .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1https://conorbliss.com/og-intelligence-on-tap.png$2`)
-  .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap/$2`)
-  // Private beta: reachable by link only. Remove this line when the tool goes public.
-  .replace("</head>", `  <meta name="robots" content="noindex, nofollow" />\n  </head>`);
+  .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap/$2`);
+// Public since 19 Nov 2026 (was noindex during the private beta).
 await mkdir(path.join(dist, "intelligence-on-tap"), { recursive: true });
 await writeFile(path.join(dist, "intelligence-on-tap", "index.html"), toolPage);
 console.log(`prerender: wrote dist/intelligence-on-tap/index.html (${(toolPage.length / 1024).toFixed(1)} kB)`);

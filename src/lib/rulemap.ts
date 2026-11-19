@@ -74,6 +74,7 @@ export const BLANK_PROFILE: Profile = {
 
 const SRC = {
   aiAct: { label: "AI Act, Regulation (EU) 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+  omnibus: { label: "Digital Omnibus on AI, Regulation (EU) 2026/1744", url: "https://eur-lex.europa.eu/eli/reg/2026/1744/oj" },
   aiActTimeline: { label: "AI Act implementation timeline", url: "https://artificialintelligenceact.eu/implementation-timeline/" },
   checker: { label: "EU AI Act Service Desk checker", url: "https://ai-act-service-desk.ec.europa.eu/en/eu-ai-act-compliance-checker" },
   gdpr: { label: "GDPR, Regulation (EU) 2016/679", url: "https://eur-lex.europa.eu/eli/reg/2016/679/oj" },
@@ -138,15 +139,17 @@ export function buildMap(p: Profile, today = new Date()): RuleResult[] {
       law: "EU AI Act, Art. 50",
       title: "Tell people when they're dealing with AI",
       status: "now",
-      date: "2026-08-02",
-      dateLabel: "Since 2 Aug 2026",
-      why: "Your AI talks to people or produces content they see. Users must be told it's AI, and generated content must be marked as such.",
+      // Disclosure applies since 2 Aug 2026; the Omnibus gave generative systems already on the
+      // market until 2 Dec 2026 for machine-readable marking (Art. 50(2)), so that's the date to show.
+      date: "2026-12-02",
+      dateLabel: "Since 2 Aug 2026 · marking for older systems by 2 Dec 2026",
+      why: "Your AI talks to people or produces content they see. Users must be told it's AI, and generated content must be marked as such. If your generative AI was on the market before 2 Aug 2026, the machine-readable marking is due by 2 Dec 2026.",
       actions: [
         "Add a clear notice wherever a user chats with AI.",
         "Mark AI-generated text, images, audio or video in a machine-readable way.",
       ],
       asks: ["How do you tell end users that they're interacting with AI?"],
-      sources: [SRC.aiAct, SRC.aiActTimeline],
+      sources: [SRC.aiAct, SRC.omnibus],
     });
   }
 
@@ -171,7 +174,7 @@ export function buildMap(p: Profile, today = new Date()): RuleResult[] {
             "Check whether you need a fundamental-rights impact assessment (public bodies, credit and insurance).",
           ],
       asks: ["Is any feature high-risk under the AI Act, and who is the provider?"],
-      sources: [SRC.aiAct, SRC.aiActTimeline],
+      sources: [SRC.aiAct, SRC.omnibus, SRC.aiActTimeline],
     });
   }
 
@@ -189,7 +192,7 @@ export function buildMap(p: Profile, today = new Date()): RuleResult[] {
         "Line up MDR technical documentation with the AI Act's requirements.",
       ],
       asks: ["Is the AI feature CE-marked as a medical device?"],
-      sources: [SRC.mdr, SRC.aiAct],
+      sources: [SRC.mdr, SRC.aiAct, SRC.omnibus],
     });
   }
 
