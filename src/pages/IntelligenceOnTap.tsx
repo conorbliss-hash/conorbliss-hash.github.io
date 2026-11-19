@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, Check, Copy, ExternalLink, RotateCcw, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowLeft, Check, Copy, ExternalLink, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
 
-import { SiteScan } from "@/components/iot/SiteScan";
+import { SCAN_ENABLED, SiteScan } from "@/components/iot/SiteScan";
 import { trackEvent, trackPageview } from "@/lib/analytics";
 import {
   BLANK_PROFILE,
@@ -112,10 +112,13 @@ const ResultCard = ({ r }: { r: RuleResult }) => (
     <p className="mt-0.5 text-sm font-medium text-primary">{r.dateLabel}</p>
     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.why}</p>
     <ul className="mt-3 space-y-1.5">
-      {r.actions.map((a) => (
+      {r.actions.map((a, i) => (
         <li key={a} className="flex gap-2 text-sm">
           <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-          <span>{a}</span>
+          <span>
+            {i === 0 && <span className="font-semibold text-foreground">Start here: </span>}
+            {a}
+          </span>
         </li>
       ))}
     </ul>
@@ -297,6 +300,9 @@ const Feedback = ({ profile, ruleIds }: { profile: Profile; ruleIds: string[] })
   );
 };
 
+const EXAMPLE_RESULTS = buildMap(EXAMPLE_PROFILE);
+const EXAMPLE_NOW = EXAMPLE_RESULTS.filter((r) => r.status === "now").length;
+
 const IntelligenceOnTap = () => {
   const [profile, setProfile] = useState<Profile>(EXAMPLE_PROFILE);
   const [isExample, setIsExample] = useState(true);
@@ -367,8 +373,33 @@ const IntelligenceOnTap = () => {
             Answer a few questions and get a map of the EU and Nordic rules that touch your AI: what applies now, what's
             coming and when, what to do, and the questions your customers will ask. Every line links to its source.
           </p>
+          <p className="mt-4 flex items-start gap-2 text-sm text-muted-foreground">
+            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <span>
+              A transparent rule set, not a chatbot. General information, not legal advice. Built by Conor Bliss, AIGP and ISO/IEC
+              42001 certified.
+            </span>
+          </p>
         </div>
 
+        {/* On phones the map sits several screens down, so show the example's answer first. */}
+        <div className="mt-6 rounded-2xl border border-border bg-card p-4 lg:hidden">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Example result</p>
+          <p className="mt-1 text-sm">
+            A 120-person Swedish SaaS firm with AI in its product, selling to banks and insurers:{" "}
+            <strong>{EXAMPLE_NOW} rules apply now</strong>, and its biggest deadline is <strong>2 Dec 2027</strong> (AI Act high-risk duties).
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <a href="#your-map" className="inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-sm hover:border-primary">
+              See the example map <ArrowDown className="h-3.5 w-3.5" />
+            </a>
+            <a href="#your-company" className="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+              Check your own company <ArrowDown className="h-3.5 w-3.5" />
+            </a>
+          </div>
+        </div>
+
+        {SCAN_ENABLED && (
         <div className="mt-8 max-w-3xl">
           <SiteScan
             onPrefill={(p) => {
@@ -377,10 +408,11 @@ const IntelligenceOnTap = () => {
             }}
           />
         </div>
+        )}
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:items-start">
           {/* Questions */}
-          <section aria-label="Your company" className="rounded-2xl border border-border bg-card p-5 lg:sticky lg:top-6">
+          <section id="your-company" aria-label="Your company" className="scroll-mt-4 rounded-2xl border border-border bg-card p-5 lg:sticky lg:top-6">
             <div className="flex items-center justify-between gap-3">
               <h2 className="font-display text-lg font-semibold">Your company</h2>
               <button
@@ -401,6 +433,7 @@ const IntelligenceOnTap = () => {
               </p>
             )}
 
+            <p className="mt-2 text-xs text-muted-foreground">Nothing you enter here is saved unless you sign up below.</p>
             <div className="mt-4 space-y-4">
               <Field n={1} label="Where do you sell?">
                 {COUNTRIES.map((o) => (
@@ -467,7 +500,7 @@ const IntelligenceOnTap = () => {
           </section>
 
           {/* Map */}
-          <section aria-label="Your rule map" aria-live="polite" className="min-w-0 space-y-5">
+          <section id="your-map" aria-label="Your rule map" aria-live="polite" className="scroll-mt-4 min-w-0 space-y-5">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <h2 className="font-display text-2xl font-semibold">Your rule map</h2>

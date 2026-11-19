@@ -7,6 +7,7 @@ import type { Profile } from "@/lib/rulemap";
 // Talks to the scan-site edge function in the private intelligence-on-tap-scanner repo.
 // Until VITE_SCAN_ENDPOINT is set at build time, the box shows a "not switched on yet" state.
 const ENDPOINT = import.meta.env.VITE_SCAN_ENDPOINT as string | undefined;
+export const SCAN_ENABLED = Boolean(ENDPOINT);
 
 type Confidence = "found" | "inferred" | "unknown";
 type Evidence = { quote: string; url: string };

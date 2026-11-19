@@ -43,8 +43,10 @@ const toolPage = template
   .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${toolDesc}$2`)
   .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${toolTitle}$2`)
   .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${toolDesc}$2`)
-  .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap$2`)
-  .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap$2`)
+  .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap/$2`)
+  .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1https://conorbliss.com/og-intelligence-on-tap.png$2`)
+  .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1https://conorbliss.com/og-intelligence-on-tap.png$2`)
+  .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1https://conorbliss.com/intelligence-on-tap/$2`)
   // Private beta: reachable by link only. Remove this line when the tool goes public.
   .replace("</head>", `  <meta name="robots" content="noindex, nofollow" />\n  </head>`);
 await mkdir(path.join(dist, "intelligence-on-tap"), { recursive: true });

@@ -10,7 +10,7 @@ const with_ = (over: Partial<Profile>): Profile => ({ ...BLANK_PROFILE, ...over 
 describe("rule map golden profiles", () => {
   it("example: Swedish SaaS with AI, selling to banks and insurers", () => {
     expect(ids(EXAMPLE_PROFILE)).toEqual(
-      ["ai-act-baseline", "ai-act-high-risk", "ai-act-transparency", "dora-supplier", "gdpr-ai", "nis2-supply"].sort(),
+      ["ai-act-baseline", "ai-act-high-risk", "ai-act-transparency", "ccd2", "dora-supplier", "gdpr-ai"].sort(),
     );
   });
 
@@ -72,5 +72,28 @@ describe("rule map golden profiles", () => {
       expect(r.sources.length).toBeGreaterThan(0);
       expect(r.actions.length).toBeGreaterThan(0);
     }
+  });
+
+  // Added 19 Nov 2026 after the persona test (TalkingHead/strategy/user_test_2026-11-19.md).
+  it("finance-only customers get DORA, not NIS2 as well (DORA is the sector rule)", () => {
+    const out = ids(with_({ countries: ["SE"], customers: ["finance", "insurance"] }));
+    expect(out).toContain("dora-supplier");
+    expect(out).not.toContain("nis2-supply");
+  });
+
+  it("Norway-only seller of installable software watches the CRA rather than applying it", () => {
+    const cra = buildMap(with_({ countries: ["NO"], installable: true })).find((r) => r.id === "cra");
+    expect(cra?.status).toBe("watch");
+    expect(cra?.date).toBeUndefined();
+    expect(buildMap(with_({ countries: ["SE"], installable: true })).find((r) => r.id === "cra")?.status).toBe("now");
+  });
+
+  it("consumer lender using automated credit scoring gets the Consumer Credit Directive", () => {
+    const r = buildMap(with_({ countries: ["SE"], firmType: "financial", customers: ["consumers"], aiUse: "product", highRisk: ["credit"] }));
+    expect(r.find((x) => x.id === "ccd2")?.title).toMatch(/consumers/);
+  });
+
+  it("no credit scoring, no Consumer Credit Directive", () => {
+    expect(ids(with_({ countries: ["SE"], firmType: "financial", customers: ["consumers"], aiUse: "product" }))).not.toContain("ccd2");
   });
 });

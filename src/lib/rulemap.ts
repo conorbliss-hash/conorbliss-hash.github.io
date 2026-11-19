@@ -81,6 +81,7 @@ const SRC = {
   nis2: { label: "NIS2, Directive (EU) 2022/2555", url: "https://eur-lex.europa.eu/eli/dir/2022/2555/oj" },
   cra: { label: "Cyber Resilience Act, Regulation (EU) 2024/2847", url: "https://eur-lex.europa.eu/eli/reg/2024/2847/oj" },
   craReporting: { label: "European Commission: CRA reporting", url: "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting" },
+  ccd2: { label: "Consumer Credit Directive (EU) 2023/2225", url: "https://eur-lex.europa.eu/eli/dir/2023/2225/oj" },
   mdr: { label: "Medical Devices Regulation (EU) 2017/745", url: "https://eur-lex.europa.eu/eli/reg/2017/745/oj" },
   noAiLaw: { label: "Regjeringen: Norway's AI law consultation", url: "https://www.regjeringen.no/id3112327/" },
   procurement: { label: "EU Public Buyers Community: AI procurement", url: "https://public-buyers-community.ec.europa.eu/communities/procurement-ai" },
@@ -242,7 +243,7 @@ export function buildMap(p: Profile): RuleResult[] {
       status: "now",
       date: "2025-01-17",
       dateLabel: "Since 17 Jan 2025",
-      why: "DORA binds your financial customers, and they pass it on to you through contracts. That covers minimum contract terms (Art. 30) and data for their register of ICT suppliers (Art. 28).",
+      why: "DORA binds your financial customers, and they pass it on to you through contracts. That covers minimum contract terms (Art. 30) and data for their register of ICT suppliers (Art. 28). For banks and insurers DORA takes the place of most NIS2 security rules, so this is the card that matters for them.",
       actions: [
         "Prepare a standard DORA addendum: audit rights, incident support, exit plan.",
         "List your subcontractors, including AI model providers, for their register.",
@@ -250,6 +251,7 @@ export function buildMap(p: Profile): RuleResult[] {
       asks: [
         "Which subcontractors, including AI model providers, support this service?",
         "How will you support us during an ICT incident or an exit?",
+        "Where is our data stored and processed, and can it stay in the EU/EEA?",
       ],
       sources: [SRC.dora],
     });
@@ -270,6 +272,29 @@ export function buildMap(p: Profile): RuleResult[] {
     });
   }
 
+  if (p.highRisk.includes("credit") && (has("consumers") || has("finance"))) {
+    const lender = p.firmType === "financial" && has("consumers");
+    out.push({
+      id: "ccd2",
+      law: "Consumer Credit Directive",
+      title: lender ? "Automated credit decisions for consumers" : "Your lender customers' new consumer credit rules",
+      status: "now",
+      date: "2026-11-20",
+      dateLabel: "From 20 Nov 2026, through national law",
+      why: lender
+        ? "When creditworthiness is assessed by automated processing, consumers can ask for a human to review the decision, get a meaningful explanation of it, and contest it. Personalised offers based on automated processing must be disclosed. Check your country's transposing law, as some are late."
+        : "Your customers who lend to consumers must be able to explain automated creditworthiness decisions and offer human review. They'll need that from your scoring model.",
+      actions: lender
+        ? [
+            "Map every automated step in the credit decision and who can review it.",
+            "Write the plain-language explanation a rejected applicant would get.",
+          ]
+        : ["Prepare a short explanation of how your model scores, which a lender can pass on to a consumer."],
+      asks: lender ? [] : ["Can you explain an individual credit score in plain language, and support human review?"],
+      sources: [SRC.ccd2, SRC.gdpr],
+    });
+  }
+
   const nis2Status = "In force in Finland (Apr 2025), Denmark (Jul 2025) and Sweden (Jan 2026). Norway still runs NIS1-level rules.";
   if (p.firmType === "msp" && p.size !== "small") {
     out.push({
@@ -286,7 +311,9 @@ export function buildMap(p: Profile): RuleResult[] {
       asks: ["Are you covered by NIS2, and who is your supervisory authority?"],
       sources: [SRC.nis2],
     });
-  } else if (has("public") || has("health") || has("infra") || has("finance")) {
+  } else if (has("public") || has("health") || has("infra")) {
+    // Finance customers deliberately excluded: for banks and insurers DORA is the sector rule
+    // (lex specialis to NIS2), so their supplier demands arrive through the DORA card.
     out.push({
       id: "nis2-supply",
       law: "NIS2 (through your customers)",
@@ -294,7 +321,7 @@ export function buildMap(p: Profile): RuleResult[] {
       status: "now",
       dateLabel: "Depends on country",
       why: `Your customers in ${list(
-        [has("public") && "the public sector", has("health") && "health", has("infra") && "critical infrastructure", has("finance") && "finance"].filter(Boolean) as string[],
+        [has("public") && "the public sector", has("health") && "health", has("infra") && "critical infrastructure"].filter(Boolean) as string[],
       )} must manage supply-chain risk, so expect security clauses and questionnaires. ${nis2Status}`,
       actions: [
         "Keep a current security pack: controls, certifications, incident process.",
@@ -310,10 +337,13 @@ export function buildMap(p: Profile): RuleResult[] {
       id: "cra",
       law: "Cyber Resilience Act",
       title: "Security for products with digital elements",
-      status: "now",
-      date: "2027-12-11",
-      dateLabel: "Reporting since 11 Sep 2026 · all duties from 11 Dec 2027",
-      why: "You sell installable software or connected devices. Actively exploited vulnerabilities already have to be reported (an early warning within 24 hours), and the rest of the CRA follows in Dec 2027.",
+      // Like the AI Act, the CRA isn't part of the EEA Agreement yet, so Norway-only sellers watch it.
+      status: euMarket ? "now" : "watch",
+      date: euMarket ? "2027-12-11" : undefined,
+      dateLabel: euMarket ? "Reporting since 11 Sep 2026 · all duties from 11 Dec 2027" : "Not yet EEA law in Norway",
+      why: euMarket
+        ? "You sell installable software or connected devices. Actively exploited vulnerabilities already have to be reported (an early warning within 24 hours), and the rest of the CRA follows in Dec 2027."
+        : "You sell installable software or connected devices, but only in Norway. The CRA isn't part of the EEA Agreement yet, so it doesn't bind you today. Expect it to follow, and it applies the moment you sell into the EU.",
       actions: [
         "Set up vulnerability handling and the 24-hour reporting route.",
         "Plan secure-by-default design and a software bill of materials (SBOM).",
