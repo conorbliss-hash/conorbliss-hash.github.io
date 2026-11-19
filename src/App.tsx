@@ -6,6 +6,7 @@ import Index from "./pages/Index";
 // Rarely visited routes are split out so they don't weigh down the home page.
 const Stats = lazy(() => import("./pages/Stats"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const IntelligenceOnTap = lazy(() => import("./pages/IntelligenceOnTap"));
 
 // Router-agnostic: main.tsx wraps this in BrowserRouter, entry-server.tsx in StaticRouter.
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/intelligence-on-tap" element={<IntelligenceOnTap />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

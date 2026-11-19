@@ -4,6 +4,7 @@ import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import WritingSection from "@/components/portfolio/WritingSection";
 import OpenSourceSection from "@/components/portfolio/OpenSourceSection";
+import ToolSection from "@/components/portfolio/ToolSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
 import Aurora from "@/components/portfolio/Aurora";
@@ -22,6 +23,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <ProjectsSection />
+        <ToolSection />
         <OpenSourceSection />
         <AboutSection />
         <WritingSection />
