@@ -225,6 +225,77 @@ const SignUp = ({ profile, count }: { profile: Profile; count: number }) => {
   );
 };
 
+const Feedback = ({ profile, ruleIds }: { profile: Profile; ruleIds: string[] }) => {
+  const [verdict, setVerdict] = useState<"right" | "partly" | "wrong" | null>(null);
+  const [note, setNote] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const send = async () => {
+    if (!verdict) return;
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      await supabase.from("site_events").insert({
+        event_name: "rulemap_feedback",
+        path: "/intelligence-on-tap",
+        props: { verdict, note: note.trim().slice(0, 1000), profile, rules: ruleIds, reviewed: REVIEWED },
+      });
+    } catch {
+      /* feedback is best-effort */
+    }
+    trackEvent("Rule map feedback", { verdict });
+    setSent(true);
+  };
+
+  if (sent) {
+    return (
+      <div className="rounded-2xl border border-border bg-card p-5 text-sm">
+        <p className="font-semibold">Thanks, that helps.</p>
+        <p className="mt-1 text-muted-foreground">Every answer is read, and the map improves from them.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-2xl border border-border bg-card p-5">
+      <p className="font-display text-base font-semibold">Was this map right for your company?</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {(
+          [
+            ["right", "Yes, mostly right"],
+            ["partly", "Partly"],
+            ["wrong", "No, it's off"],
+          ] as const
+        ).map(([v, label]) => (
+          <Chip key={v} on={verdict === v} onClick={() => setVerdict(v)}>
+            {label}
+          </Chip>
+        ))}
+      </div>
+      {verdict && (
+        <div className="mt-3 space-y-2">
+          <label htmlFor="iot-note" className="block text-xs text-muted-foreground">
+            {verdict === "right" ? "Anything you'd add? (optional)" : "What's missing or wrong?"}
+          </label>
+          <textarea
+            id="iot-note"
+            rows={3}
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            className="w-full rounded-lg border border-input bg-background p-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
+          <button
+            type="button"
+            onClick={send}
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+          >
+            Send feedback
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const IntelligenceOnTap = () => {
   const [profile, setProfile] = useState<Profile>(EXAMPLE_PROFILE);
   const [isExample, setIsExample] = useState(true);
@@ -443,6 +514,8 @@ const IntelligenceOnTap = () => {
                 </ol>
               </div>
             )}
+
+            {results.length > 0 && <Feedback profile={profile} ruleIds={results.map((r) => r.id)} />}
 
             {results.length > 0 && <SignUp profile={profile} count={results.length} />}
           </section>

@@ -6,7 +6,6 @@ const navLinks = [
   { href: "#projects", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#writing", label: "Writing" },
-  { href: "/intelligence-on-tap", label: "AI rules map" },
 ];
 
 const Navbar = () => {
