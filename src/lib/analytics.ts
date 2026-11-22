@@ -40,11 +40,37 @@ const getDevice = () => {
   return "desktop";
 };
 
+// Owner and local visits are not counted. Open any page once with ?me on a
+// device to mark it as yours (?me=0 undoes it). Local dev servers never count.
+// plausible_ignore is Plausible's own opt-out flag, so both counters agree.
+const OWNER_KEY = "cb_owner";
+export const isOwnVisit = () => {
+  if (typeof window === "undefined") return true;
+  const host = window.location.hostname;
+  if (host === "localhost" || host === "127.0.0.1" || host.endsWith(".local")) return true;
+  try {
+    const q = new URLSearchParams(window.location.search);
+    if (q.has("me")) {
+      if (q.get("me") === "0") {
+        localStorage.removeItem(OWNER_KEY);
+        localStorage.removeItem("plausible_ignore");
+      } else {
+        localStorage.setItem(OWNER_KEY, "1");
+        localStorage.setItem("plausible_ignore", "true");
+      }
+    }
+    return localStorage.getItem(OWNER_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
+
 const record = async (
   eventName: string,
   props?: PlausibleEventOptions["props"],
 ) => {
   if (typeof window === "undefined") return;
+  if (isOwnVisit()) return;
   try {
     const supabase = await getSupabase();
     await supabase.from("site_events").insert({

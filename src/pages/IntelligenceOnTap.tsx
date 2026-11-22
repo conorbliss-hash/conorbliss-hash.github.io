@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowDown, ArrowLeft, ArrowUp, Check, ChevronDown, Copy, ExternalLink, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
 
+import { ScanRequest } from "@/components/iot/ScanRequest";
 import { SCAN_ENABLED, SiteScan } from "@/components/iot/SiteScan";
 import { trackEvent, trackPageview } from "@/lib/analytics";
 import {
@@ -105,7 +106,7 @@ const ResultCard = ({ r }: { r: RuleResult }) => (
     <span className={`absolute inset-y-0 left-0 w-1 ${STATUS[r.status].bar}`} aria-hidden />
     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
       <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${STATUS[r.status].pill}`}>{STATUS[r.status].label}</span>
-      <span className="text-xs text-muted-foreground">{r.dateLabel}</span>
+      {r.dateLabel !== STATUS[r.status].label && <span className="text-xs text-muted-foreground">{r.dateLabel}</span>}
     </div>
     <h3 className="mt-2 font-display text-lg font-semibold leading-snug">{r.title}</h3>
     <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{r.law}</p>
@@ -390,6 +391,17 @@ const IntelligenceOnTap = () => {
               Conor Bliss, AIGP and ISO/IEC 42001 certified.
             </span>
           </p>
+          {!SCAN_ENABLED && (
+            <p className="mt-3 text-sm">
+              <a
+                href="#check-site"
+                onClick={() => trackEvent("Scan link clicked", { from: "hero" })}
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                Short on time? Send your website and I'll check it for you →
+              </a>
+            </p>
+          )}
         </div>
 
         {SCAN_ENABLED && (
@@ -524,7 +536,7 @@ const IntelligenceOnTap = () => {
                   <p className="mt-1 text-base">{summary}</p>
                   {next[0] && (
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Next deadline: <strong className="text-foreground">{fmtDate(next[0].date!)}</strong>, {next[0].title.toLowerCase()} ({next[0].law}).
+                      Next deadline: <strong className="text-foreground">{fmtDate(next[0].date!)}</strong>, {next[0].title.charAt(0).toLowerCase() + next[0].title.slice(1)} ({next[0].law}).
                     </p>
                   )}
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -591,6 +603,8 @@ const IntelligenceOnTap = () => {
                 </ol>
               </details>
             )}
+
+            {!SCAN_ENABLED && <ScanRequest profile={profile} isExample={isExample} />}
 
             {results.length > 0 && <Feedback profile={profile} ruleIds={results.map((r) => r.id)} />}
 
