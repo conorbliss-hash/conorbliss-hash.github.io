@@ -117,6 +117,7 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
     }
   };
 
+  const flagged = result ? result.gaps.filter((g) => g.severity !== "low").length : 0;
   const checked = result
     ? (Object.entries(result.prefill.confidence) as [keyof Profile, Confidence][]).filter(([k, c]) => c !== "unknown" && FIELD_LABEL[k])
     : [];
@@ -126,10 +127,10 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
       <div className="flex items-start gap-3">
         <Globe className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
         <div className="min-w-0">
-          <h2 className="font-display text-lg font-semibold">Start from your website</h2>
+          <h2 className="font-display text-lg font-semibold">Is your website a compliance risk?</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            We read your public pages (product, trust, privacy, subprocessors), fill in the questions for you, and flag what a buyer's
-            vendor-risk team would ask about. Every finding quotes your own page.
+            Enter your website. We read your public pages (product, trust, privacy, subprocessors) the way a bank's vendor-risk team
+            would, and show what they'd flag. Every finding quotes your own page. Free, about a minute.
           </p>
         </div>
       </div>
@@ -172,12 +173,16 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
       {result && (
         <div className="mt-5 space-y-5" aria-live="polite">
           <div>
-            <h3 className="font-display text-base font-semibold">What your site says</h3>
+            <h3 className="font-display text-base font-semibold">
+              {flagged > 0
+                ? `Yes: ${flagged} thing${flagged === 1 ? "" : "s"} a bank reviewer would likely flag`
+                : "No big flags"}
+            </h3>
             <p className="mt-1 text-sm text-muted-foreground">
               {result.gaps.length
-                ? `${result.gaps.length} thing${result.gaps.length === 1 ? "" : "s"} a buyer's reviewer might ask about, from the ${result.pages.length} pages we read.`
+                ? `${result.gaps.length} point${result.gaps.length === 1 ? "" : "s"} in all, from the ${result.pages.length} pages we read.`
                 : `Nothing stood out on the ${result.pages.length} pages we read.`}{" "}
-              We only read public pages, so treat these as questions, not verdicts.
+              We only read public pages, so treat these as questions a reviewer would ask, not verdicts. General information, not legal advice.
             </p>
           </div>
           {result.gaps.length > 0 && (
