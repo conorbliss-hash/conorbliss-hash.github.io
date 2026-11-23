@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AlertTriangle, ExternalLink, Loader2, Search } from "lucide-react";
 
+import { FollowUp } from "@/components/iot/FollowUp";
 import { trackEvent } from "@/lib/analytics";
 import type { Profile } from "@/lib/rulemap";
 
@@ -12,12 +13,21 @@ export const SCAN_ENABLED = Boolean(ENDPOINT);
 type Confidence = "found" | "inferred" | "unknown";
 type Evidence = { quote: string; url: string };
 type Gap = { id: string; severity: "high" | "medium" | "low"; title: string; detail: string; evidence: Evidence[] };
+type AnswerStatus = "answered" | "contradicted" | "claimed" | "silent";
+type Readiness = {
+  checked: { n: number; id: string; short: string; status: AnswerStatus; note: string; evidence: Evidence[] }[];
+  answered: number;
+  contradicted: number;
+  web: number;
+  total: number;
+};
 export type ScanResult = {
   origin: string;
   scannedAt: string;
   pages: { url: string; kind: string; title: string }[];
   prefill: { profile: Profile; confidence: Record<keyof Profile, Confidence> };
   gaps: Gap[];
+  readiness?: Readiness;
   cached?: boolean;
 };
 
@@ -26,6 +36,35 @@ const SEVERITY: Record<Gap["severity"], { label: string; pill: string }> = {
   medium: { label: "Worth checking", pill: "bg-accent/15 text-foreground" },
   low: { label: "Minor", pill: "bg-muted text-muted-foreground" },
 };
+
+const ANSWER: Record<AnswerStatus, { label: string; dot: string }> = {
+  answered: { label: "Answered", dot: "bg-primary" },
+  contradicted: { label: "Pages disagree", dot: "bg-destructive" },
+  claimed: { label: "Mentioned, no detail", dot: "bg-accent" },
+  silent: { label: "Not on your site", dot: "bg-muted-foreground/30" },
+};
+
+// Which of the bank questions the public site can answer, in the shared bank's order (most-asked first).
+const ReadinessGrid = ({ r }: { r: Readiness }) => (
+  <div className="border-t border-border pt-5">
+    <p className="font-display text-base font-semibold">
+      Your site answers {r.answered} of {r.web} questions a bank will ask about your AI
+    </p>
+    <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+      {r.checked.map((q) => (
+        <li key={q.id} className="flex items-center gap-2 text-sm" title={q.note}>
+          <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${ANSWER[q.status].dot}`} aria-hidden />
+          <span className="min-w-0 flex-1">{q.short}</span>
+          <span className="shrink-0 text-xs text-muted-foreground">{ANSWER[q.status].label}</span>
+        </li>
+      ))}
+    </ul>
+    <p className="mt-3 text-xs text-muted-foreground">
+      The other {r.total - r.web} need evidence a website can't show: test records, logs, contracts. Most firms we checked were silent on
+      how their AI is tested.
+    </p>
+  </div>
+);
 
 const host = (u: string) => {
   try {
@@ -168,6 +207,8 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
               ))}
             </div>
           )}
+          {result.readiness && result.readiness.checked.length > 0 && <ReadinessGrid r={result.readiness} />}
+          <FollowUp domain={result.origin} flags={flagged} />
           <details className="text-xs text-muted-foreground">
             <summary className="cursor-pointer">Pages we read</summary>
             <ul className="mt-2 space-y-1">

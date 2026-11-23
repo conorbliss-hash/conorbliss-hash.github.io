@@ -540,7 +540,8 @@ const IntelligenceOnTap = () => {
 
             {results.length > 0 && <Feedback profile={profile} ruleIds={results.map((r) => r.id)} />}
 
-            {results.length > 0 && <SignUp profile={profile} count={results.length} />}
+            {/* After a scan, "Watch my site monthly" is the one sign-up; the briefing is for the no-website path. */}
+            {mode === "questions" && results.length > 0 && <SignUp profile={profile} count={results.length} />}
           </section>
         )}
 
