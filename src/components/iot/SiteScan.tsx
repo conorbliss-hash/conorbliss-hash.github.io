@@ -202,9 +202,21 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
           </div>
           {result.gaps.length > 0 && (
             <div className="space-y-3">
-              {result.gaps.map((g) => (
+              {result.gaps.slice(0, 3).map((g) => (
                 <GapCard key={g.id} g={g} />
               ))}
+              {result.gaps.length > 3 && (
+                <details className="group">
+                  <summary className="cursor-pointer list-none text-sm font-medium text-primary hover:underline [&::-webkit-details-marker]:hidden">
+                    Show {result.gaps.length - 3} more
+                  </summary>
+                  <div className="mt-3 space-y-3">
+                    {result.gaps.slice(3).map((g) => (
+                      <GapCard key={g.id} g={g} />
+                    ))}
+                  </div>
+                </details>
+              )}
             </div>
           )}
           {result.readiness && result.readiness.checked.length > 0 && <ReadinessGrid r={result.readiness} />}
