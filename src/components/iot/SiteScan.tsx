@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AlertTriangle, ExternalLink, Globe, Loader2, Search } from "lucide-react";
+import { AlertTriangle, ExternalLink, Loader2, Search } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
 import type { Profile } from "@/lib/rulemap";
@@ -27,18 +27,6 @@ const SEVERITY: Record<Gap["severity"], { label: string; pill: string }> = {
   low: { label: "Minor", pill: "bg-muted text-muted-foreground" },
 };
 
-const FIELD_LABEL: Partial<Record<keyof Profile, string>> = {
-  countries: "Where you sell",
-  firmType: "Kind of company",
-  size: "Staff",
-  customers: "Customers",
-  aiUse: "How you use AI",
-  facesUsers: "AI talks to people",
-  personalData: "Personal data in AI",
-  highRisk: "High-risk uses",
-  installable: "Installable software",
-};
-
 const host = (u: string) => {
   try {
     const { hostname, pathname } = new URL(u);
@@ -60,7 +48,7 @@ const GapCard = ({ g }: { g: Gap }) => (
         {SEVERITY[g.severity].label}
       </span>
     </div>
-    <h4 className="mt-2 font-medium leading-snug">{cleanTitle(g.title)}</h4>
+    <h3 className="mt-2 font-medium leading-snug">{cleanTitle(g.title)}</h3>
     <p className="mt-1 text-sm text-muted-foreground">{g.detail}</p>
     {g.evidence.length > 0 && (
       <ul className="mt-3 space-y-2">
@@ -107,8 +95,10 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
       setError(
         err instanceof DOMException && err.name === "AbortError"
           ? "The scan took too long. Try again, or answer the questions instead."
-          : err instanceof Error
-            ? err.message
+          : err instanceof TypeError
+            ? "Couldn't reach the scanner. Try again, or answer the questions instead."
+            : err instanceof Error
+              ? err.message
             : "The scan failed.",
       );
     } finally {
@@ -118,24 +108,10 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
   };
 
   const flagged = result ? result.gaps.filter((g) => g.severity !== "low").length : 0;
-  const checked = result
-    ? (Object.entries(result.prefill.confidence) as [keyof Profile, Confidence][]).filter(([k, c]) => c !== "unknown" && FIELD_LABEL[k])
-    : [];
 
   return (
-    <section aria-label="Scan your website" className="rounded-2xl border border-border bg-card p-5">
-      <div className="flex items-start gap-3">
-        <Globe className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-        <div className="min-w-0">
-          <h2 className="font-display text-lg font-semibold">Is your website a compliance risk?</h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Enter your website. We read your public pages (product, trust, privacy, subprocessors) the way a bank's vendor-risk team
-            would, and show what they'd flag. Every finding quotes your own page. Free, about a minute.
-          </p>
-        </div>
-      </div>
-
-      <form onSubmit={scan} className="mt-4 flex flex-col gap-2 sm:flex-row">
+    <section aria-label="Scan your website">
+      <form onSubmit={scan} className="flex flex-col gap-2 sm:flex-row">
         <label htmlFor="iot-url" className="sr-only">
           Company website
         </label>
@@ -148,20 +124,20 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           disabled={!ENDPOINT || busy}
-          className="min-w-0 flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary disabled:opacity-60"
+          className="h-12 w-full min-w-0 shrink-0 sm:flex-1 rounded-lg border border-border bg-card px-4 text-base outline-none focus:border-primary disabled:opacity-60"
         />
         <button
           type="submit"
           disabled={!ENDPOINT || busy || !url.trim()}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-base font-medium text-primary-foreground disabled:opacity-50"
         >
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
-          {busy ? "Reading your site…" : "Scan"}
+          {busy ? "Reading your site…" : "Check my site"}
         </button>
       </form>
 
       {!ENDPOINT && (
-        <p className="mt-2 text-xs text-muted-foreground">Scanning isn't switched on yet in this beta. Answer the questions below for now.</p>
+        <p className="mt-2 text-xs text-muted-foreground">Scanning isn't switched on in this build. Answer the questions instead.</p>
       )}
       {busy && <p className="mt-2 text-xs text-muted-foreground">This usually takes 30–60 seconds.</p>}
       {error && (
@@ -171,13 +147,13 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
       )}
 
       {result && (
-        <div className="mt-5 space-y-5" aria-live="polite">
+        <div className="mt-6 space-y-5 rounded-2xl border border-border bg-card p-5" aria-live="polite">
           <div>
-            <h3 className="font-display text-base font-semibold">
+            <h2 className="font-display text-xl font-semibold">
               {flagged > 0
                 ? `Yes: ${flagged} thing${flagged === 1 ? "" : "s"} a bank reviewer would likely flag`
                 : "No big flags"}
-            </h3>
+            </h2>
             <p className="mt-1 text-sm text-muted-foreground">
               {result.gaps.length
                 ? `${result.gaps.length} point${result.gaps.length === 1 ? "" : "s"} in all, from the ${result.pages.length} pages we read.`
@@ -190,18 +166,6 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
               {result.gaps.map((g) => (
                 <GapCard key={g.id} g={g} />
               ))}
-            </div>
-          )}
-          {checked.length > 0 && (
-            <div className="rounded-xl bg-accent/10 p-4 text-sm">
-              <p className="font-medium">We filled in your answers from the site. Please check them.</p>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {checked.map(([k, c]) => (
-                  <li key={k} className="rounded-full border border-border bg-background px-2.5 py-0.5 text-xs">
-                    {FIELD_LABEL[k]} · <span className="text-muted-foreground">{c === "found" ? "found" : "our guess"}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           )}
           <details className="text-xs text-muted-foreground">
