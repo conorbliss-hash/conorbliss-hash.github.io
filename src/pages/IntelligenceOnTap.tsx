@@ -358,13 +358,13 @@ const IntelligenceOnTap = () => {
         {/* One question, one box. The rules map is the detail under the answer, not a second tool. */}
         <div className="mx-auto max-w-3xl">
           <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            <Sparkles className="h-3.5 w-3.5" /> Intelligence on Tap · free
+            <Sparkles className="h-3.5 w-3.5" /> For software firms selling AI to banks and insurers
           </p>
           <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
             Is your website a compliance risk?
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            See what a bank's vendor-risk team would flag on your site, quoted from your own pages, and which AI rules apply to you. About a
+            We read your public pages the way a bank's vendor-risk team does and show what they'd flag, in your own words. Free, about a
             minute.
           </p>
 
@@ -390,17 +390,53 @@ const IntelligenceOnTap = () => {
           </p>
 
           {mode === "start" && (
-            <button
+            <>
+              {/* Proof first: our own hand-checked numbers, then what a flag looks like. */}
+              <dl className="mt-10 grid grid-cols-3 gap-3 border-t border-border pt-6">
+                {[
+                  ["21 of 21", "Nordic AI vendors we checked had at least one flag"],
+                  ["19 of 21", "say nothing about how their AI is tested"],
+                  ["8 of 21", "contradict themselves on where data is stored"],
+                ].map(([n, label]) => (
+                  <div key={n}>
+                    <dt className="font-display text-2xl font-semibold text-primary md:text-3xl">{n}</dt>
+                    <dd className="mt-1 text-xs leading-snug text-muted-foreground md:text-sm">{label}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <figure className="mt-8 rounded-2xl border border-border bg-card p-5">
+                <figcaption className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                  <span className="font-semibold uppercase tracking-wider">What a flag looks like</span>
+                  <span>Example, anonymised</span>
+                </figcaption>
+                <p className="mt-3 font-medium">Your pages say different things about where data is stored</p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {[
+                    ["Home page", "All customer data stays in Sweden."],
+                    ["Privacy policy", "Data may be transferred outside the EEA."],
+                  ].map(([where, quote]) => (
+                    <blockquote key={where} className="rounded-lg border-l-2 border-destructive/60 bg-muted/40 px-3 py-2 text-sm">
+                      <q className="italic">{quote}</q>
+                      <span className="mt-1 block text-xs text-muted-foreground">{where}</span>
+                    </blockquote>
+                  ))}
+                </div>
+                <p className="mt-3 text-xs text-muted-foreground">A bank reviewer reading both pages will ask which is true.</p>
+              </figure>
+
+              <button
               type="button"
               onClick={() => {
                 load(BLANK_PROFILE);
                 setMode("questions");
                 trackEvent("Questions chosen", {});
               }}
-              className="mt-6 text-left text-sm font-medium text-primary underline-offset-2 hover:underline"
+              className="mt-6 block text-left text-sm font-medium text-primary underline-offset-2 hover:underline"
             >
               No website to check? Answer 6 questions instead →
             </button>
+            </>
           )}
         </div>
 
