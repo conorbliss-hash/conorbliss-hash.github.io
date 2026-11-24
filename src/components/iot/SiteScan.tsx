@@ -112,7 +112,11 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
 
   const scan = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!ENDPOINT || !url.trim() || busy) return;
+    if (!url.trim()) {
+      document.getElementById("iot-url")?.focus();
+      return;
+    }
+    if (!ENDPOINT || busy) return;
     setBusy(true);
     setError(null);
     setResult(null);
@@ -163,12 +167,12 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           disabled={!ENDPOINT || busy}
-          className="h-12 w-full min-w-0 shrink-0 sm:flex-1 rounded-lg border border-border bg-card px-4 text-base outline-none focus:border-primary disabled:opacity-60"
+          className="h-12 w-full min-w-0 shrink-0 sm:flex-1 rounded-lg border border-border bg-card px-4 text-base shadow-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
         />
         <button
           type="submit"
-          disabled={!ENDPOINT || busy || !url.trim()}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-base font-medium text-primary-foreground disabled:opacity-50"
+          disabled={!ENDPOINT || busy}
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-base font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-90 disabled:opacity-60"
         >
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
           {busy ? "Reading your site…" : "Check my site"}
