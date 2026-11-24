@@ -3,35 +3,41 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import euAiActImg from "@/assets/articles/eu-ai-act.webp";
+import b13Img from "@/assets/articles/b13_tools.webp";
+import b15Img from "@/assets/articles/b15_funnel.webp";
+import b03Img from "@/assets/articles/b03_spend.webp";
+import isoImg from "@/assets/articles/iso42001_order.webp";
 import { trackEvent } from "@/lib/analytics";
 
-// Recent Medium posts, newest first. Covers come from Writing & research (palette-matched site
-// versions); until a cover lands, the card shows a palette placeholder (image: undefined).
-// Blog 12 ("Your AI register is only accurate on audit day") replaces the ISO 42001 card once it's published.
+// Recent Medium posts, newest first. Covers are the palette-matched site versions from Writing & research
+// (linkedin/charts/site_covers.py, 960x600). Blog 12 ("Your AI register is only accurate on audit day")
+// replaces the ISO 42001 card once it's published.
 type Article = { title: string; subtitle: string; link: string; image?: string };
 
 const articles: Article[] = [
   {
     title: "Your managers can now build their own software",
-    subtitle: "Coding agents turn any manager into a builder, and every new tool into an AI supplier your customers will ask about",
+    subtitle: "Any manager can build a working tool in a week. Say yes, with rules for where customer data goes.",
     link: "https://medium.com/@conor.bliss.henaghan/your-managers-can-now-build-their-own-software-fc2141c89cfc",
+    image: b13Img,
   },
   {
     title: "AI speeds up the work, not the results",
-    subtitle: "More output only becomes a result when someone names the result and puts a number on it",
+    subtitle: "Commits rose far faster than releases. Name the result before you count the output.",
     link: "https://medium.com/@conor.bliss.henaghan/ai-speeds-up-the-work-not-the-results-de962ad7572b",
+    image: b15Img,
   },
   {
     title: "AI spend has flattened. Usage hasn't.",
-    subtitle: "Prices keep falling while usage keeps climbing. What the flat line hides, and how to check you get your money's worth",
-    link: "https://medium.com/p/a9c050f8fa4d",
+    subtitle: "The top 1% of firms spend about 625 times the median on AI. What the leaders do differently.",
+    link: "https://medium.com/@conor.bliss.henaghan/ai-spend-has-flattened-usage-hasnt-a9c050f8fa4d",
+    image: b03Img,
   },
   {
-    title: "ISO 42001 in Practice: A Practitioner's Guide to AI Governance Certification",
-    subtitle: "What the standard actually requires, and how to build a framework that passes",
+    title: "ISO 42001 audits your process. It doesn't audit your AI.",
+    subtitle: "What the standard actually requires, and the order to write the documents in.",
     link: "https://medium.com/@conor.bliss.henaghan/iso-42001-audits-your-process-it-doesnt-audit-your-ai-0a99d87b3dcc",
-    image: euAiActImg,
+    image: isoImg,
   },
 ];
 
@@ -60,7 +66,7 @@ const ArticleCard = ({ article }: { article: Article }) => (
           alt={article.title}
           loading="lazy"
           width={960}
-          height={644}
+          height={600}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
       ) : (
