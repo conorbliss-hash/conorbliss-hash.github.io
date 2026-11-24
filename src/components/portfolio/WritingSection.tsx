@@ -3,36 +3,35 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import operatingSystemDataImg from "@/assets/articles/operating-system-data.webp";
-import aiCrmMigrationImg from "@/assets/articles/ai-crm-migration.webp";
 import euAiActImg from "@/assets/articles/eu-ai-act.webp";
-import aiInfrastructureImg from "@/assets/articles/ai-infrastructure.webp";
 import { trackEvent } from "@/lib/analytics";
 
-const articles = [
+// Recent Medium posts, newest first. Covers come from Writing & research (palette-matched site
+// versions); until a cover lands, the card shows a palette placeholder (image: undefined).
+// Blog 12 ("Your AI register is only accurate on audit day") replaces the ISO 42001 card once it's published.
+type Article = { title: string; subtitle: string; link: string; image?: string };
+
+const articles: Article[] = [
+  {
+    title: "Your managers can now build their own software",
+    subtitle: "Coding agents turn any manager into a builder, and every new tool into an AI supplier your customers will ask about",
+    link: "https://medium.com/@conor.bliss.henaghan/your-managers-can-now-build-their-own-software-fc2141c89cfc",
+  },
+  {
+    title: "AI speeds up the work, not the results",
+    subtitle: "More output only becomes a result when someone names the result and puts a number on it",
+    link: "https://medium.com/@conor.bliss.henaghan/ai-speeds-up-the-work-not-the-results-de962ad7572b",
+  },
+  {
+    title: "AI spend has flattened. Usage hasn't.",
+    subtitle: "Prices keep falling while usage keeps climbing. What the flat line hides, and how to check you get your money's worth",
+    link: "https://medium.com/p/a9c050f8fa4d",
+  },
   {
     title: "ISO 42001 in Practice: A Practitioner's Guide to AI Governance Certification",
     subtitle: "What the standard actually requires, and how to build a framework that passes",
     link: "https://medium.com/@conor.bliss.henaghan/iso-42001-audits-your-process-it-doesnt-audit-your-ai-0a99d87b3dcc",
-    image: euAiActImg
-  },
-  {
-    title: "An Operating System for Data Authority",
-    subtitle: "Designing an AI-Enabled Data Ingestion Pipeline",
-    link: "https://medium.com/@conor.bliss.henaghan/an-operating-system-for-data-authority-cabf63b797d7",
-    image: operatingSystemDataImg
-  },
-  {
-    title: "Inside an AI-First CRM Migration",
-    subtitle: "How to move a CRM from legacy to AI-first without breaking the business",
-    link: "https://medium.com/@conor.bliss.henaghan/inside-an-ai-first-crm-migration-8995ef0b9a7c",
-    image: aiCrmMigrationImg
-  },
-  {
-    title: "The Real Bottleneck in Most AI Initiatives Isn't AI. It's Infrastructure",
-    subtitle: "Why data pipelines and systems matter more than the model you choose",
-    link: "https://medium.com/@conor.bliss.henaghan/the-real-bottleneck-in-most-ai-initiatives-isnt-ai-it-s-infrastructure-507c41d98a21",
-    image: aiInfrastructureImg
+    image: euAiActImg,
   },
 ];
 
@@ -45,7 +44,7 @@ const trackSpotlight = (e: React.PointerEvent<HTMLElement>) => {
   el.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
 };
 
-const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
+const ArticleCard = ({ article }: { article: Article }) => (
   <a
     href={article.link}
     target="_blank"
@@ -55,14 +54,20 @@ const ArticleCard = ({ article }: { article: typeof articles[0] }) => (
     className="spotlight-card group rounded-lg border border-border bg-background hover:border-primary/50 transition-all overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
   >
     <div className="aspect-[16/10] overflow-hidden">
-      <img
-        src={article.image}
-        alt={article.title}
-        loading="lazy"
-        width={960}
-        height={644}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      />
+      {article.image ? (
+        <img
+          src={article.image}
+          alt={article.title}
+          loading="lazy"
+          width={960}
+          height={644}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <div aria-hidden className="flex h-full w-full items-end bg-gradient-to-br from-primary/25 via-primary/10 to-card p-4">
+          <span className="font-display text-sm font-semibold text-primary/80">Cover coming</span>
+        </div>
+      )}
     </div>
     <div className="p-4 sm:p-5">
       <div className="flex items-start justify-between gap-2">
