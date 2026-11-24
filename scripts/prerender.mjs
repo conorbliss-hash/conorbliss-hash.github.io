@@ -32,7 +32,7 @@ const toolHtml = renderTool();
 if (!toolHtml.includes("<h1")) {
   throw new Error("prerender: Intelligence on Tap rendered without an <h1>");
 }
-const toolTitle = "Is your website a compliance risk? Intelligence on Tap";
+const toolTitle = "Will your website pass a bank's vendor review? Intelligence on Tap";
 const toolDesc =
   "Free check: see what a bank's vendor-risk team would flag on your website, quoted from your own pages, and which EU and Nordic AI rules apply to you.";
 const toolPage = template

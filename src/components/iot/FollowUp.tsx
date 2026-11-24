@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { Bell, Loader2, Wand2 } from "lucide-react";
+import { Bell, FileQuestion, Loader2, Wand2 } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
 import { REVIEWED } from "@/lib/rulemap";
 
-// The two next steps under every scan result. Each press is stored as a scan_followup event:
-// who wants a monthly re-check, and who wants suggested rewrites. Conor replies personally;
-// nothing is sent automatically yet.
+// The next steps under every scan result. Each press is stored as a scan_followup event:
+// who has a live questionnaire to answer (the acute, paid problem), who wants suggested rewrites,
+// and who wants a monthly re-check. Conor replies personally; nothing is sent automatically yet.
 
-type Action = "watch" | "fix";
+type Action = "questionnaire" | "fix" | "watch";
 
 const FREE_MAIL = /@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|proton|protonmail|aol|gmx)\./i;
 
 const COPY: Record<Action, { button: string; title: string; body: string; done: string }> = {
+  questionnaire: {
+    button: "Answer a bank questionnaire",
+    title: "Get your AI and DORA answers drafted",
+    body: "Got a vendor questionnaire from a bank, insurer or public buyer? Tell me who sent it and when it's due. I'll draft the AI and DORA answers, with evidence from your own pages, within 5 working days. Free during the pilot.",
+    done: "Thanks. I'll reply within one working day to get the questionnaire from you.",
+  },
   watch: {
     button: "Watch my site monthly",
     title: "Re-check this site every month",
@@ -27,8 +33,20 @@ const COPY: Record<Action, { button: string; title: string; body: string; done: 
   },
 };
 
-export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) => {
-  const [action, setAction] = useState<Action | null>(null);
+export const FollowUp = ({
+  domain,
+  flags,
+  only,
+  heading = "What next?",
+}: {
+  domain: string;
+  flags: number;
+  only?: Action[];
+  heading?: string;
+}) => {
+  const actions: Action[] = only ?? ["questionnaire", "fix", "watch"];
+  const [action, setAction] = useState<Action | null>(actions.length === 1 ? actions[0] : null);
+  const [note, setNote] = useState("");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
@@ -54,7 +72,7 @@ export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) =
       const { error } = await supabase.from("site_events").insert({
         event_name: "scan_followup",
         path: "/intelligence-on-tap",
-        props: { action, domain: site, email: clean, flags, reviewed: REVIEWED },
+        props: { action, domain: site || clean.split("@")[1], email: clean, flags, note: note.trim().slice(0, 300) || undefined, reviewed: REVIEWED },
       });
       if (error) throw error;
       trackEvent("Scan follow-up", { action });
@@ -65,10 +83,11 @@ export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) =
   };
 
   return (
-    <div className="border-t border-border pt-5">
-      <p className="font-display text-base font-semibold">What next?</p>
-      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-        {(["fix", "watch"] as const).map((a) => (
+    <div className={only ? "" : "border-t border-border pt-5"}>
+      <p className="font-display text-base font-semibold">{heading}</p>
+      {actions.length > 1 && (
+      <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+        {actions.map((a) => (
           <button
             key={a}
             type="button"
@@ -78,11 +97,12 @@ export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) =
               action === a ? "border-primary bg-primary/10 text-primary" : "border-border hover:border-primary/50"
             }`}
           >
-            {a === "fix" ? <Wand2 className="h-4 w-4" /> : <Bell className="h-4 w-4" />}
+            {a === "fix" ? <Wand2 className="h-4 w-4" /> : a === "watch" ? <Bell className="h-4 w-4" /> : <FileQuestion className="h-4 w-4" />}
             {COPY[a].button}
           </button>
         ))}
       </div>
+      )}
 
       {action && state === "done" && <p className="mt-4 rounded-lg bg-primary/5 p-3 text-sm">{COPY[action].done}</p>}
 
@@ -92,6 +112,22 @@ export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) =
             <p className="text-sm font-medium">{COPY[action].title}</p>
             <p className="mt-1 text-xs text-muted-foreground">{COPY[action].body}</p>
           </div>
+          {action === "questionnaire" && (
+            <div>
+              <label htmlFor="iot-followup-note" className="sr-only">
+                Who sent it, and when is it due?
+              </label>
+              <input
+                id="iot-followup-note"
+                type="text"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                maxLength={300}
+                placeholder="Who sent it, and when is it due? (e.g. a Nordic bank, 15 Dec)"
+                className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              />
+            </div>
+          )}
           <div className="flex flex-col gap-2 sm:flex-row">
             <label htmlFor="iot-followup-email" className="sr-only">
               Work email
@@ -101,7 +137,7 @@ export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) =
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={`you@${site}`}
+              placeholder={site ? `you@${site}` : "you@yourcompany.com"}
               className="h-11 w-full min-w-0 rounded-lg border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:flex-1"
             />
             <button
@@ -110,18 +146,18 @@ export const FollowUp = ({ domain, flags }: { domain: string; flags: number }) =
               className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground disabled:opacity-50"
             >
               {state === "sending" && <Loader2 className="h-4 w-4 animate-spin" />}
-              {action === "watch" ? "Watch monthly" : "Send me the fixes"}
+              {action === "watch" ? "Watch monthly" : action === "fix" ? "Send me the fixes" : "Get help answering it"}
             </button>
           </div>
           {action === "watch" && emailOk && !onDomain && (
             <p className="text-xs text-destructive">Use an email address on {site} for monthly watching.</p>
           )}
-          {action === "fix" && emailOk && FREE_MAIL.test(clean) && (
-            <p className="text-xs text-muted-foreground">A work email helps me check you're with {site}.</p>
+          {action !== "watch" && emailOk && FREE_MAIL.test(clean) && (
+            <p className="text-xs text-muted-foreground">A work email helps me check you're with {site || "the company"}.</p>
           )}
           <label className="flex items-start gap-2 text-xs text-muted-foreground">
             <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5" />
-            <span>Store my email and this website to send this. Used for nothing else; ask and it's deleted.</span>
+            <span>Store my email{site ? " and this website" : ""} to reply to this. Used for nothing else; ask and it's deleted.</span>
           </label>
           {state === "error" && <p className="text-sm text-destructive">That didn't save. Try again in a moment.</p>}
         </form>

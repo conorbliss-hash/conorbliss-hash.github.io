@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, Check, ChevronDown, ExternalLink, ShieldCheck, Sparkles } from "lucide-react";
 
+import { FollowUp } from "@/components/iot/FollowUp";
 import { ScanRequest } from "@/components/iot/ScanRequest";
 import { SCAN_ENABLED, SiteScan } from "@/components/iot/SiteScan";
 import { trackEvent, trackPageview } from "@/lib/analytics";
@@ -314,7 +315,7 @@ const IntelligenceOnTap = () => {
 
   useEffect(() => {
     trackPageview();
-    document.title = "Is your website a compliance risk? | Intelligence on Tap";
+    document.title = "Will your website pass a bank's vendor review? | Intelligence on Tap";
   }, []);
 
   const results = useMemo(() => buildMap(profile), [profile]);
@@ -358,14 +359,14 @@ const IntelligenceOnTap = () => {
         {/* One question, one box. The rules map is the detail under the answer, not a second tool. */}
         <div className="mx-auto max-w-3xl">
           <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            <Sparkles className="h-3.5 w-3.5" /> For software firms selling to banks and insurers
+            <Sparkles className="h-3.5 w-3.5" /> For software firms selling to banks, insurers and the public sector
           </p>
           <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight [text-wrap:balance] md:text-5xl">
-            Is your website a compliance risk?
+            Will your website pass a bank's vendor review?
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            We read your public pages the way a bank's vendor-risk team does and show what they'd flag, in your own words. Free, about a
-            minute.
+            Banks and insurers now ask about AI and DORA in every vendor review. We read your public pages the way their reviewer
+            does and show what they'll flag, quoted from your own site. Free, about a minute.
           </p>
 
           <div className="mt-6">
@@ -394,7 +395,7 @@ const IntelligenceOnTap = () => {
               {/* Proof first: our own hand-checked numbers, then what a flag looks like. */}
               <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
                 {[
-                  ["21 of 21", "Nordic AI vendors we checked had at least one flag"],
+                  ["21 of 21", "Nordic vendors selling to banks we checked had at least one flag"],
                   ["19 of 21", "say nothing about how their AI is tested"],
                   ["8 of 21", "contradict themselves on where data is stored"],
                 ].map(([n, label]) => (
@@ -424,6 +425,10 @@ const IntelligenceOnTap = () => {
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">A bank reviewer reading both pages will ask which is true.</p>
               </figure>
+
+              <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-5">
+                <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Already have a bank questionnaire on your desk?" />
+              </div>
 
               <button
                 type="button"
