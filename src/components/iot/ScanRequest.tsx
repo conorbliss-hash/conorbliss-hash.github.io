@@ -80,7 +80,7 @@ export const ScanRequest = ({ profile, isExample }: { profile: Profile; isExampl
       <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
         <Globe className="h-3.5 w-3.5" /> Free website check
       </p>
-      <p className="mt-2 font-display text-lg font-semibold leading-snug">What does your website promise a bank's risk team?</p>
+      <p className="mt-2 font-display text-lg font-semibold leading-snug">What does your website tell your customers' reviewers about your AI?</p>
       <p className="mt-1 text-sm text-muted-foreground">
         Buyers read your site before they send the questionnaire. I'll check its public pages for what you say about AI, data and
         security, and send back the gaps they'd ask about, each with the quote. Free, by email.

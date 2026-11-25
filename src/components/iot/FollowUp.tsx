@@ -14,9 +14,9 @@ const FREE_MAIL = /@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|proto
 
 const COPY: Record<Action, { button: string; title: string; body: string; done: string }> = {
   questionnaire: {
-    button: "Answer a bank questionnaire",
-    title: "Get your AI and DORA answers drafted",
-    body: "Got a vendor questionnaire from a bank, insurer or public buyer? Tell me who sent it and when it's due. I'll draft the AI and DORA answers, with evidence from your own pages, within 5 working days. Free during the pilot.",
+    button: "Answer a customer AI questionnaire",
+    title: "Get your AI answers drafted",
+    body: "Got a security or procurement questionnaire with AI questions from a customer? Tell me who sent it and when it's due. I'll draft the AI answers (and DORA, for banks and insurers), with evidence from your own pages, within 5 working days. Free during the pilot.",
     done: "Thanks. I'll reply within one working day to get the questionnaire from you.",
   },
   watch: {
@@ -123,7 +123,7 @@ export const FollowUp = ({
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 maxLength={300}
-                placeholder="Who sent it, and when is it due? (e.g. a Nordic bank, 15 Dec)"
+                placeholder="Who sent it, and when is it due?"
                 className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               />
             </div>

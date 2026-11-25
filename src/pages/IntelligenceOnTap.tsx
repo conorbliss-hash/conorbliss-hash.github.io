@@ -315,7 +315,7 @@ const IntelligenceOnTap = () => {
 
   useEffect(() => {
     trackPageview();
-    document.title = "Will your website pass a bank's vendor review? | Intelligence on Tap";
+    document.title = "Your customers are asking how you use AI. Can your website answer? | Intelligence on Tap";
   }, []);
 
   const results = useMemo(() => buildMap(profile), [profile]);
@@ -359,14 +359,14 @@ const IntelligenceOnTap = () => {
         {/* One question, one box. The rules map is the detail under the answer, not a second tool. */}
         <div className="mx-auto max-w-3xl">
           <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            <Sparkles className="h-3.5 w-3.5" /> For software firms selling to banks, insurers and the public sector
+            <Sparkles className="h-3.5 w-3.5" /> For B2B software firms whose customers ask about AI
           </p>
           <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight [text-wrap:balance] md:text-5xl">
-            Will your website pass a bank's vendor review?
+            Your customers are asking how you use AI. Can your website answer?
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Banks and insurers now ask about AI and DORA in every vendor review. We read your public pages the way their reviewer
-            does and show what they'll flag, quoted from your own site. Free, about a minute.
+            Banks, insurers, public buyers and large companies now ask about AI in every security and procurement review. We read
+            your public pages the way their reviewer does and show what they'll flag, quoted from your own site. Free, about a minute.
           </p>
 
           <div className="mt-6">
@@ -395,7 +395,7 @@ const IntelligenceOnTap = () => {
               {/* Proof first: our own hand-checked numbers, then what a flag looks like. */}
               <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
                 {[
-                  ["21 of 21", "Nordic vendors selling to banks we checked had at least one flag"],
+                  ["21 of 21", "Nordic B2B software firms we checked had at least one flag"],
                   ["19 of 21", "say nothing about how their AI is tested"],
                   ["8 of 21", "contradict themselves on where data is stored"],
                 ].map(([n, label]) => (
@@ -423,11 +423,11 @@ const IntelligenceOnTap = () => {
                     </blockquote>
                   ))}
                 </div>
-                <p className="mt-3 text-xs text-muted-foreground">A bank reviewer reading both pages will ask which is true.</p>
+                <p className="mt-3 text-xs text-muted-foreground">A customer's reviewer reading both pages will ask which is true.</p>
               </figure>
 
               <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-5">
-                <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Already have a bank questionnaire on your desk?" />
+                <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Already have a customer AI questionnaire on your desk?" />
               </div>
 
               <button

@@ -32,9 +32,9 @@ const toolHtml = renderTool();
 if (!toolHtml.includes("<h1")) {
   throw new Error("prerender: Intelligence on Tap rendered without an <h1>");
 }
-const toolTitle = "Will your website pass a bank's vendor review? Intelligence on Tap";
+const toolTitle = "Your customers are asking how you use AI. Can your website answer? Intelligence on Tap";
 const toolDesc =
-  "Free check: see what a bank's vendor-risk team would flag on your website, quoted from your own pages, and which EU and Nordic AI rules apply to you.";
+  "Free check: see what your customers' security and procurement reviewers would flag on your website, quoted from your own pages, and which EU and Nordic AI rules apply to you.";
 const toolPage = template
   .replace(marker, `<div id="root">${toolHtml}</div>`)
   .replace(/<title>[^<]*<\/title>/, `<title>${toolTitle} | Conor Bliss</title>`)

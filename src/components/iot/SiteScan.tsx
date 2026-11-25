@@ -48,7 +48,7 @@ const ANSWER: Record<AnswerStatus, { label: string; dot: string }> = {
 const ReadinessGrid = ({ r }: { r: Readiness }) => (
   <div className="border-t border-border pt-5">
     <p className="font-display text-base font-semibold">
-      Your site answers {r.answered} of {r.web} questions a bank will ask about your AI
+      Your site answers {r.answered} of {r.web} questions customers ask about your AI
     </p>
     <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
       {r.checked.map((q) => (
@@ -194,7 +194,7 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
           <div>
             <h2 className="font-display text-xl font-semibold">
               {flagged > 0
-                ? `Yes: ${flagged} thing${flagged === 1 ? "" : "s"} a bank reviewer would likely flag`
+                ? `Yes: ${flagged} thing${flagged === 1 ? "" : "s"} a customer's reviewer would likely flag`
                 : "No big flags"}
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
