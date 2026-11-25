@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, Check, ChevronDown, ExternalLink, ShieldCheck, Sparkles } from "lucide-react";
 
+import portrait from "@/assets/portrait-city.webp";
 import { FollowUp } from "@/components/iot/FollowUp";
 import { ScanRequest } from "@/components/iot/ScanRequest";
 import { SCAN_ENABLED, SiteScan } from "@/components/iot/SiteScan";
@@ -311,6 +312,7 @@ const IntelligenceOnTap = () => {
   const [mode, setMode] = useState<"start" | "scanned" | "questions">("start");
   // High-risk uses are behind a yes/no gate so most visitors never see the eight-way list.
   const [decidesAboutPeople, setDecidesAboutPeople] = useState(false);
+  const [showAsk, setShowAsk] = useState(false);
   const [showWatch, setShowWatch] = useState(false);
 
   useEffect(() => {
@@ -365,8 +367,8 @@ const IntelligenceOnTap = () => {
             Your customers are asking how you use AI. Can your website answer?
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Banks, insurers, public buyers and large companies now ask about AI in every security and procurement review. We read
-            your public pages the way their reviewer does and show what they'll flag, quoted from your own site. Free, about a minute.
+            Enter your website. In about a minute you'll see what a customer's security or procurement reviewer would ask about your
+            AI, quoted from your own pages.
           </p>
 
           <div className="mt-6">
@@ -384,32 +386,39 @@ const IntelligenceOnTap = () => {
 
           <p className="mt-3 flex items-start gap-2 text-xs text-muted-foreground">
             <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-            <span>
-              Public pages only, nothing stored. General information, not legal advice. Built by Conor Bliss, AIGP and ISO/IEC 42001
-              certified.
-            </span>
+            <span>Free, no sign-up. Reads public pages only; nothing is stored.</span>
           </p>
 
           {mode === "start" && (
             <>
-              {/* Proof first: our own hand-checked numbers, then what a flag looks like. */}
-              <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
-                {[
-                  ["21 of 21", "Nordic B2B software firms we checked had at least one flag"],
-                  ["19 of 21", "say nothing about how their AI is tested"],
-                  ["8 of 21", "contradict themselves on where data is stored"],
-                ].map(([n, label]) => (
-                  <div key={n}>
-                    <dt className="font-display text-xl font-semibold tabular-nums text-primary sm:text-2xl md:text-3xl">{n}</dt>
-                    <dd className="mt-1 text-xs leading-snug text-muted-foreground md:text-sm">{label}</dd>
-                  </div>
-                ))}
-              </dl>
+              {/* Answer the visitor's questions in order: what do I get, does it work, who is behind it. One action above. */}
+              <section aria-labelledby="iot-get" className="mt-12">
+                <h2 id="iot-get" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  What you get
+                </h2>
+                <ol className="mt-4 grid gap-5 sm:grid-cols-3">
+                  {[
+                    ["The questions they'll ask", "The AI questions banks, insurers, public buyers and large companies put in their reviews."],
+                    ["What your site answers", "Which of those your public pages already answer, and which they don't."],
+                    ["Each gap, quoted", "The exact sentence a reviewer would flag, so you can fix it before they ask."],
+                  ].map(([t, d], i) => (
+                    <li key={t} className="flex gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
+                        {i + 1}
+                      </span>
+                      <span>
+                        <span className="block font-medium">{t}</span>
+                        <span className="mt-1 block text-sm leading-snug text-muted-foreground">{d}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
 
-              <figure className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-sm">
+              <figure className="mt-10 rounded-2xl border border-border bg-card p-5 shadow-sm">
                 <figcaption className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                  <span className="font-semibold uppercase tracking-wider">What a flag looks like</span>
-                  <span>Example, anonymised</span>
+                  <span className="font-semibold uppercase tracking-wider">Example flag</span>
+                  <span>Anonymised</span>
                 </figcaption>
                 <p className="mt-3 font-medium">Your pages say different things about where data is stored</p>
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -423,24 +432,45 @@ const IntelligenceOnTap = () => {
                     </blockquote>
                   ))}
                 </div>
-                <p className="mt-3 text-xs text-muted-foreground">A customer's reviewer reading both pages will ask which is true.</p>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Every one of the 21 Nordic software firms we checked by hand had at least one flag like this.
+                </p>
               </figure>
 
-              <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-5">
-                <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Already have a customer AI questionnaire on your desk?" />
+              <div className="mt-10 flex items-center gap-4 border-t border-border pt-6">
+                <img src={portrait} alt="Conor Bliss" width={48} height={48} className="h-12 w-12 shrink-0 rounded-full object-cover object-top" />
+                <p className="text-sm leading-snug text-muted-foreground">
+                  <span className="font-medium text-foreground">Built by Conor Bliss</span>, AI Lead in Stockholm, AIGP and ISO/IEC 42001
+                  certified. General information, not legal advice.
+                </p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  load(BLANK_PROFILE);
-                  setMode("questions");
-                  trackEvent("Questions chosen", {});
-                }}
-                className="mt-6 block text-left text-sm font-medium text-primary underline-offset-2 hover:underline"
-              >
-                No website to check? Answer 6 questions instead →
-              </button>
+              <div className="mt-6 space-y-2 text-sm">
+                <button
+                  type="button"
+                  aria-expanded={showAsk}
+                  onClick={() => setShowAsk((v) => !v)}
+                  className="block text-left font-medium text-primary underline-offset-2 hover:underline"
+                >
+                  Already have a customer AI questionnaire? Get help answering it {showAsk ? "↑" : "→"}
+                </button>
+                {showAsk && (
+                  <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5">
+                    <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Get help with your questionnaire" />
+                  </div>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    load(BLANK_PROFILE);
+                    setMode("questions");
+                    trackEvent("Questions chosen", {});
+                  }}
+                  className="block text-left font-medium text-primary underline-offset-2 hover:underline"
+                >
+                  No website to check? Answer 6 questions instead →
+                </button>
+              </div>
             </>
           )}
         </div>
@@ -586,15 +616,12 @@ const IntelligenceOnTap = () => {
           </section>
         )}
 
-        <p className="mx-auto mt-16 max-w-3xl border-t border-border pt-6 text-xs leading-relaxed text-muted-foreground">
-          A transparent rule set, not a chatbot: each answer switches specific rules on or off, and every card links to the law or regulator
-          it comes from. Covers the EU AI Act (with the 2026 Digital Omnibus dates), GDPR, DORA, NIS2, the Consumer Credit Directive, the
-          Cyber Resilience Act, the Product Liability Directive and Nordic regulators. Rules reviewed {REVIEWED}. Built by{" "}
-          <a href="/" className="font-medium text-foreground underline-offset-2 hover:underline">
-            Conor Bliss
-          </a>
-          . Views are my own.
-        </p>
+        {mode !== "start" && (
+          <p className="mx-auto mt-16 max-w-3xl border-t border-border pt-6 text-xs leading-relaxed text-muted-foreground">
+            A transparent rule set, not a chatbot: every card links to the law or regulator it comes from (EU AI Act with the 2026 Digital
+            Omnibus dates, GDPR, DORA, NIS2 and more). Rules reviewed {REVIEWED}. Views are my own.
+          </p>
+        )}
       </main>
     </div>
   );
