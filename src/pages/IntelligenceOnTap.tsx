@@ -367,8 +367,8 @@ const IntelligenceOnTap = () => {
             Your customers are asking how you use AI. Can your website answer?
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Enter your website. In about a minute you'll see what a customer's security or procurement reviewer would ask about your
-            AI, quoted from your own pages.
+            Enter your website. In about a minute you get a free draft answer to each of the 20 AI questions customers' security and
+            procurement reviewers ask, written from your own pages and ready for your next questionnaire.
           </p>
 
           <div className="mt-6">
@@ -398,9 +398,9 @@ const IntelligenceOnTap = () => {
                 </h2>
                 <ol className="mt-4 grid gap-5 sm:grid-cols-3">
                   {[
-                    ["The questions they'll ask", "The AI questions banks, insurers, public buyers and large companies put in their reviews."],
-                    ["What your site answers", "Which of those your public pages already answer, and which they don't."],
-                    ["Each gap, quoted", "The exact sentence a reviewer would flag, so you can fix it before they ask."],
+                    ["The 20 questions they'll ask", "The AI questions banks, insurers, public buyers and large companies put in their reviews."],
+                    ["A draft answer to each", "Written only from your own pages, with the source. Where your site is silent, what the answer needs."],
+                    ["Ready to paste", "Download all 20 as a spreadsheet, plus a draft \"How we use AI\" page for your site."],
                   ].map(([t, d], i) => (
                     <li key={t} className="flex gap-3">
                       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
@@ -417,7 +417,7 @@ const IntelligenceOnTap = () => {
 
               <figure className="mt-10 rounded-2xl border border-border bg-card p-5 shadow-sm">
                 <figcaption className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                  <span className="font-semibold uppercase tracking-wider">Example flag</span>
+                  <span className="font-semibold uppercase tracking-wider">Example: fix this before you answer</span>
                   <span>Anonymised</span>
                 </figcaption>
                 <p className="mt-3 font-medium">Your pages say different things about where data is stored</p>
@@ -452,11 +452,11 @@ const IntelligenceOnTap = () => {
                   onClick={() => setShowAsk((v) => !v)}
                   className="block text-left font-medium text-primary underline-offset-2 hover:underline"
                 >
-                  Already have a customer AI questionnaire? Get help answering it {showAsk ? "↑" : "→"}
+                  Already have a customer AI questionnaire? Finish it with me {showAsk ? "↑" : "→"}
                 </button>
                 {showAsk && (
                   <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5">
-                    <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Get help with your questionnaire" />
+                    <FollowUp domain="" flags={0} only={["questionnaire"]} heading="Finish your questionnaire with me" />
                   </div>
                 )}
                 <button

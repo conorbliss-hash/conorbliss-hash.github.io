@@ -34,7 +34,7 @@ if (!toolHtml.includes("<h1")) {
 }
 const toolTitle = "Your customers are asking how you use AI. Can your website answer? Intelligence on Tap";
 const toolDesc =
-  "Free check: see what your customers' security and procurement reviewers would flag on your website, quoted from your own pages, and which EU and Nordic AI rules apply to you.";
+  "Free: draft answers to the 20 AI questions your customers' security and procurement reviewers ask, written from your own website, ready to paste into your next questionnaire.";
 const toolPage = template
   .replace(marker, `<div id="root">${toolHtml}</div>`)
   .replace(/<title>[^<]*<\/title>/, `<title>${toolTitle} | Conor Bliss</title>`)

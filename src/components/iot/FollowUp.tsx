@@ -14,15 +14,15 @@ const FREE_MAIL = /@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|proto
 
 const COPY: Record<Action, { button: string; title: string; body: string; done: string }> = {
   questionnaire: {
-    button: "Answer a customer AI questionnaire",
-    title: "Get your AI answers drafted",
-    body: "Got a security or procurement questionnaire with AI questions from a customer? Tell me who sent it and when it's due. I'll draft the AI answers (and DORA, for banks and insurers), with evidence from your own pages, within 5 working days. Free during the pilot.",
+    button: "Finish a real questionnaire with me",
+    title: "Finish your customer's questionnaire with me",
+    body: "Got a security or procurement questionnaire with AI questions from a customer? Tell me who sent it and when it's due. We fill in the missing and thin answers together in one 45-minute call (plus DORA, for banks and insurers), and you get it back within 5 working days. Free.",
     done: "Thanks. I'll reply within one working day to get the questionnaire from you.",
   },
   watch: {
-    button: "Watch my site monthly",
-    title: "Re-check this site every month",
-    body: "You get an email only when something a reviewer would notice changes. Use an email on this website's domain, so nobody can watch a competitor.",
+    button: "Keep my answers true",
+    title: "Keep your answers true, every month",
+    body: "Each month I re-read your site and email you only if a page change breaks an answer you've given customers. Free. Use an email on this website's domain, so nobody can watch a competitor.",
     done: "You're on the list. The first re-check runs next month.",
   },
   fix: {

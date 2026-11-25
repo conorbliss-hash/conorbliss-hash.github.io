@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { AlertTriangle, ExternalLink, Loader2, Search } from "lucide-react";
 
+import { AnswerPack } from "@/components/iot/AnswerPack";
 import { FollowUp } from "@/components/iot/FollowUp";
+import type { Evidence, Readiness } from "@/lib/answerPack";
 import { trackEvent } from "@/lib/analytics";
 import type { Profile } from "@/lib/rulemap";
 
@@ -11,16 +13,7 @@ const ENDPOINT = import.meta.env.VITE_SCAN_ENDPOINT as string | undefined;
 export const SCAN_ENABLED = Boolean(ENDPOINT);
 
 type Confidence = "found" | "inferred" | "unknown";
-type Evidence = { quote: string; url: string };
 type Gap = { id: string; severity: "high" | "medium" | "low"; title: string; detail: string; evidence: Evidence[] };
-type AnswerStatus = "answered" | "contradicted" | "claimed" | "silent";
-type Readiness = {
-  checked: { n: number; id: string; short: string; status: AnswerStatus; note: string; evidence: Evidence[] }[];
-  answered: number;
-  contradicted: number;
-  web: number;
-  total: number;
-};
 export type ScanResult = {
   origin: string;
   scannedAt: string;
@@ -28,6 +21,7 @@ export type ScanResult = {
   prefill: { profile: Profile; confidence: Record<keyof Profile, Confidence> };
   gaps: Gap[];
   readiness?: Readiness;
+  claims?: { company_name?: string };
   cached?: boolean;
 };
 
@@ -37,34 +31,12 @@ const SEVERITY: Record<Gap["severity"], { label: string; pill: string }> = {
   low: { label: "Minor", pill: "bg-muted text-muted-foreground" },
 };
 
-const ANSWER: Record<AnswerStatus, { label: string; dot: string }> = {
-  answered: { label: "Answered", dot: "bg-primary" },
-  contradicted: { label: "Pages disagree", dot: "bg-destructive" },
-  claimed: { label: "Mentioned, no detail", dot: "bg-accent" },
-  silent: { label: "Not on your site", dot: "bg-muted-foreground/30" },
+const packHeadline = (r: Readiness) => {
+  const lead = r.answered
+    ? `${r.answered} of the 20 questions customers ask about your AI, answered from your own pages`
+    : "Your site doesn't yet answer any of the 20 questions customers ask about your AI";
+  return r.contradicted ? `${lead}, and ${r.contradicted} where your pages disagree` : lead;
 };
-
-// Which of the bank questions the public site can answer, in the shared bank's order (most-asked first).
-const ReadinessGrid = ({ r }: { r: Readiness }) => (
-  <div className="border-t border-border pt-5">
-    <p className="font-display text-base font-semibold">
-      Your site answers {r.answered} of {r.web} questions customers ask about your AI
-    </p>
-    <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-      {r.checked.map((q) => (
-        <li key={q.id} className="flex items-center gap-2 text-sm" title={q.note}>
-          <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${ANSWER[q.status].dot}`} aria-hidden />
-          <span className="min-w-0 flex-1">{q.short}</span>
-          <span className="shrink-0 text-xs text-muted-foreground">{ANSWER[q.status].label}</span>
-        </li>
-      ))}
-    </ul>
-    <p className="mt-3 text-xs text-muted-foreground">
-      The other {r.total - r.web} need evidence a website can't show: test records, logs, contracts. Most firms we checked were silent on
-      how their AI is tested.
-    </p>
-  </div>
-);
 
 const host = (u: string) => {
   try {
@@ -151,6 +123,8 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
   };
 
   const flagged = result ? result.gaps.filter((g) => g.severity !== "low").length : 0;
+  const clashes = result ? result.gaps.filter((g) => g.id.startsWith("inconsistency")) : [];
+  const others = result ? result.gaps.filter((g) => !g.id.startsWith("inconsistency")) : [];
 
   return (
     <section aria-label="Scan your website">
@@ -175,7 +149,7 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
           className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-base font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-90 disabled:opacity-60"
         >
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
-          {busy ? "Reading your site…" : "Check my site"}
+          {busy ? "Drafting your answers…" : "Get my free answers"}
         </button>
       </form>
 
@@ -190,41 +164,63 @@ export const SiteScan = ({ onPrefill }: { onPrefill: (p: Profile) => void }) => 
       )}
 
       {result && (
-        <div className="mt-6 space-y-5 rounded-2xl border border-border bg-card p-5" aria-live="polite">
-          <div>
-            <h2 className="font-display text-xl font-semibold">
-              {flagged > 0
-                ? `Yes: ${flagged} thing${flagged === 1 ? "" : "s"} a customer's reviewer would likely flag`
-                : "No big flags"}
-            </h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {result.gaps.length
-                ? `${result.gaps.length} point${result.gaps.length === 1 ? "" : "s"} in all, from the ${result.pages.length} pages we read.`
-                : `Nothing stood out on the ${result.pages.length} pages we read.`}{" "}
-              We only read public pages, so treat these as questions a reviewer would ask, not verdicts. General information, not legal advice.
-            </p>
-          </div>
-          {result.gaps.length > 0 && (
-            <div className="space-y-3">
-              {result.gaps.slice(0, 3).map((g) => (
-                <GapCard key={g.id} g={g} />
-              ))}
-              {result.gaps.length > 3 && (
+        <div className="mt-6 space-y-6 rounded-2xl border border-border bg-card p-5" aria-live="polite">
+          {result.readiness && result.readiness.checked.length > 0 ? (
+            <>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary">Your free AI answer pack</p>
+                <h2 className="mt-1 font-display text-xl font-semibold leading-snug">
+                  {packHeadline(result.readiness)}
+                </h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  These are the 20 AI questions customers' security and procurement reviewers ask most. Open any question to see the draft,
+                  copy it, or download all 20 for your next questionnaire. Read from {result.pages.length} public pages.
+                </p>
+              </div>
+              {clashes.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="font-display text-base font-semibold">Fix first: your pages disagree</h3>
+                  {clashes.map((g) => (
+                    <GapCard key={g.id} g={g} />
+                  ))}
+                </div>
+              )}
+              <AnswerPack readiness={result.readiness} origin={result.origin} company={result.claims?.company_name} />
+              {others.length > 0 && (
                 <details className="group">
                   <summary className="cursor-pointer list-none text-sm font-medium text-primary hover:underline [&::-webkit-details-marker]:hidden">
-                    Show {result.gaps.length - 3} more
+                    {others.length} other thing{others.length === 1 ? "" : "s"} a reviewer would notice
                   </summary>
                   <div className="mt-3 space-y-3">
-                    {result.gaps.slice(3).map((g) => (
+                    {others.map((g) => (
                       <GapCard key={g.id} g={g} />
                     ))}
                   </div>
                 </details>
               )}
-            </div>
+              <FollowUp domain={result.origin} flags={flagged} only={["questionnaire", "watch"]} heading="Next, if you want it (also free)" />
+            </>
+          ) : (
+            <>
+              <div>
+                <h2 className="font-display text-xl font-semibold">
+                  {flagged > 0
+                    ? `Yes: ${flagged} thing${flagged === 1 ? "" : "s"} a customer's reviewer would likely flag`
+                    : "No big flags"}
+                </h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  From the {result.pages.length} pages we read. Treat these as questions a reviewer would ask, not verdicts. General information,
+                  not legal advice.
+                </p>
+              </div>
+              <div className="space-y-3">
+                {result.gaps.map((g) => (
+                  <GapCard key={g.id} g={g} />
+                ))}
+              </div>
+              <FollowUp domain={result.origin} flags={flagged} />
+            </>
           )}
-          {result.readiness && result.readiness.checked.length > 0 && <ReadinessGrid r={result.readiness} />}
-          <FollowUp domain={result.origin} flags={flagged} />
           <details className="text-xs text-muted-foreground">
             <summary className="cursor-pointer">Pages we read</summary>
             <ul className="mt-2 space-y-1">
